@@ -1,6 +1,6 @@
 export default class Status {
     /**
-     * 
+     * constructor for status initialize all of the variables
      * @param {number} maxHp 
      * @param {number} hp 
      * @param {number} atk 

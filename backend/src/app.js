@@ -13,6 +13,9 @@ const beam = new CPmon(
     new Status(10, 10, 10, 3, 10, 10)
 );
 
+
+console.log(beam.status.hp);
+
 pikachu.attack(beam)
 
 console.log(beam.status.hp);
