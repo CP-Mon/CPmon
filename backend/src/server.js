@@ -1,1 +1,1 @@
-console.log("good")
+import "./app.js"

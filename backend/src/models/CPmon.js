@@ -1,4 +1,4 @@
-import Status from "./Status"
+import Status from "./Status.js"
 
 export default class CPmon {
 
@@ -18,7 +18,7 @@ export default class CPmon {
      * @returns {number}
      */
     attack(enemy) {
-        damage = Math.max(
+        const damage = Math.max(
             0,
             this.status.atk - enemy.status.def
         );
