@@ -1,13 +1,11 @@
 import express from "express";
 
-import * as itemController from "../controllers/itemController.js";
+import * as userController from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.get("/", itemController.getItems);
-router.post("/", itemController.createItem);
-router.delete("/:id", itemController.deleteItem);
-// TODO3: add a router for the filter function
-router.post("/filter", itemController.filterItems);
+router.get("/", userController.getAllUserData);
+router.post("/login", userController.loginUser);
+
 
 export default router;
