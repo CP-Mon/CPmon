@@ -1,5 +1,5 @@
-import CPmon from "./models/CPmon.js";
-import Status from "./models/Status.js";
+import CPmon from "./models/CPmonModel.js";
+import Status from "./models/StatusModel.js";
 
 // test and debug - can erase
 
