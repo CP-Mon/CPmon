@@ -1,9 +1,10 @@
-import {loginUserData} from "./api.js"
+import {loginUserData, checkSignUpNewUser, SignUpNewUser} from "./api.js"
 
 export async function handleLoginUser() {
     const username = document.getElementById("username-input").value;
     const password = document.getElementById("password-input").value;
-    let userData = await loginUserData(username, password);
+    const obj = {username : username, password : password};
+    const userData = await loginUserData(obj);
 
     if(userData.mes == "NoUsername"){
         const loginStatus = document.getElementById("loginStatus");
@@ -16,19 +17,105 @@ export async function handleLoginUser() {
     }
 }
 
+export async function handleAddNewUser() {
+    const SignUpStatus = document.getElementById("SignUpStatus")
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com/;
+    const username = document.getElementById("username-input").value;
+    const password = document.getElementById("password-input").value;
+    const Rpassword = document.getElementById("password-repeat-input").value;
+    const email = document.getElementById("email-input").value;
+
+    // Check if every field is match requirement
+    if(username=="" || email=="" || password==""){
+        SignUpStatus.innerHTML = "Every field must has more than one charecter"
+        return;
+    }
+    if(password != Rpassword){
+        SignUpStatus.innerHTML = "Password must be same as confirmation"
+        return;
+    }
+    if(password.length<8){
+        SignUpStatus.innerHTML = "Password's lenght must be more than 8 charecter"
+        return;
+    }
+    if(!email.match(validRegex)){
+        SignUpStatus.innerHTML = "Email must be in gmail-format"
+        return;
+    }
+
+    // check if New User is Duplicate
+    const obj1 = {username : username, email : email};
+    const checkSignUpResult =  await checkSignUpNewUser(obj1)
+    
+    if(checkSignUpResult.mes=="DuplicateEmail"){
+        SignUpStatus.innerHTML = "This email already sign up. Try another email."
+        return;
+    }
+    if(checkSignUpResult.mes=="DuplicateUsername"){
+        SignUpStatus.innerHTML = "This username alredy USED."
+        return;
+    }
+    
+    const payload = {
+        username : username, password : password, email : email,
+        CPmonlist:new Array(), exp:0, money:0
+    };
+
+    SignUpNewUser(payload);
+    const obj2 = {username : username, password : password};
+    const userData = await loginUserData(obj2);
+    drawUserSection(userData.loginUserData);
+}
+
 export async function handleLogoutUser() {
-    console.log("OUT");
     drawLoginSection();
 }
+
+export async function handleSignUpUser() {
+    drawSignUpSection();
+}
+
+
+export async function drawSignUpSection() {
+    const userSection = document.getElementById("UserSection");
+    userSection.innerHTML = `
+        <p><b>New User Sign Up</b></p>
+        <p>Username : </p>
+        <input type="text" id="username-input">
+        <p>Email : </p>
+        <input type="text" id="email-input">
+        <p>Password : </p>
+        <input type="text" id="password-input">
+        <p>Confirm Password : </p>
+        <input type="text" id="password-repeat-input">
+        <br><button id="userSignUpButton" class="">SignUp</button>
+        <br><button id="userLoginButton">Already has account? Back to Login</button>
+        
+        <p id="SignUpStatus" style="color:red"></p>
+    `;
+
+    // add eventListener for login button
+    const userLoginButton = document.getElementById("userLoginButton");
+    userLoginButton.addEventListener("click", ()=>{
+        drawLoginSection();
+    });
+    const userSignUpButton = document.getElementById("userSignUpButton");
+    userSignUpButton.addEventListener("click", ()=>{
+        handleAddNewUser();
+    });
+}
+
 
 export async function drawLoginSection() {
     const userSection = document.getElementById("UserSection");
     userSection.innerHTML = `
+            <p><b>Log In</b></p>
             <p>Username : </p>
             <input type="text" id="username-input">
             <p>Password : </p>
             <input type="text" id="password-input">
             <br><button id="userLoginButton" class="">Login</button>
+            <button id="userSignUpButton" class="">Create New Account</button>
             <p id="loginStatus"></p>
             <p>Note for Dev : You could try "Neen" "Password"</p>
     `;
@@ -37,6 +124,10 @@ export async function drawLoginSection() {
     const userLoginButton = document.getElementById("userLoginButton");
     userLoginButton.addEventListener("click", ()=>{
         handleLoginUser();
+    });
+    const userSignUpButton = document.getElementById("userSignUpButton");
+    userSignUpButton.addEventListener("click", ()=>{
+        handleSignUpUser();
     });
 }
 

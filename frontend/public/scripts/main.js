@@ -1,6 +1,7 @@
-import {handleLoginUser, drawLoginSection, handleLogoutUser} from "./user.js"
+import {drawLoginSection} from "./user.js"
 
 drawLoginSection();
+
 document.addEventListener("DOMContentLoaded", () => {
     
 });
