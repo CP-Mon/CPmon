@@ -1,8 +1,23 @@
 import User from "../models/userModel.js"
 
+var currentUser = null
+
 /** @type {import("express").RequestHandler} */
-export const getAllUserData = async (req, res) => {
-  const userData = await User.find();
+export const getCurrentUser = async (req, res) => {
+  res.status(200).json(currentUser);
+};
+
+/** @type {import("express").RequestHandler} */
+export const logoutCurrentUser = async (req, res) => {
+  currentUser = null;
+  res.status(200).json({
+    mes : "Success"
+  });
+};
+
+/** @type {import("express").RequestHandler} */
+export const getUserData = async (req, res) => {
+  let userData = await User.findOne({username:req.body.username});
   res.status(200).json(userData);
 };
 
@@ -23,6 +38,7 @@ export const loginUser = async (req, res) => {
       });
     }else{
       // return userData if everything is correct
+      currentUser = loginUserData
       res.status(200).json({
         mes:"Success",
         loginUserData : loginUserData
