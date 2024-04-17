@@ -3,6 +3,8 @@ import {loginUserData, checkSignUpNewUser, SignUpNewUser, getCurrentUser, logout
 const currentUser = await getCurrentUser();
 if(currentUser==null){
     drawLoginSection();
+}else{
+    drawUserSection();
 }
 
 export async function handleLoginUser() {
@@ -18,7 +20,7 @@ export async function handleLoginUser() {
         const loginStatus = document.getElementById("loginStatus");
         loginStatus.innerHTML = "WRONG password, please try again";
     }else if(userData.mes == "Success"){
-        drawuserLoginSection(await getCurrentUser())
+        drawUserSection(await getCurrentUser())
     }
 }
 
@@ -73,9 +75,9 @@ export async function handleAddNewUser() {
 }
 
 export async function handleLogoutUser() {
+    console.log("OUT");
     drawLoginSection();
     logoutCurrentUser();
-    console.log("OUT");
 }
 
 export async function handleSignUpUser() {
@@ -138,9 +140,12 @@ export async function drawLoginSection() {
     });
 }
 
-export async function drawuserLoginSection(UserData) {
+export async function drawUserSection() {
+    const UserData = await getCurrentUser();
     const userLoginSection = document.getElementById("userLoginSection");
     userLoginSection.innerHTML = `
+        <a href="./"><button>HOME</button></a>
+
         <h3>Hi, ${UserData.username}</h3>
         <p>Money : ${UserData.money} $</p>
         <p>Exp. : ${UserData.exp}</p>

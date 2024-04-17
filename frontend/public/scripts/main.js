@@ -1,4 +1,4 @@
-import {handleLogoutUser} from "./userLogin"
+import {handleLogoutUser} from "./userLogin.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     const userLogoutButton = document.getElementById("userLogoutButton");

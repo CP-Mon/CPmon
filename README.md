@@ -9,8 +9,7 @@
     - login.html = login
     - index.html = main pages
     - userData = user data & pokemon
-    - gameRoom = game
-        - Neen had set "/room1", "/room2", ..,, "room6" every room all use gameroom.html
+    - gameRoom = set "/room1", "/room2", ..,, "room6" every room all use gameroom.html
 
 - implement checking "currentUser" api every time they go to new pages
     - if currentUser == null it will direct to login
