@@ -79,17 +79,17 @@ export async function handleSignUpUser() {
 export async function drawSignUpSection() {
     const userSection = document.getElementById("UserSection");
     userSection.innerHTML = `
-        <p><b>New User Sign Up</b></p>
-        <p>Username : </p>
+        <p class="header"><b>New User Sign Up</b></p>
+        <p>Username</p>
         <input type="text" id="username-input">
-        <p>Email : </p>
+        <p>Email</p>
         <input type="text" id="email-input">
-        <p>Password : </p>
-        <input type="text" id="password-input">
-        <p>Confirm Password : </p>
-        <input type="text" id="password-repeat-input">
+        <p>Password</p>
+        <input type="password" id="password-input">
+        <p>Confirm Password</p>
+        <input type="password" id="password-repeat-input">
         <br><button id="userSignUpButton" class="">SignUp</button>
-        <br><button id="userLoginButton">Already has account? Back to Login</button>
+        <button id="userLoginButton">Already has account? Back to Login</button>
         
         <p id="SignUpStatus" style="color:red"></p>
     `;
@@ -109,15 +109,15 @@ export async function drawSignUpSection() {
 export async function drawLoginSection() {
     const userSection = document.getElementById("UserSection");
     userSection.innerHTML = `
-            <p><b>Log In</b></p>
-            <p>Username : </p>
-            <input type="text" id="username-input">
-            <p>Password : </p>
-            <input type="text" id="password-input">
-            <br><button id="userLoginButton" class="">Login</button>
-            <button id="userSignUpButton" class="">Create New Account</button>
-            <p id="loginStatus"></p>
-            <p>Note for Dev : You could try "Neen" "Password"</p>
+        <p class="header"><b>Log In</b></p>
+        <p>Username</p>
+        <input type="text" id="username-input">
+        <p>Password</p>
+        <input type="password" id="password-input">
+        <br><button id="userLoginButton" class="">Login</button>
+        <button id="userSignUpButton" class="">Create New Account</button>
+        <p id="loginStatus"></p>
+        <p>Note for Dev : You could try "Neen" "Password"</p>
     `;
 
     // add eventListener for login button

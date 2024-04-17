@@ -1,0 +1,74 @@
+/* Custom CSS Variables for Colors */
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
+
+/* Your other CSS styles */
+
+/* Applying custom colors using CSS variables */
+
+body {
+    background-color: var(--chestnut);
+    color: var(--sunset);
+}
+
+#UserSection {
+    padding: 20px;
+    border-radius: 10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center all content */
+}
+
+#UserSection input[type="text"],
+#UserSection input[type="password"],
+#UserSection button {
+    width: 45%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--fern-green);
+    border-radius: 5px;
+}
+
+#UserSection input[type="text"],
+#UserSection input[type="password"] {
+    border: none; /* Remove default border */
+    border-bottom: 1px solid var(--sunset); /* Add underline */
+    background-color: transparent; /* Make background transparent */
+    outline: none; /* Remove outline when focused */
+    padding: 5px; /* Add padding for space */
+    text-align: center;
+}
+
+
+
+#UserSection button {
+    width: 25%;
+    background-color: var(--cinnabar);
+    color: white;
+}
+
+#UserSection button:hover {
+    background-color: var(--keppel);
+}
+
+#SignUpStatus {
+    margin-top: 10px;
+    color: white;
+}
+
+/* Adjust background color for .header within #UserSection */
+#UserSection .header {
+    text-align: center;
+    font-size: xx-large;
+    color: wheat;
+}
+
+/* Your other CSS styles */
