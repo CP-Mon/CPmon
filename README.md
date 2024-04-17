@@ -4,7 +4,7 @@
 - BACK_URL : set to "http://localhost:3222"; while in dev process
 
 - change "userSection" -> id = "userLoginSection" for log in 
-- change filename "user.js" -> "userLogin.js"
+- change filename "user.js" -> "userLogin.js" and move every login-related method to this file
 - move pages to "frontend/public/pages/"
     - login.html = login
     - index.html = main pages

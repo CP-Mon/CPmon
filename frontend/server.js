@@ -13,7 +13,7 @@ const app = express();
 app.use(express.static("public"));
 
 app.get('/user', (req,res) =>{
-  if(currentUser==null){
+  if(currentUser==""){
     res.sendFile(`${publicPath}/login.html`)
   }else{
     res.sendFile(`${publicPath}/userData.html`)
@@ -21,7 +21,7 @@ app.get('/user', (req,res) =>{
 });
 
 app.get('/', (req,res) =>{
-  if(currentUser==null){
+  if(currentUser==""){
     res.sendFile(`${publicPath}/login.html`)
   }else{
     res.sendFile(`${publicPath}/index.html`)

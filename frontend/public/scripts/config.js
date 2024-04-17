@@ -8,4 +8,4 @@ export const MEMBERS = [
   "Raksakul Hiranas"
 ];
 
-export const currentUser = null;
+export var currentUser = "";

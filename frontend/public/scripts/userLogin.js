@@ -1,6 +1,11 @@
 import {loginUserData, checkSignUpNewUser, SignUpNewUser, getUserData} from "./api.js"
 import { currentUser } from "./config.js";
 
+
+if(currentUser == "" ){
+    drawLoginSection();
+}
+
 export async function handleLoginUser() {
     const username = document.getElementById("username-input").value;
     const password = document.getElementById("password-input").value;
