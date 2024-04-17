@@ -1,7 +1,8 @@
 
 import express from "express";
 import path from 'path';
-import { currentUser } from "./public/scripts/config.js";
+import {getCurrentUser} from "./public/scripts/api.js"
+
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url)
@@ -12,16 +13,18 @@ const app = express();
 
 app.use(express.static("public"));
 
-app.get('/user', (req,res) =>{
-  if(currentUser==""){
+app.get('/user', async (req,res) =>{
+  const currentUser = await getCurrentUser();
+  if(currentUser==null){
     res.sendFile(`${publicPath}/login.html`)
   }else{
     res.sendFile(`${publicPath}/userData.html`)
   }
 });
 
-app.get('/', (req,res) =>{
-  if(currentUser==""){
+app.get('/', async (req,res) =>{
+  const currentUser = await getCurrentUser();
+  if(currentUser==null){
     res.sendFile(`${publicPath}/login.html`)
   }else{
     res.sendFile(`${publicPath}/index.html`)

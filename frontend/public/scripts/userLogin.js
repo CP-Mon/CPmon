@@ -1,8 +1,7 @@
-import {loginUserData, checkSignUpNewUser, SignUpNewUser, getUserData} from "./api.js"
-import { currentUser } from "./config.js";
+import {loginUserData, checkSignUpNewUser, SignUpNewUser, getCurrentUser, logoutCurrentUser} from "./api.js"
 
-
-if(currentUser == "" ){
+const currentUser = await getCurrentUser();
+if(currentUser==null){
     drawLoginSection();
 }
 
@@ -19,9 +18,7 @@ export async function handleLoginUser() {
         const loginStatus = document.getElementById("loginStatus");
         loginStatus.innerHTML = "WRONG password, please try again";
     }else if(userData.mes == "Success"){
-        console.log(userData.loginUserData.username);
-        currentUser = userData.loginUserData.username
-        drawuserLoginSection(userData.loginUserData)
+        drawuserLoginSection(await getCurrentUser())
     }
 }
 
@@ -77,7 +74,8 @@ export async function handleAddNewUser() {
 
 export async function handleLogoutUser() {
     drawLoginSection();
-    currentUser = null;
+    logoutCurrentUser();
+    console.log("OUT");
 }
 
 export async function handleSignUpUser() {

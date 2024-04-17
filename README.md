@@ -12,7 +12,7 @@
     - gameRoom = game
         - Neen had set "/room1", "/room2", ..,, "room6" every room all use gameroom.html
 
-- implement checking "currentUser" every time they go to new pages
+- implement checking "currentUser" api every time they go to new pages
     - if currentUser == null it will direct to login
     - after log in currentUser will collect user data in json
     - after log in it will go to index

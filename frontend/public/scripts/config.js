@@ -7,5 +7,3 @@ export const MEMBERS = [
   "Kritsakorn Sataratpayoon",
   "Raksakul Hiranas"
 ];
-
-export var currentUser = "";
