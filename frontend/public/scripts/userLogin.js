@@ -1,4 +1,5 @@
-import {loginUserData, checkSignUpNewUser, SignUpNewUser} from "./api.js"
+import {loginUserData, checkSignUpNewUser, SignUpNewUser, getUserData} from "./api.js"
+import { currentUser } from "./config.js";
 
 export async function handleLoginUser() {
     const username = document.getElementById("username-input").value;
@@ -13,7 +14,9 @@ export async function handleLoginUser() {
         const loginStatus = document.getElementById("loginStatus");
         loginStatus.innerHTML = "WRONG password, please try again";
     }else if(userData.mes == "Success"){
-        drawUserSection(userData.loginUserData)
+        console.log(userData.loginUserData.username);
+        currentUser = userData.loginUserData.username
+        drawuserLoginSection(userData.loginUserData)
     }
 }
 
@@ -64,11 +67,12 @@ export async function handleAddNewUser() {
     SignUpNewUser(payload);
     const obj2 = {username : username, password : password};
     const userData = await loginUserData(obj2);
-    drawUserSection(userData.loginUserData);
+    drawuserLoginSection(userData.loginUserData);
 }
 
 export async function handleLogoutUser() {
     drawLoginSection();
+    currentUser = null;
 }
 
 export async function handleSignUpUser() {
@@ -77,8 +81,8 @@ export async function handleSignUpUser() {
 
 
 export async function drawSignUpSection() {
-    const userSection = document.getElementById("UserSection");
-    userSection.innerHTML = `
+    const userLoginSection = document.getElementById("userLoginSection");
+    userLoginSection.innerHTML = `
         <p><b>New User Sign Up</b></p>
         <p>Username : </p>
         <input type="text" id="username-input">
@@ -107,8 +111,8 @@ export async function drawSignUpSection() {
 
 
 export async function drawLoginSection() {
-    const userSection = document.getElementById("UserSection");
-    userSection.innerHTML = `
+    const userLoginSection = document.getElementById("userLoginSection");
+    userLoginSection.innerHTML = `
             <p><b>Log In</b></p>
             <p>Username : </p>
             <input type="text" id="username-input">
@@ -131,9 +135,9 @@ export async function drawLoginSection() {
     });
 }
 
-export async function drawUserSection(UserData) {
-    const userSection = document.getElementById("UserSection");
-    userSection.innerHTML = `
+export async function drawuserLoginSection(UserData) {
+    const userLoginSection = document.getElementById("userLoginSection");
+    userLoginSection.innerHTML = `
         <h3>Hi, ${UserData.username}</h3>
         <p>Money : ${UserData.money} $</p>
         <p>Exp. : ${UserData.exp}</p>
@@ -141,10 +145,10 @@ export async function drawUserSection(UserData) {
     `;
 
     for (const monster of UserData.CPmonList) {
-        userSection.innerHTML += `<li>${monster}</li>`
+        userLoginSection.innerHTML += `<li>${monster}</li>`
     }
 
-    userSection.innerHTML += `
+    userLoginSection.innerHTML += `
         <br><button id="userLogoutButton" class="">Logout</button>
     `;
 

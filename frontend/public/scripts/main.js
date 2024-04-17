@@ -1,6 +1,10 @@
-import {drawLoginSection} from "./user.js"
+import { drawLoginSection } from "./userLogin.js";
+import { currentUser } from "./config.js";
 
-drawLoginSection();
+
+if(currentUser == null ){
+    drawLoginSection();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     

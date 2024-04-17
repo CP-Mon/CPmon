@@ -7,3 +7,5 @@ export const MEMBERS = [
   "Kritsakorn Sataratpayoon",
   "Raksakul Hiranas"
 ];
+
+export const currentUser = null;

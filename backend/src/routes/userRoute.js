@@ -4,7 +4,7 @@ import * as userController from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.get("/", userController.getAllUserData);
+router.post("/getData", userController.getUserData);
 router.post("/login", userController.loginUser);
 router.post("/signup/check", userController.checkSignUpNewUser);
 router.post("/signup/addNewUser", userController.SignUpNewUser);

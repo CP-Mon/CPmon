@@ -1,8 +1,8 @@
 import User from "../models/userModel.js"
 
 /** @type {import("express").RequestHandler} */
-export const getAllUserData = async (req, res) => {
-  const userData = await User.find();
+export const getUserData = async (req, res) => {
+  let userData = await User.findOne({username:req.body.username});
   res.status(200).json(userData);
 };
 
