@@ -116,21 +116,8 @@ export async function drawSignUpSection() {
 
 
 export async function drawLoginSection() {
-<<<<<<< HEAD:frontend/public/scripts/userLogin.js
-    const userLoginSection = document.getElementById("userLoginSection");
+    const userLoginSection = document.getElementById("UserLoginSection");
     userLoginSection.innerHTML = `
-            <p><b>Log In</b></p>
-            <p>Username : </p>
-            <input type="text" id="username-input">
-            <p>Password : </p>
-            <input type="text" id="password-input">
-            <br><button id="userLoginButton" class="">Login</button>
-            <button id="userSignUpButton" class="">Create New Account</button>
-            <p id="loginStatus"></p>
-            <p>Note for Dev : You could try "Neen" "Password"</p>
-=======
-    const userSection = document.getElementById("UserSection");
-    userSection.innerHTML = `
         <p class="header"><b>Log In</b></p>
         <p>Username</p>
         <input type="text" id="username-input">
@@ -140,7 +127,6 @@ export async function drawLoginSection() {
         <button id="userSignUpButton" class="">Create New Account</button>
         <p id="loginStatus"></p>
         <p>Note for Dev : You could try "Neen" "Password"</p>
->>>>>>> Beam:frontend/public/scripts/user.js
     `;
 
     // add eventListener for login button
