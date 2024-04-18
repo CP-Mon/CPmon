@@ -2,7 +2,6 @@
 import express from "express";
 import path from 'path';
 import {getCurrentUser} from "./public/scripts/api.js"
-import cookieSession from "cookie-session";
 
 
 import { fileURLToPath } from 'url';
@@ -11,15 +10,12 @@ const __dirname = path.dirname(path.dirname(__filename));
 
 let publicPath = path.join(__dirname, 'frontend/public/pages')
 const app = express();
-
 app.use(express.static("public"));
 
-// user session
-app.use(cookieSession({
-  name : 'session',
-  keys : ['key1', 'key2'],
-  maxAge: 24 * 60 * 60 * 1000
-}))
+import cookieParser from "cookie-parser";
+import cors from "cors";
+app.use(cookieParser())
+app.use(cors({ origin: 'http://localhost:3221', credentials: true }));
 
 
 app.get('/login', async (req,res) =>{

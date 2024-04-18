@@ -2,8 +2,9 @@ import { BACKEND_URL } from "./config.js";
 
 
 export async function getCurrentUser() {
-    const userData =  await fetch(`${BACKEND_URL}/user/getData`).then((r) => r.json());
-    console.log("[api.js] getCurrentUser", userData); // indev
+    const userData =  await fetch(`${BACKEND_URL}/user/getData`,{
+        credentials: "include"
+    }).then((r) => r.json());
     return userData
 }
 
@@ -21,7 +22,7 @@ export async function loginUserData(obj) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(obj),
-        credentials: 'include'
+         
     }).then((r) => r.json());
     return userData;
 }
@@ -33,7 +34,7 @@ export async function checkSignUpNewUser(obj) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(obj),
-        credentials: 'include'
+         
     }).then((r) => r.json());
     return checkSignUpResult;
 }
@@ -45,6 +46,6 @@ export async function SignUpNewUser(obj) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(obj),
-        credentials: 'include'
+         
     }).then((r) => r.json());
 }

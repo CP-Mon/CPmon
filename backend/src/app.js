@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-
 import UserRoute from "./routes/userRoute.js"
 const app = express();
 
@@ -25,5 +24,9 @@ app.use(cors());
 
 // use Route
 app.use("/user", UserRoute);
+
+// import cookieParser from "cookie-parser";
+// app.use(cookieParser())
+// app.use(cors({ origin: 'http://localhost:3221', credentials: true }));
 
 export default app;

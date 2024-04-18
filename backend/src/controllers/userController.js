@@ -7,28 +7,26 @@ import User from "../models/userModel.js"
 /** @type {import("express").RequestHandler} */
 
 export const getUserData = async (req, res) => {
-  console.log(req.session);
-  res.status(200).json(null);
-  // if((req.session.authenticated == undefined)){
-  //   res.status(200).json(null);
-  // }else{
-  //   const username = req.session.username;
-  //   const userData = await User.findOne({username:username});
-  //   res.status(200).json(userData);
-  // }  
+  if((req.body.authenticated == undefined)){
+    res.status(200).json(null);
+  }else{
+    const username = req.body.username;
+    const userData = await User.findOne({username:username});
+    res.status(200).json(userData);
+  }  
 };
 
 /** @type {import("express").RequestHandler} */
 export const logoutUser = async (req, res) => {
-  req.session.authenticated = false
-  req.session.username = null
+  res.cookie.authenticated = false
+  res.cookie.username = null
   res.redirect('./login')
 };
 
 /** @type {import("express").RequestHandler} */
 export const loginUser = async (req, res) => {
   const loginUserData = await User.findOne({username:req.body.username});
-  if(req.session.authenticated==true){
+  if(req.body.authenticated==true){
     res.status(400).json({ error: "Alredy Login" });
   }
   
@@ -45,9 +43,9 @@ export const loginUser = async (req, res) => {
       });
     }else{
       // return userData if everything is correct
-      req.session.authenticated = true;
-      req.session.username = loginUserData.username
-      console.log("login :", req.session); // indev
+      res.cookie('authenticated', true);
+      res.cookie('username',loginUserData.username)
+      console.log("login :", loginUserData); // indev
       res.status(200).json({
         mes: "Success",
         loginUserData: loginUserData
