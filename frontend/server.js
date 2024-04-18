@@ -32,22 +32,7 @@ app.get('/', async (req,res) =>{
   }
 });
 
-app.get('/room1', (req,res) =>{
-  res.sendFile(`${publicPath}/gameRoom.html`)
-});
-app.get('/room2', (req,res) =>{
-  res.sendFile(`${publicPath}/gameRoom.html`)
-});
-app.get('/room3', (req,res) =>{
-  res.sendFile(`${publicPath}/gameRoom.html`)
-});
-app.get('/room4', (req,res) =>{
-  res.sendFile(`${publicPath}/gameRoom.html`)
-});
-app.get('/room5', (req,res) =>{
-  res.sendFile(`${publicPath}/gameRoom.html`)
-});
-app.get('/room6', (req,res) =>{
+app.get('/room/:id', (req,res) =>{
   res.sendFile(`${publicPath}/gameRoom.html`)
 });
 
