@@ -2,18 +2,14 @@ import { BACKEND_URL } from "./config.js";
 
 
 export async function getCurrentUser() {
-    const userData =  await fetch(`${BACKEND_URL}/user/getData`,{
-        method:'POST',
-        credentials: 'include',
-    }).then((r) => r.json());
+    const userData =  await fetch(`${BACKEND_URL}/user/getData`).then((r) => r.json());
     console.log("[api.js] getCurrentUser", userData); // indev
     return userData
 }
 
 export async function logoutCurrentUser() {
     await fetch(`${BACKEND_URL}/user/logout`,{
-        method:'POST',
-        credentials: 'include'
+        method:'POST'
     }).then((r) => r.json());
 }
 

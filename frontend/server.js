@@ -2,6 +2,7 @@
 import express from "express";
 import path from 'path';
 import {getCurrentUser} from "./public/scripts/api.js"
+import cookieSession from "cookie-session";
 
 
 import { fileURLToPath } from 'url';
@@ -12,6 +13,14 @@ let publicPath = path.join(__dirname, 'frontend/public/pages')
 const app = express();
 
 app.use(express.static("public"));
+
+// user session
+app.use(cookieSession({
+  name : 'session',
+  keys : ['key1', 'key2'],
+  maxAge: 24 * 60 * 60 * 1000
+}))
+
 
 app.get('/login', async (req,res) =>{
   const currentUser = await getCurrentUser();
