@@ -1,0 +1,80 @@
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
+
+/* CSS Styles for Main Pages */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--chestnut);
+    color: var(--sunset);
+    /* overflow: hidden; */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    grid-auto-rows: minmax(200px, auto); /* Adjust row height as needed */
+    gap: 20px; /* Adjust gap between grid items */
+    margin: 20px auto; /* Add margin on the top and bottom, and auto for horizontal centering */
+    max-width: 1200px; /* Adjust max width as needed */
+    padding: 0 20px; /* Add padding to maintain equal gaps on the left and right */
+    justify-content: center; /* Center the grid items horizontally */
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space evenly between the two sections */
+    width: 90%; /* Adjust the width as needed */
+    height: 90%; /* Set height equal to width for square shape */
+    background-color: var(--jet);
+    border-radius: 5px;
+    /* overflow: hidden; Hide overflowing content */
+}
+
+.grid-item a {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items at the top */
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-height: 100%; /* Adjust the height of the image section */
+    width: auto;
+    height: auto;
+    border-radius: 5px 5px 0 0; /* Rounded corners only on top */
+    transition: transform 0.3s ease;
+}
+
+.grid-item img:hover {
+    transform: scale(1.1);
+}
+
+.grid-item p {
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    background-color: var(--keppel);
+    color: wheat;
+    border-radius: 0 0 5px 5px; /* Rounded corners only on bottom */
+}
