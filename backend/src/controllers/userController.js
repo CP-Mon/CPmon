@@ -1,30 +1,49 @@
+import { Store } from "express-session";
+import app from "../app.js";
 import User from "../models/userModel.js"
 
-var currentUser = null
 
-/** @type {import("express").RequestHandler} */
-export const getCurrentUser = async (req, res) => {
-  res.status(200).json(currentUser);
-};
-
-/** @type {import("express").RequestHandler} */
-export const logoutCurrentUser = async (req, res) => {
-  currentUser = null;
-  res.status(200).json({
-    mes : "Success"
-  });
-};
-
+/* get userData by its username */
 /** @type {import("express").RequestHandler} */
 export const getUserData = async (req, res) => {
-  let userData = await User.findOne({username:req.body.username});
+  // console.log("[userController.js] req.session", req.session.authenticated, "username", req.session.username); // indev
+
+  // console.log("[userController] cookie", req.session.cookie.authenticated);
+  console.log("[userController] cookie", req.session.cookie.username);
+  req.session.cookie.username = "Neen"
+  console.log("[userController] cookie", req.session.cookie.username);
+  // console.log("[userController] cookie", req.session.cookie.authenticated===false);
+  if(req.session.authenticated === false){
+    res.status(200).json(null);
+  }
+
+  // const username = req.session.username;
+  const username = "Neen";
+  const userData = await User.findOne({username:username});
   res.status(200).json(userData);
+};
+
+/** @type {import("express").RequestHandler} */
+export const logoutUser = async (req, res) => {
+  req.session.authenticated = false
+  req.session.username = null
+  req.session.save(err => {
+    if (err) {
+        console.error('Session save error:', err);
+        return res.status(500).json({ mes: "Failed to save session" });
+    }
+
+    res.redirect('./login')
+  });
 };
 
 /** @type {import("express").RequestHandler} */
 export const loginUser = async (req, res) => {
   const loginUserData = await User.findOne({username:req.body.username});
-
+  if(req.session.authenticated==true){
+    res.status(400).json({ error: "Alredy Login" });
+  }
+  
   // check if username is valid
   if(loginUserData==null){
     res.status(200).json({
@@ -38,10 +57,19 @@ export const loginUser = async (req, res) => {
       });
     }else{
       // return userData if everything is correct
-      currentUser = loginUserData
-      res.status(200).json({
-        mes:"Success",
-        loginUserData : loginUserData
+      req.session.authenticated = true;
+      req.session.username = loginUserData.username
+      req.session.save(err => {
+        if (err) {
+            console.error('Session save error:', err);
+            return res.status(500).json({ mes: "Failed to save session" });
+        }
+
+        // Send success response after the session is saved
+        res.status(200).json({
+            mes: "Success",
+            loginUserData: loginUserData
+        });
       });
     }  
   }

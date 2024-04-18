@@ -16,3 +16,5 @@
     - after log in currentUser will collect user data in json
     - after log in it will go to index
     - refresh = end game, current user back to null
+
+Problem : session is not save username
