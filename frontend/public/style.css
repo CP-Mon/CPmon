@@ -8,20 +8,33 @@
     --jet: #2a2b2aff;
 }
 
-/* Your other CSS styles */
-
-/* Applying custom colors using CSS variables */
+@font-face {
+    font-family: 'QuickSand';
+    src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
+         url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'InfoStory';
+    src: url('../res/fonts/info_story-webfont.woff2') format('woff2'), /* Modern Browsers */
+         url('../res/fonts/info_story-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+  }
 
 body {
     background-color: var(--chestnut);
     color: var(--sunset);
+    /* overflow: hidden; */
 }
 
 #UserSection {
-    padding: 20px;
-    border-radius: 10px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: medium;
+    padding: 1%;
+    font-size: 125%;
     display: flex;
     flex-direction: column;
     align-items: center; /* Horizontally center all content */
@@ -30,29 +43,41 @@ body {
 #UserSection input[type="text"],
 #UserSection input[type="password"],
 #UserSection button {
-    width: 45%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid var(--fern-green);
+    margin-bottom: 1.5%;
+    padding: 1%;
+    border: none;
     border-radius: 5px;
 }
-
 #UserSection input[type="text"],
 #UserSection input[type="password"] {
     border: none; /* Remove default border */
-    border-bottom: 1px solid var(--sunset); /* Add underline */
+    border-bottom: 0.05vw solid var(--sunset); /* Add solid underline with width based on screen width */
     background-color: transparent; /* Make background transparent */
     outline: none; /* Remove outline when focused */
-    padding: 5px; /* Add padding for space */
+    padding: 0; /* Remove padding */
     text-align: center;
+    color: var(--sunset);
+    font-size: 100%;
+    font-family: 'QuickSand';
+    border-radius: 0; /* Ensure no border radius */
+    width : 35%;
 }
 
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 480px) {
+    
+}
 
 
 #UserSection button {
     width: 25%;
     background-color: var(--cinnabar);
-    color: white;
+    color: wheat;
+    font-size: 80%;
+    font-family:'Segoe UI';
 }
 
 #UserSection button:hover {
@@ -60,15 +85,15 @@ body {
 }
 
 #SignUpStatus {
-    margin-top: 10px;
+    margin-top: 10%;
     color: white;
 }
 
 /* Adjust background color for .header within #UserSection */
 #UserSection .header {
     text-align: center;
-    font-size: xx-large;
+    font-size: 200%;
     color: wheat;
+    font-family: 'QuickSand';
 }
 
-/* Your other CSS styles */

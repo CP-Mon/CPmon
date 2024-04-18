@@ -79,7 +79,7 @@ export async function handleSignUpUser() {
 export async function drawSignUpSection() {
     const userSection = document.getElementById("UserSection");
     userSection.innerHTML = `
-        <p class="header"><b>New User Sign Up</b></p>
+        <p class="header"><b>Sign Up</b></p>
         <p>Username</p>
         <input type="text" id="username-input">
         <p>Email</p>
