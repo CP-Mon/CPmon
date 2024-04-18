@@ -4,7 +4,7 @@ const currentUser = await getCurrentUser();
 if(currentUser==null){
     drawLoginSection();
 }else{
-    drawUserSection();
+    drawuserLoginSection();
 }
 
 export async function handleLoginUser() {
@@ -20,7 +20,7 @@ export async function handleLoginUser() {
         const loginStatus = document.getElementById("loginStatus");
         loginStatus.innerHTML = "WRONG password, please try again";
     }else if(userData.mes == "Success"){
-        drawUserSection(await getCurrentUser())
+        drawuserLoginSection(await getCurrentUser())
     }
 }
 
@@ -116,7 +116,7 @@ export async function drawSignUpSection() {
 
 
 export async function drawLoginSection() {
-    const userLoginSection = document.getElementById("UserLoginSection");
+    const userLoginSection = document.getElementById("userLoginSection");
     userLoginSection.innerHTML = `
         <p class="header"><b>Log In</b></p>
         <p>Username</p>
@@ -140,7 +140,7 @@ export async function drawLoginSection() {
     });
 }
 
-export async function drawUserSection() {
+export async function drawuserLoginSection() {
     const UserData = await getCurrentUser();
     const userLoginSection = document.getElementById("userLoginSection");
     userLoginSection.innerHTML = `
