@@ -1,4 +1,4 @@
-import CPmon from "./cpmonModel";
+import CPmon from "./cpmonModel.js";
 export default class Player {
 
     /**

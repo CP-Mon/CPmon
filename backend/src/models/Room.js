@@ -1,4 +1,4 @@
-import Player from "./Player";
+import Player from "./Player.js";
 
 export default class Room {
 
@@ -7,8 +7,8 @@ export default class Room {
 
     /** @param {String} roomName  */
     constructor(roomName) {
-        this.roomId = roomCount;
-        roomCount += 1;
+        this.roomId = Room.roomCount;
+        Room.roomCount += 1;
         this.roomName = roomName;
         /** @type {Player[]} */
         this.players = [];
