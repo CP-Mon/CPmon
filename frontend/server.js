@@ -35,6 +35,7 @@ app.get('/user', async (req,res) =>{
 });
 
 app.get('/room/:roomID', (req,res) =>{
+
   res.sendFile(`${publicPath}/gameRoom.html`)
 });
 

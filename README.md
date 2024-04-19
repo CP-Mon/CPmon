@@ -1,7 +1,11 @@
 # CPmon
 
+# After Pull
+- add .env file with mongoDB string 
+
 # notes
 - BACK_URL : set to "http://localhost:3222"; while in dev process
+
 
 (to Beam)
 - change "userSection" -> id = "userLoginSection" for log in 
