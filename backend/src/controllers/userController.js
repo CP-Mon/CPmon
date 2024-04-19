@@ -1,36 +1,18 @@
-import { Store } from "express-session";
-import app from "../app.js";
 import User from "../models/userModel.js"
+import {FRONTEND_URL} from "../../../frontend/public/scripts/config.js"
 
-
-/* get userData by its username */
-/** @type {import("express").RequestHandler} */
-
-export const getUserData = async (req, res) => {
-  console.log(req.session.id);
-  res.status(200).json(null);
-  // if((req.body.authenticated == undefined)){
-  //   res.status(200).json(null);
-  // }else{
-  //   const username = req.body.username;
-  //   const userData = await User.findOne({username:username});
-  //   res.status(200).json(userData);
-  // }  
-};
-
-/** @type {import("express").RequestHandler} */
-export const logoutUser = async (req, res) => {
-  res.cookie.authenticated = false
-  res.cookie.username = null
-  res.redirect('./login')
-};
 
 /** @type {import("express").RequestHandler} */
 export const loginUser = async (req, res) => {
-  const loginUserData = await User.findOne({username:req.body.username});
-  if(req.body.authenticated==true){
+  console.log("Check if log in");
+  const currentUserData =  await fetch(`${FRONTEND_URL}/api/getUserData`,{
+      credentials: 'include'
+  }).then((r) => r.json());
+  if(currentUserData!= null){
     res.status(400).json({ error: "Alredy Login" });
   }
+
+  const loginUserData = await User.findOne({username:req.body.username});
   
   // check if username is valid
   if(loginUserData==null){
@@ -45,9 +27,16 @@ export const loginUser = async (req, res) => {
       });
     }else{
       // return userData if everything is correct
-      res.cookie('authenticated', true);
-      res.cookie('username',loginUserData.username)
-      console.log("login :", loginUserData); // indev
+      const obj = {authenticated : true, userData: loginUserData}
+      const respond = await fetch(`${FRONTEND_URL}/api/setUserData`,{
+          method : 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(obj),
+          credentials: "include",
+      }).then((r) => r.json());
+
       res.status(200).json({
         mes: "Success",
         loginUserData: loginUserData
