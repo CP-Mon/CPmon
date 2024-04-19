@@ -1,6 +1,5 @@
 import {loginUserData, checkSignUpNewUser, SignUpNewUser, getCurrentUser, logoutCurrentUser} from "./api.js"
 
-
 const currentUser = await getCurrentUser();
 if(currentUser==null){
     drawLoginSection();

@@ -23,15 +23,30 @@ app.use(cors({
 
 
 app.get('/login', async (req,res) =>{
-  res.sendFile(`${publicPath}/login.html`)
-});
-
-app.get('/', async (req,res) =>{
-  res.sendFile(`${publicPath}/index.html`)
+  const currentUser = await getCurrentUser();  
+  if(currentUser==null){
+    res.sendFile(`${publicPath}/login.html`)
+  }else{
+    res.redirect('/')
+  }
 });
 
 app.get('/user', async (req,res) =>{
-  res.sendFile(`${publicPath}/userData.html`)
+  const currentUser = await getCurrentUser();
+  if(currentUser==null){
+    res.redirect('/login')
+  }else{
+    res.sendFile(`${publicPath}/userData.html`)
+  }
+});
+
+app.get('/', async (req,res) =>{
+  const currentUser = await getCurrentUser();
+  if(currentUser===null){
+    res.redirect('/login')
+  }else{
+    res.sendFile(`${publicPath}/index.html`)
+  }
 });
 
 app.get('/room/:roomID', (req,res) =>{
@@ -39,7 +54,12 @@ app.get('/room/:roomID', (req,res) =>{
 });
 
 app.get('*', async (req,res) =>{
-  res.sendFile(`${publicPath}/brokenlink.html`)
+  const currentUser = await getCurrentUser();
+  if(currentUser==null){
+    res.redirect('./login')
+  }else{
+    res.sendFile(`${publicPath}/brokenlink.html`)
+  }
 });
 
 

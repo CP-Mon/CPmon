@@ -1,19 +1,10 @@
 import User from "../models/userModel.js"
-import {FRONTEND_URL} from "../../../frontend/public/scripts/config.js"
-
+import {BACKEND_URL, FRONTEND_URL} from "../../../frontend/public/scripts/config.js"
 
 /** @type {import("express").RequestHandler} */
 export const loginUser = async (req, res) => {
-  console.log("Check if log in");
-  const currentUserData =  await fetch(`${FRONTEND_URL}/api/getUserData`,{
-      credentials: 'include'
-  }).then((r) => r.json());
-  if(currentUserData!= null){
-    res.status(400).json({ error: "Alredy Login" });
-  }
-
   const loginUserData = await User.findOne({username:req.body.username});
-  
+
   // check if username is valid
   if(loginUserData==null){
     res.status(200).json({
@@ -26,23 +17,22 @@ export const loginUser = async (req, res) => {
         mes:"WrongPassword"
       });
     }else{
-      // return userData if everything is correct
-      const obj = {authenticated : true, userData: loginUserData}
-      const respond = await fetch(`${FRONTEND_URL}/api/setUserData`,{
-          method : 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(obj),
-          credentials: "include",
-      }).then((r) => r.json());
-
+      req.session.authenticated = true;
+      req.session.userData = loginUserData;
+      console.log(req.session);
       res.status(200).json({
         mes: "Success",
         loginUserData: loginUserData
     });
     }  
   }
+};
+
+/** @type {import("express").RequestHandler} */
+export const logoutUser = async (req, res) => {
+  req.session.authenticated = false;
+  req.session.userData = null;
+  res.status(200).json({mes: "Success"});
 };
 
 /** @type {import("express").RequestHandler} */
