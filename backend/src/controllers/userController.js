@@ -1,25 +1,5 @@
 import User from "../models/userModel.js"
-
-var currentUser = null
-
-/** @type {import("express").RequestHandler} */
-export const getCurrentUser = async (req, res) => {
-  res.status(200).json(currentUser);
-};
-
-/** @type {import("express").RequestHandler} */
-export const logoutCurrentUser = async (req, res) => {
-  currentUser = null;
-  res.status(200).json({
-    mes : "Success"
-  });
-};
-
-/** @type {import("express").RequestHandler} */
-export const getUserData = async (req, res) => {
-  let userData = await User.findOne({username:req.body.username});
-  res.status(200).json(userData);
-};
+import {BACKEND_URL, FRONTEND_URL} from "../../../frontend/public/scripts/config.js"
 
 /** @type {import("express").RequestHandler} */
 export const loginUser = async (req, res) => {
@@ -37,14 +17,22 @@ export const loginUser = async (req, res) => {
         mes:"WrongPassword"
       });
     }else{
-      // return userData if everything is correct
-      currentUser = loginUserData
+      req.session.authenticated = true;
+      req.session.userData = loginUserData;
+      console.log(req.session);
       res.status(200).json({
-        mes:"Success",
-        loginUserData : loginUserData
-      });
+        mes: "Success",
+        loginUserData: loginUserData
+    });
     }  
   }
+};
+
+/** @type {import("express").RequestHandler} */
+export const logoutUser = async (req, res) => {
+  req.session.authenticated = false;
+  req.session.userData = null;
+  res.status(200).json({mes: "Success"});
 };
 
 /** @type {import("express").RequestHandler} */

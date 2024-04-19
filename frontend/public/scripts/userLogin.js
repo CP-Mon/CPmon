@@ -7,6 +7,7 @@ if(currentUser==null){
     drawuserLoginSection();
 }
 
+
 export async function handleLoginUser() {
     const username = document.getElementById("username-input").value;
     const password = document.getElementById("password-input").value;
@@ -71,17 +72,16 @@ export async function handleAddNewUser() {
     SignUpNewUser(payload);
     const obj2 = {username : username, password : password};
     const userData = await loginUserData(obj2);
-    drawuserLoginSection(userData.loginUserData);
+    await drawUserSection()
 }
 
 export async function handleLogoutUser() {
-    console.log("OUT");
-    drawLoginSection();
-    logoutCurrentUser();
+    await logoutCurrentUser();
+    await drawLoginSection();
 }
 
 export async function handleSignUpUser() {
-    drawSignUpSection();
+    await drawSignUpSection();
 }
 
 

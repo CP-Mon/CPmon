@@ -1,26 +1,20 @@
-import { BACKEND_URL } from "./config.js";
+import { BACKEND_URL , FRONTEND_URL} from "./config.js";
+
 
 export async function getCurrentUser() {
-    let userData = await fetch(`${BACKEND_URL}/user/getCurrentUser`).then((r) => r.json());
-    return userData;
+    const userData =  await fetch(`${BACKEND_URL}/api/getUserData`,{
+        credentials: 'include'
+    }).then((r) => r.json());
+    return userData
 }
 
 export async function logoutCurrentUser() {
-    let userData = await fetch(`${BACKEND_URL}/user/logoutCurrentUser`).then((r) => r.json());
-    return userData;
-}
-
-
-export async function getUserData(obj) {
-    let userData = await fetch(`${BACKEND_URL}/user/getData`,{
-        method:"POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(obj)
+    await fetch(`${BACKEND_URL}/user/logout`,{
+        method:'POST',
+        credentials: "include"
     }).then((r) => r.json());
-    return userData;
 }
+
 
 export async function loginUserData(obj) {
     const userData = await fetch(`${BACKEND_URL}/user/login`,{
@@ -28,7 +22,8 @@ export async function loginUserData(obj) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(obj),
+        credentials: 'include'
     }).then((r) => r.json());
     return userData;
 }
@@ -39,7 +34,8 @@ export async function checkSignUpNewUser(obj) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(obj),
+        credentials: 'include'
     }).then((r) => r.json());
     return checkSignUpResult;
 }
@@ -50,6 +46,7 @@ export async function SignUpNewUser(obj) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(obj),
+        credentials: 'include'
     }).then((r) => r.json());
 }

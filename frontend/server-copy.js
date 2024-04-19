@@ -3,7 +3,7 @@ import express from "express";
 import path from 'path';
 import {getCurrentUser} from "./public/scripts/api.js"
 import cors from "cors";
-import { FRONTEND_URL, BACKEND_URL, GOTO_URL } from "./public/scripts/config.js";
+import { FRONTEND_URL, BACKEND_URL } from "./public/scripts/config.js";
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url)
@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.use(cors({
-  origin: [FRONTEND_URL, BACKEND_URL, GOTO_URL],
+  origin: [FRONTEND_URL, BACKEND_URL],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -23,24 +23,43 @@ app.use(cors({
 
 
 app.get('/login', async (req,res) =>{
-  res.sendFile(`${publicPath}/login.html`)
-});
-
-app.get('/', async (req,res) =>{
-  res.sendFile(`${publicPath}/index.html`)
+  const currentUser = await getCurrentUser();  
+  if(currentUser==null){
+    res.sendFile(`${publicPath}/login.html`)
+  }else{
+    res.redirect('/')
+  }
 });
 
 app.get('/user', async (req,res) =>{
-  res.sendFile(`${publicPath}/userData.html`)
+  const currentUser = await getCurrentUser();
+  if(currentUser==null){
+    res.redirect('/login')
+  }else{
+    res.sendFile(`${publicPath}/userData.html`)
+  }
+});
+
+app.get('/', async (req,res) =>{
+  const currentUser = await getCurrentUser();
+  if(currentUser===null){
+    res.redirect('/login')
+  }else{
+    res.sendFile(`${publicPath}/index.html`)
+  }
 });
 
 app.get('/room/:roomID', (req,res) =>{
-
   res.sendFile(`${publicPath}/gameRoom.html`)
 });
 
 app.get('*', async (req,res) =>{
-  res.sendFile(`${publicPath}/brokenlink.html`)
+  const currentUser = await getCurrentUser();
+  if(currentUser==null){
+    res.redirect('./login')
+  }else{
+    res.sendFile(`${publicPath}/brokenlink.html`)
+  }
 });
 
 
