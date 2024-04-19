@@ -22,10 +22,6 @@ app.use(cors({
 }));
 
 
-app.get('/login', async (req,res) =>{
-  res.sendFile(`${publicPath}/login.html`)
-});
-
 app.get('/', async (req,res) =>{
   res.sendFile(`${publicPath}/index.html`)
 });
@@ -35,7 +31,6 @@ app.get('/user', async (req,res) =>{
 });
 
 app.get('/room/:roomID', (req,res) =>{
-
   res.sendFile(`${publicPath}/gameRoom.html`)
 });
 

@@ -101,7 +101,7 @@ body {
     color: wheat;
 }
 
-#toLobby,
+#toHome,
 #userLogoutButton {
     display: block;
     width: 5.5vw; /* Adjust width and height as needed */
@@ -117,7 +117,7 @@ body {
     margin-right: 1.5vw;
 }
 
-#toLobby:hover,
+#toHome:hover,
 #userLogoutButton:hover {
     background-color: var(--fern-green);
 }

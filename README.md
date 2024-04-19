@@ -7,33 +7,33 @@
 - BACK_URL : set to "http://localhost:3222"; while in dev process
 
 
-(to Beam)
-- change "userSection" -> id = "userLoginSection" for log in 
-- change filename "user.js" -> "userLogin.js" and move every login-related method to this file
-- move pages to "frontend/public/pages/"
-    - login.html = login
-    - index.html = main pages
-    - userData = user data & pokemon
-    - gameRoom = set "/room1", "/room2", ..,, "room6" every room all use gameroom.html
 
-- implement checking "currentUser"
-    - if currentUser == null it will direct to login
-    - after log in currentUser will collect user data in json
-    - after log in it will go to index
-    - refresh = end game, current user should back to null (to Nadeem)
+# Updata 19-4-67
+[Nadeem : Game System]
+Backend has room 6 rooms each room at it own index
+startGame()
+1. user go in to waitingRoom.html
+    - post userData -> addPlayer(player)
+    - if error -> send back main
+2. refreash startGame() every 5 sec. wait till 2 people
+Room gaming : NaDeem & Tokyo Lets goooo in battlePlay.html
+3. user out of room removePlayer(playerName)
+extra: if user close page, respond time, timeout>30 sec -> userLogout()
+endGame : exp for user +money +exp
 
+[Beam: Front end]
+- User (Neen will add 'avalible/unavalible' hai)
+- gameWaitingRoom , gameBattleRoom (gameBattle use one from 3)
+- Extra sound?
 
-[IMPORTANT : change getCurrentUser]
-(to Nadeem)
+[Neen: Web API]
+cookie -> http web postman
 **IF** you use it in .js that not relate with html ex. check user in server.js(that will run before load html)
-you **MUST** fetch data by youself
-const userData = await fetch(`${BACKEND_URL}/api/getUserData`,{
-    credentials: 'include'
-}).then((r) => r.json());
-WHY? I had use session that will store user in html page, It can't get in .js
-
-(to Beam)
+you **CAN'T** fetch data by youself
 **BUT** if your funsion use in html ex. handle event listenner. you can use getCurrentUser() as the same
 
-[EXTRA]
-- login & userData is same? should we merge it
+Next Step:
+NADEEM : Route & Logic
+TOKYO : implement game to frontend 
+NEENNERA : user Update & user Data
+BRNNBM : CSS master!!!!!!
