@@ -7,13 +7,15 @@ import User from "../models/userModel.js"
 /** @type {import("express").RequestHandler} */
 
 export const getUserData = async (req, res) => {
-  if((req.body.authenticated == undefined)){
-    res.status(200).json(null);
-  }else{
-    const username = req.body.username;
-    const userData = await User.findOne({username:username});
-    res.status(200).json(userData);
-  }  
+  console.log(req.session.id);
+  res.status(200).json(null);
+  // if((req.body.authenticated == undefined)){
+  //   res.status(200).json(null);
+  // }else{
+  //   const username = req.body.username;
+  //   const userData = await User.findOne({username:username});
+  //   res.status(200).json(userData);
+  // }  
 };
 
 /** @type {import("express").RequestHandler} */

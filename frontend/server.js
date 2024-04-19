@@ -2,7 +2,7 @@
 import express from "express";
 import path from 'path';
 import {getCurrentUser} from "./public/scripts/api.js"
-
+import cors from "cors";
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url)
@@ -12,13 +12,23 @@ let publicPath = path.join(__dirname, 'frontend/public/pages')
 const app = express();
 app.use(express.static("public"));
 
-import cookieParser from "cookie-parser";
-import cors from "cors";
-app.use(cookieParser())
-app.use(cors({ origin: 'http://localhost:3221', credentials: true }));
+// import session from "express-session";
+// app.use(session({
+//     secret: 'CPmon', 
+//     saveUninitialized: false,
+//     resave:false, 
+//     cookie : {
+//         maxAge: 60000 * 60 * 24 *7
+//     }
+// }))
+// app.use(cors({ origin: 'http://localhost:3221', credentials: true }));
+
+app.use(cors());
 
 
 app.get('/login', async (req,res) =>{
+  console.log(req.session);
+  // req.session.visited = true
   const currentUser = await getCurrentUser();
   if(currentUser==null){
     res.sendFile(`${publicPath}/login.html`)
