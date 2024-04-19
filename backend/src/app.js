@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import UserRoute from "./routes/userRoute.js"
-import { FRONTEND_URL, BACKEND_URL } from "../../frontend/public/scripts/config.js";
+import { FRONTEND_URL, BACKEND_URL, GOTO_URL } from "../../frontend/public/scripts/config.js";
 const app = express();
 
 // body-parser
@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // allow request from other origin (Frontend which is at different port)
 app.use(cors({
-    origin: [FRONTEND_URL, BACKEND_URL],
+    origin: [FRONTEND_URL, BACKEND_URL, GOTO_URL],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -25,7 +25,6 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     cookie: {
-      // httpOnly: true,
       httpOnly: false,
       sameSite: 'lax',
       secure: false, 

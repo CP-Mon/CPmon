@@ -3,7 +3,7 @@ import express from "express";
 import path from 'path';
 import {getCurrentUser} from "./public/scripts/api.js"
 import cors from "cors";
-import { FRONTEND_URL, BACKEND_URL } from "./public/scripts/config.js";
+import { FRONTEND_URL, BACKEND_URL, GOTO_URL } from "./public/scripts/config.js";
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url)
@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.use(cors({
-  origin: [FRONTEND_URL, BACKEND_URL],
+  origin: [FRONTEND_URL, BACKEND_URL, GOTO_URL],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']

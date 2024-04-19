@@ -19,7 +19,7 @@
     - refresh = end game, current user should back to null (to Nadeem)
 
 
-[[IMPORTANT : change getCurrentUser]]
+[IMPORTANT : change getCurrentUser]
 (to Nadeem)
 **IF** you use it in .js that not relate with html ex. check user in server.js(that will run before load html)
 you **MUST** fetch data by youself
@@ -30,3 +30,6 @@ WHY? I had use session that will store user in html page, It can't get in .js
 
 (to Beam)
 **BUT** if your funsion use in html ex. handle event listenner. you can use getCurrentUser() as the same
+
+[EXTRA]
+- login & userData is same? should we merge it
