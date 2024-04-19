@@ -164,7 +164,7 @@ export async function drawuserLoginSection() {
         <div id="CPMonListContainer"></div>
         <div id="buttonContainer">
             <a id="userLogoutButton">Log out</a>
-            <a href="./" id="toHome">HOME</a>
+            <a href="./" id="toLobby">LOBBY</a>
         </div>
     `;
 
