@@ -1,0 +1,40 @@
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--jet);
+    text-align: center;
+}
+
+h1 {
+    color: var(--sunset);
+    margin-top: 50px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--fern-green);
+    color: var(--jet);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--keppel);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

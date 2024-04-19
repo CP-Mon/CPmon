@@ -1,0 +1,228 @@
+/* Custom CSS Variables for Colors */
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
+
+@font-face {
+    font-family: 'QuickSand';
+    src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
+        url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InfoStory';
+    src: url('../res/fonts/info_story-webfont.woff2') format('woff2'), /* Modern Browsers */
+        url('../res/fonts/info_story-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: var(--chestnut);
+    color: var(--sunset);
+    /* overflow: hidden; */
+}
+
+#userLoginSection {
+    padding: 1%;
+    font-size: 125%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center all content */
+}
+
+#userLoginSection input[type="text"],
+#userLoginSection input[type="password"],
+#userLoginSection button {
+    margin-bottom: 1.5%;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+}
+#userLoginSection input[type="text"],
+#userLoginSection input[type="password"] {
+    border: none; /* Remove default border */
+    border-bottom: 0.05vw solid var(--sunset); /* Add solid underline with width based on screen width */
+    background-color: transparent; /* Make background transparent */
+    outline: none; /* Remove outline when focused */
+    padding: 0; /* Remove padding */
+    text-align: center;
+    color: var(--sunset);
+    font-size: 100%;
+    font-family: 'QuickSand';
+    border-radius: 0; /* Ensure no border radius */
+    width : 35%;
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 480px) {
+    
+}
+
+
+#userLoginSection button {
+    width: 25%;
+    background-color: var(--cinnabar);
+    color: wheat;
+    font-size: 80%;
+    font-family:'Segoe UI';
+}
+
+#userLoginSection button:hover {
+    background-color: var(--keppel);
+}
+
+#SignUpStatus {
+    margin-top: 10%;
+    color: white;
+}
+
+/* Adjust background color for .header within #userLoginSection */
+#userLoginSection .header {
+    text-align: center;
+    font-size: 200%;
+    color: wheat;
+    font-family: 'QuickSand';
+}
+
+#loginStatus ,#SignUpStatus {
+    color: wheat;
+}
+
+#toHome,
+#userLogoutButton {
+    display: block;
+    width: 5.5vw; /* Adjust width and height as needed */
+    height: 5.5vw;
+    background-color: var(--jet);
+    color: var(--sunset);
+    font-size: 1.5vw;
+    text-decoration: none;
+    border-radius: 50%; /* Make it a circle */
+    text-align: center; /* Center text horizontally */
+    line-height: 5.5vw; /* Center text vertically */
+    margin-bottom: 0.75vw; /* Add margin between the buttons */
+    margin-right: 1.5vw;
+}
+
+#toHome:hover,
+#userLogoutButton:hover {
+    background-color: var(--fern-green);
+}
+
+
+#buttonContainer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+
+#expContainer {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 1vw;
+}
+
+#expText {
+    margin-right: 1vw; /* Adjust spacing as needed */
+    color: wheat; /* Adjust color as needed */
+    font-size: 2vw;
+}
+
+#expBarContainer {
+    position: relative;
+    width: 12vw; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+    background-color: var(--keppel); /* Adjust color as needed */
+    border-radius: 10px; /* Adjust border radius as needed */
+    overflow: hidden; /* Ensure the exp bar text stays within its container */
+}
+
+#expBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--fern-green); /* Adjust color as needed */
+    transition: width 0.5s ease; /* Smooth transition for width changes */
+}
+
+#expAmount {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Adjust color as needed */
+    font-size: 12px; /* Adjust font size as needed */
+}
+
+
+#expAmount {
+    color: var(--jet);
+    margin-left: auto; /* Push expAmount to the right */
+    margin-right: 10px; /* Adjust as needed */
+    font-size: 1vw;
+}
+
+#expBarContainer span {
+    margin-left: 10px; /* Adjust as needed */
+    margin-right: 5px; /* Adjust as needed */
+}
+
+#moneyContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 2vw;
+    color: wheat;
+    display: flex;
+    margin-right: 1vw;
+}
+
+#moneyLabel {
+    margin-right: 1vw;
+}
+
+#userMoney {
+    color: var(--sunset); /* Assuming you want user's money in a different color */
+}
+
+#greeting {
+    text-align: center;
+    font-size: 4.5vw; /* Adjust font size as needed */
+    font-family: 'QuickSand'; /* Apply custom font */
+}
+
+#CPMonListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.CPMonItem {
+    width: calc(33.33% - 10px); /* Adjust width as needed */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    text-align: center;
+}
+
+.CPMonItem img {
+    max-width: 100%;
+    height: auto;
+}

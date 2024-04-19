@@ -1,0 +1,142 @@
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 2vw;
+    background-color: var(--sunset);
+    color: var(--chestnut);
+    /* overflow: hidden; */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 1vw;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    grid-auto-rows: minmax(200px, auto); /* Adjust row height as needed */
+    gap: 3vw; /* Adjust gap between grid items */
+    padding: 0 12vw; 
+    justify-content: center; /* Center the grid items horizontally */
+    align-items: center;
+    width: 75%;
+    
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space evenly between the two sections */
+    width: 100%; /* Adjust the width as needed */
+    height: 100%; /* Set height equal to width for square shape */
+    background-color: var(--jet);
+    border-radius: 1vw;
+    /* overflow: hidden; Hide overflowing content */
+}
+
+.grid-item a {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; Align items at the top */
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 1vw;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-height: 100%; /* Adjust the height of the image section */
+    width: auto;
+    height: auto;
+    border-radius: 2vw 2vw 2vw 2vw; /* Rounded corners only on top */
+    transition: transform 0.3s ease;
+}
+
+.grid-item img:hover {
+    transform: scale(1.1);
+}
+
+.grid-item p {
+    margin: 0;
+    padding: 0.25vw;
+    padding-top: 1vw;
+    text-align: center;
+    /* background-color: var(--keppel); */
+    color: wheat;
+    /* border-radius: 5px 5px 5px 5px; Rounded corners only on bottom */
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr); /* One column for even smaller screens */
+    }
+}
+
+/* Define keyframes for shake animation */
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Apply shake animation to the image on hover */
+.grid-item:hover img {
+    animation: shake 0.4s ease infinite; /* Apply shake animation on hover */
+}
+/* Apply slide-in animation to grid items based on row number */
+.grid-item {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Even rows slide in from the left */
+.grid-item:nth-child(even) {
+    animation-name: slideInLeft;
+}
+
+/* Odd rows slide in from the right */
+.grid-item:nth-child(odd) {
+    animation-name: slideInRight;
+}
+
