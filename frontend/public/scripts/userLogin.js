@@ -144,26 +144,47 @@ export async function drawLoginSection() {
 export async function drawuserLoginSection() {
     const UserData = await getCurrentUser();
     const userLoginSection = document.getElementById("userLoginSection");
+
     userLoginSection.innerHTML = `
-        <a href="./"><button>HOME</button></a>
+    <div id="expContainer">
+        <div id="expText">Exp :</div>
+        <div id="expBarContainer">
+            <div id="expBar" style="width: calc(${UserData.exp}%);"></div>
+            <div id="expAmount">${UserData.exp}</div>
+        </div>
+    </div>
 
-        <h3>Hi, ${UserData.username}</h3>
-        <p>Money : ${UserData.money} $</p>
-        <p>Exp. : ${UserData.exp}</p>
-        <p>Your CPMon : </p>
+    <div id="moneyContainer">
+        <span id="moneyLabel">Money :</span>
+        <span id="userMoney">${UserData.money} $</span>
+    </div>
+
+        <h3 id="greeting">Hi, ${UserData.username}</h3>
+        <p>Your CPMon:</p>
+        <div id="CPMonListContainer"></div>
+        <div id="buttonContainer">
+            <a id="userLogoutButton">Log out</a>
+            <a href="./" id="toHome">HOME</a>
+        </div>
     `;
 
-    for (const monster of UserData.CPmonList) {
-        userLoginSection.innerHTML += `<li>${monster}</li>`
-    }
+    // Calculate the width of the experience bar based on the user's experience points
+    const expPercentage = (UserData.exp / 100) * 100;
+    const expBar = document.getElementById("expBar");
+    expBar.style.width = expPercentage + "%";
 
-    userLoginSection.innerHTML += `
-        <br><button id="userLogoutButton" class="">Logout</button>
-    `;
-
-    // add eventListener for logout button
-    const userLogoutButton = document.getElementById("userLogoutButton");
-    userLogoutButton.addEventListener("click", ()=>{
-        handleLogoutUser();
+    const CPMonListContainer = document.getElementById("CPMonListContainer");
+    UserData.CPmonList.forEach(monster => {
+        const CPMonItem = document.createElement("div");
+        CPMonItem.classList.add("CPMonItem");
+        CPMonItem.innerHTML = `
+            <img src="../../res/images/Neen.jpg" alt="${monster}">
+            <p>${monster}</p>
+        `;
+        CPMonListContainer.appendChild(CPMonItem);
     });
+
+    // Add event listener for logout button
+    const userLogoutButton = document.getElementById("userLogoutButton");
+    userLogoutButton.addEventListener("click", handleLogoutUser);
 }
