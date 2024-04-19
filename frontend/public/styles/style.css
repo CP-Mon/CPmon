@@ -1,0 +1,99 @@
+/* Custom CSS Variables for Colors */
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
+
+@font-face {
+    font-family: 'QuickSand';
+    src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
+         url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'InfoStory';
+    src: url('../res/fonts/info_story-webfont.woff2') format('woff2'), /* Modern Browsers */
+         url('../res/fonts/info_story-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body {
+    background-color: var(--chestnut);
+    color: var(--sunset);
+    /* overflow: hidden; */
+}
+
+#userLoginSection {
+    padding: 1%;
+    font-size: 125%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center all content */
+}
+
+#userLoginSection input[type="text"],
+#userLoginSection input[type="password"],
+#userLoginSection button {
+    margin-bottom: 1.5%;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+}
+#userLoginSection input[type="text"],
+#userLoginSection input[type="password"] {
+    border: none; /* Remove default border */
+    border-bottom: 0.05vw solid var(--sunset); /* Add solid underline with width based on screen width */
+    background-color: transparent; /* Make background transparent */
+    outline: none; /* Remove outline when focused */
+    padding: 0; /* Remove padding */
+    text-align: center;
+    color: var(--sunset);
+    font-size: 100%;
+    font-family: 'QuickSand';
+    border-radius: 0; /* Ensure no border radius */
+    width : 35%;
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 480px) {
+    
+}
+
+
+#userLoginSection button {
+    width: 25%;
+    background-color: var(--cinnabar);
+    color: wheat;
+    font-size: 80%;
+    font-family:'Segoe UI';
+}
+
+#userLoginSection button:hover {
+    background-color: var(--keppel);
+}
+
+#SignUpStatus {
+    margin-top: 10%;
+    color: white;
+}
+
+/* Adjust background color for .header within #userLoginSection */
+#userLoginSection .header {
+    text-align: center;
+    font-size: 200%;
+    color: wheat;
+    font-family: 'QuickSand';
+}
+

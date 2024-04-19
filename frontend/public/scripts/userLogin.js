@@ -164,7 +164,7 @@ export async function drawuserLoginSection() {
         <div id="CPMonListContainer"></div>
         <div id="buttonContainer">
             <a id="userLogoutButton">Log out</a>
-            <a href="./" id="toHome">HOME</a>
+            <a href="/" id="toHome">HOME</a>
         </div>
     `;
 
@@ -178,7 +178,7 @@ export async function drawuserLoginSection() {
         const CPMonItem = document.createElement("div");
         CPMonItem.classList.add("CPMonItem");
         CPMonItem.innerHTML = `
-            <img src="../../res/images/Neen.jpg" alt="${monster}">
+            <img src="../res/images/Neen.jpg" alt="${monster}">
             <p>${monster}</p>
         `;
         CPMonListContainer.appendChild(CPMonItem);
