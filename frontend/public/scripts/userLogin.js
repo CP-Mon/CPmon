@@ -100,8 +100,9 @@ export async function drawSignUpSection() {
         <br><button id="userSignUpButton" class="">SignUp</button>
         <button id="userLoginButton">Already has account? Back to Login</button>
         
-        <p id="SignUpStatus" style="color:red"></p>
+        <p id="SignUpStatus"></p>
     `;
+    
 
     // add eventListener for login button
     const userLoginButton = document.getElementById("userLoginButton");
