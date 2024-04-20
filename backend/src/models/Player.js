@@ -55,6 +55,10 @@ export default class Player {
     }
     guard() {
         this.getMainPokemon().guard();
+    }   
+    /** @param {Player} player  */
+    magic(player) {
+        const attackingPokemon = this.getMainPokemon();
+        attackingPokemon.magic(player.getMainPokemon());
     }
-
 }

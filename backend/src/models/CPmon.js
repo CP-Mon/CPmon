@@ -24,6 +24,9 @@ export default class CPmon {
         if(enemy.isGuard) {
             enemyDef *= 2;
             enemy.isGuard = false;
+            if(enemyDef < 0) {
+                enemyDef = 0;
+            }
         }
         const damage = Math.max(
             0,
@@ -37,11 +40,9 @@ export default class CPmon {
         this.isGuard = true;
     }
 
-    mAttack(enemy) {
-        const damage = Math.max(
-            0,
-            this.status.mAtk - enemy.status.mDef
-        );
+    magic(enemy) {
+        const damage = this.status.mAtk;
+        this.status.def -= 1;
         enemy.decreaseHp(damage);
         return damage;
     }

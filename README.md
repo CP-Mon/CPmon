@@ -49,6 +49,7 @@ New Backend endpoint
             - get room with specified id
             - see more of room things in backend/src/data/rooms.js
             - *IMPORTANT* all of the instance of room is in here
+                - example: startGame, winner, turnPlayer(track player turn)
     - **POST**
         - /joinRoom/{id}
             - add player with "username" to the room {id}
@@ -61,15 +62,17 @@ New Backend endpoint
             - require "username":String in the request body
             - require "pokemonName":String in the request body
                 - pokemonName can be added in data/CPmon.js
-                - also Status can be found in 
+                - also Status can be found in models/Status.js
         - /removePlayer/{id}
             - remove player from a room {id}
             - require "username":String in the request body
         - /ready/{id}
-            - require "username":String in the request body
             - if both player is ready, gameStart in room will be true
+            - require "username":String in the request body
         - /action/{id}
             - require "username":String in the request body
             - require "action":String in the request body
-                - 3 cases: 'attack', 'guard', 'magic'
+                - 'attack': just attack damage = attack - def
+                - 'guard': the next damage this unit recieve will calculate by 2xdef
+                - 'magic': ignore def but your def-1
             - P.S. debug this one for an hour

@@ -111,6 +111,9 @@ export default class Room {
             case 'guard':
                 this.handleGuard(player);
                 break;
+            case 'magic':
+                this.handleMagic(player);
+                break;
             default:
                 throw new Error("Invalid action.");
         }
@@ -122,7 +125,6 @@ export default class Room {
 
     /** @param {Player} player  */
     handleAttack(player) {
-        // Implement your attack logic here
         const otherPlayer = this.getOtherPlayer(player);
         player.attack(otherPlayer);
         otherPlayer.clearPokemon();
@@ -130,9 +132,14 @@ export default class Room {
 
     /** @param {Player} player  */
     handleGuard(player) {
-        // Implement your guard logic here
-        // This is just a placeholder
         player.guard();
+    }
+
+    /** @param {Player} player  */
+    handleMagic(player) {
+        const otherPlayer = this.getOtherPlayer(player);
+        player.magic(otherPlayer);
+        otherPlayer.clearPokemon();
     }
 
     resetRoom() {
