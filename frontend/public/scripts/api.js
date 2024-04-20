@@ -50,3 +50,73 @@ export async function SignUpNewUser(obj) {
         credentials: 'include'
     }).then((r) => r.json());
 }
+
+export async function getRooms() {
+    const rooms = fetch(`${BACKEND_URL}/room/getRooms`, {
+        method: "GET"
+    }).then(r => r.json())
+    return rooms;
+}
+
+export async function getRoom(obj) {
+    const room = fetch(`${BACKEND_URL}/room/getRoom/${obj.id}`, {
+        method: "GET"
+    }).then(r => r.json());
+    return room;
+}
+
+
+export async function joinRoom(obj) {
+    const room = fetch(`${BACKEND_URL}/room/joinRoom/${obj.id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    }).then(r => r.json());
+    return room;
+}
+
+export async function addPokemon(obj) {
+    const room = fetch(`${BACKEND_URL}/room/addPokemon/${obj.id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    }).then(r => r.json());
+    return room;
+}
+
+export async function removePlayer(obj) {
+    const room = fetch(`${BACKEND_URL}/room/removePlayer/${obj.id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    }).then(r => r.json());
+    return room;
+}
+
+export async function ready(obj) {
+    const room = fetch(`${BACKEND_URL}/room/ready/${obj.id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    }).then(r => r.json());
+    return room;
+}
+
+export async function action(obj) {
+    const room = fetch(`${BACKEND_URL}/room/action/${obj.id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    }).then(r => r.json());
+    return room;
+}
