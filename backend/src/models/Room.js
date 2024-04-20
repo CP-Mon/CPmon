@@ -16,6 +16,7 @@ export default class Room {
         this.turnPlayer = null;
         this.gameStart = false;
         this.gameOver = false;
+        this.winner = null;
     }
 
     /** @param {Player} player */
@@ -41,10 +42,20 @@ export default class Room {
     }
 
     startGame() {
-        if (!this.isAllReady()) return false;
+        if (!this.isAllReady()) return;
         this.gameStart = true;
         this.turnPlayer = this.players[0];
-        return true;
+    }
+
+    endGame() {
+        if(!this.isGameEnd()) return;
+        this.gameStart = false;
+        this.gameOver = true;
+        const winner = this.players.find(player => !player.isPokemonEmpty());
+        if(!winner) {
+            throw new Error("This is not possible??????");
+        }
+        this.winner = winner;
     }
 
     isAllReady() {
@@ -55,6 +66,15 @@ export default class Room {
             }
         }
         return true;
+    }
+
+    isGameEnd() {
+        for(const player of this.players) {
+            if(player.isPokemonEmpty()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // method after this comment can be run if gameStart is true
@@ -75,6 +95,9 @@ export default class Room {
      * @param {String} action 
      */
     playerAction(player, action) {
+        if(this.gameOver) {
+            throw new Error("The game is ended.");
+        }
         if(!this.gameStart) {
             throw new Error("Game has not started yet.");
         }
@@ -90,6 +113,9 @@ export default class Room {
                 break;
             default:
                 throw new Error("Invalid action.");
+        }
+        if(this.isGameEnd()) {
+            this.endGame();
         }
         this.turnPlayer = this.getOtherPlayer(player);
     }

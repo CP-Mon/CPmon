@@ -23,6 +23,10 @@ export default class Player {
     clearPokemon() {
         this.pokemonList = this.pokemonList.filter(pokemon => pokemon.status.hp > 0);
     }
+    /** @returns {boolean} */
+    isPokemonEmpty() {
+        return this.pokemonList.length == 0;
+    }
     /** @returns {CPmon} */
     getMainPokemon() {
         if(this.pokemonList.length == 0) {
@@ -52,4 +56,5 @@ export default class Player {
     guard() {
         this.getMainPokemon().guard();
     }
+
 }

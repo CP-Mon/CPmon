@@ -23,6 +23,9 @@ export default class Status {
     static TANK() {
         return new Status(30, 2, 3, 4);
     }
+    static JOMNOIZ() {
+        return new Status(999, 999, 999, 999);
+    }
     clone() {
         return new Status(this.maxHp, this.atk, this.def, this.mAtk);
     }
