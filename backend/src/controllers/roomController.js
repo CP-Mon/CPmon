@@ -44,6 +44,7 @@ export const joinRoom = async (req, res) => {
         room.addPlayer(player);
     } catch (error) {
         res.status(404).json({ message: "This room is already full", room });
+        return;
     }
 
     res.status(200).json({ message: "Successfully joined the room", room });
