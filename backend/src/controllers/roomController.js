@@ -18,7 +18,7 @@ export const getRoom = async (req, res) => {
     const room = rooms.find(room => room.roomId === roomId);
 
     if(!room) {
-        res.status(404).json({ message: "Room not found" });
+        res.status(400).json({ message: "Room not found" });
         return;
     }
 
@@ -36,19 +36,19 @@ export const joinRoom = async (req, res) => {
     const room = rooms.find(room => room.roomId === roomId);
 
     if (!room) {
-        res.status(404).json({ message: "Room not found" });
+        res.status(400).json({ message: "Room not found" });
         return;
     }
 
     try {
         room.addPlayer(player);
     } catch (error) {
-        res.status(404).json({ message: "This room is already full", room });
+        res.status(400).json({ message: "This room is already full"});
         return;
     }
 
     res.status(200).json({ message: "Successfully joined the room", room });
-    console.log(`[room ${room.roomId}] ${username} joined.`)
+    console.log(`player: ${username} join in room: ${room.roomId}`)
 };
 
 /** @type {express.RequestHandler} */
@@ -61,7 +61,7 @@ export const addPokemon = async (req, res) => {
     const room = rooms.find(room => room.roomId === roomId);
 
     if (!room) {
-        res.status(404).json({ message: "Room not found" });
+        res.status(400).json({ message: "Room not found" });
         return;
     }
 
@@ -69,7 +69,7 @@ export const addPokemon = async (req, res) => {
     const player = room.players.find(player => username === player.name)
 
     if (!player) {
-        res.status(404).json({ message: "Player not found in this room" });
+        res.status(400).json({ message: "Player not found in this room" });
         return;
     }
 
@@ -77,4 +77,27 @@ export const addPokemon = async (req, res) => {
 
     res.status(200).json({ message: "Successfully add CPmon", room});
     console.log(`CPmon added in player: ${username} in room: ${room.roomId}`)
+};
+
+/** @type {express.RequestHandler} */
+export const removePlayer = async (req, res) => {
+
+    const { username } = req.body;
+    const roomId = parseInt(req.params.id, 10);
+
+    /** @type {Room} */
+    const room = rooms.find(room => room.roomId === roomId);
+
+    if (!room) {
+        res.status(400).json({ message: "Room not found" });
+        return;
+    }
+
+    if (!room.removePlayer(username)) {
+        res.status(400).json({ message: "Player not found in this room"});
+        return;
+    }
+
+    res.status(200).json({ message: `Successfully remove player from ${room.roomName}`, room});
+    console.log(`Remove player: ${username} from : ${room.roomId}`)
 };
