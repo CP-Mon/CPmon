@@ -13,7 +13,7 @@ export default class Room {
         /** @type {Player[]} */
         this.players = [];
         this.maxPlayers = 2;
-        this.currentTurn = 0;
+        this.turnPlayer = null;
         this.gameStart = false;
         this.gameOver = false;
     }
@@ -50,7 +50,7 @@ export default class Room {
             return false;
         }
         this.gameStart = true;
-        this.currentTurn = 1;
+        this.turnPlayer = this.players[0];
         return true;
     }
 
@@ -75,6 +75,9 @@ export default class Room {
         if(!player) {
             throw new Error("Player not found.");
         }
+        if(player !== this.turnPlayer) {
+            throw new Error("Not this player turn.");
+        }
         switch(action) {
             case 'attack':
                 this.handleAttack(player);
@@ -85,6 +88,7 @@ export default class Room {
             default:
                 throw new Error("Invalid action.");
         }
+        this.turnPlayer = this.getOtherPlayer();
     }
 
     /** @param {Player} player  */
@@ -99,6 +103,6 @@ export default class Room {
     handleGuard(player) {
         // Implement your guard logic here
         // This is just a placeholder
-
+        player.guard();
     }
 }
