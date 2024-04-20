@@ -142,8 +142,13 @@ export const ready = async (req, res) => {
 
     /** @type {Player} */
     const player = room.players.find(player => player.name === username);
-    if(!player) {
+    if (!player) {
         res.status(400).json({ message: `[ROOM ID: ${room.roomId}] ${username} not found.` });
+        return;
+    }
+
+    if (player.isPokemonEmpty()) {
+        res.status(400).json({ message: `Please select your pokemon first!` });
         return;
     }
 

@@ -45,7 +45,7 @@ New Backend endpoint
     - **GET**
         - /getRooms
             - get all rooms(instance of the game)
-        - /getRoom/{id} **GET**
+        - /getRoom/{id}
             - get room with specified id
             - see more of room things in backend/src/data/rooms.js
             - *IMPORTANT* all of the instance of room is in here
@@ -60,6 +60,8 @@ New Backend endpoint
             - add pokemon in pokemonList in player with "username" in the room {id}
             - require "username":String in the request body
             - require "pokemonName":String in the request body
+                - pokemonName can be added in data/CPmon.js
+                - also Status can be found in 
         - /removePlayer/{id}
             - remove player from a room {id}
             - require "username":String in the request body
