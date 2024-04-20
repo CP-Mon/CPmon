@@ -9,5 +9,7 @@ router.get("/getRoom/:id", roomController.getRoom);
 
 router.post("/joinRoom/:id", roomController.joinRoom);
 router.post("/addPokemon/:id", roomController.addPokemon);
+router.post("/removePlayer/:id", roomController.removePlayer);
+router.post("/ready/:id", roomController.ready);
 
 export default router;

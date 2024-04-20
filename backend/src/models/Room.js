@@ -20,11 +20,14 @@ export default class Room {
 
     /** @param {Player} player */
     addPlayer(player) {
-        if(this.players.length < this.maxPlayers) {
-            this.players.push(player);
-            return true; // Player added successfully
+        if(this.players.length >= this.maxPlayers) {
+            throw new Error(`${this.roomId}: ${this.roomName} is full.`)
         }
-        throw new Error(`${this.roomId}: ${this.roomName} is full.`)
+        if(this.players.find(p => p.name === player.name)) {
+            throw new Error(`Player ${player.name} is already in the room.`);
+        }
+        this.players.push(player);
+        return true; // Player added successfully
     }
 
     /** @param {String} playerName  */
@@ -37,20 +40,20 @@ export default class Room {
         return false;
     }
 
-    isGameOver() {
-        this.players.forEach(player => {
-                if(!player.isReady()) return true;
-            }
-        )
-        return false;
-    }
-
     startGame() {
-        if(this.players.length < 2) {
-            return false;
-        }
+        if (!this.allReady()) return false;
         this.gameStart = true;
         this.turnPlayer = this.players[0];
+        return true;
+    }
+
+    allReady() {
+        if (this.players.length != this.maxPlayers) return false;
+        this.players.forEach(player => {
+            if(!player.isReady) {
+                return false;
+            }
+        });
         return true;
     }
 

@@ -6,11 +6,9 @@ export default class Player {
      */
     constructor(name) {
         this.name = name;
+        this.isReady = false;
         /** @type {CPmon[]} */
         this.pokemonList = [];
-    }
-    isReady() {
-        return this.pokemonList.length >= 0;
     }
     addPokemon(pokemon) {
         this.pokemonList.push(pokemon);
