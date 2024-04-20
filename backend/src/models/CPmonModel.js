@@ -8,8 +8,10 @@ export default class CPmon {
      * @param {Status} status - status of this CPmon
      */
     constructor(name, status) {
-        this.name = name
-        this.status = status
+        this.name = name;
+        /** @type {boolean} */
+        this.isGuard = false;
+        this.status = status;
     }
 
     /**
@@ -18,12 +20,21 @@ export default class CPmon {
      * @returns {number} - return the damage dealt
      */
     attack(enemy) {
+        let enemyDef = enemy.def;
+        if(enemy.isGuard) {
+            enemyDef *= 2;
+            enemy.isGuard = false;
+        }
         const damage = Math.max(
             0,
-            this.status.atk - enemy.status.def
+            this.status.atk - enemyDef
         );
         enemy.decreaseHp(damage);
         return damage;
+    }
+
+    guard() {
+        this.isGuard = true;
     }
 
     mAttack(enemy) {

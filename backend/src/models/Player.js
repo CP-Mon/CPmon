@@ -16,11 +16,28 @@ export default class Player {
         this.pokemonList.push(pokemon);
     }
     removePokemon(pokemonName) {
-        this.pokemonList = this.pokemonList.filter(pokemon => (pokemon.name !== pokemonName));
+        const removedPokemon = this.pokemonList.find(pokemon => pokemon.name === pokemonName);
+        if(!removedPokemon) {
+            throw new Error(`there is no pokemon with name: ${pokemonName} to remove.`)
+        }
+        this.pokemonList = this.pokemonList.filter(pokemon => pokemon === removedPokemon);
     }
     clearPokemon() {
         this.pokemonList = this.pokemonList.filter(pokemon => pokemon.health > 0);
     }
+    /** @returns {CPmon} */
+    getMainPokemon() {
+        if(this.pokemonList.length == 0) {
+            throw new Error("There is no pokemon here.")
+        }
+        const pokemon = this.pokemonList[0];
+        return pokemon;
+    }
+    /**
+     * 
+     * @param {String} pokemonName 
+     * @returns {boolean}
+     */
     changeMainPokemon(pokemonName) {
         const index = this.pokemonList.findIndex(pokemon => pokemon.name === pokemonName);
         if (index === -1) return false;
@@ -33,5 +50,8 @@ export default class Player {
     attack(player) {
         const attackingPokemon = this.pokemonList[0];
         attackingPokemon.attack(player.pokemonList[0]);
+    }
+    guard() {
+        this.getMainPokemon().guard();
     }
 }
