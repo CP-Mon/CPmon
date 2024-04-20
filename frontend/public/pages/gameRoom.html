@@ -4,10 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="../scripts/main.js"></script>
+    <link rel="stylesheet" href="../styles/gameRoom.css">
     <title>CPmon</title>
 </head>
 <body>
-    <h1>Game room</h1>
-    <a href="/"><button>HOME</button></a>
+    <h1 id="room-name">LarnGear</h1>
+    <a href="/" id="toHome" class="player-picture"><img src="../res/images/icon/back.png" alt="Player Picture"></a>
+    <div id="CPmon-selection">
+        <div class="CPmon-card">
+            <img src="../res/images/Neen.jpg" alt="CPmon 1" class="CPmon-avatar">
+            <p class="CPmon-name">CPmon 1</p>
+        </div>
+        <div class="CPmon-card">
+            <img src="../res/images/Neen.jpg" alt="CPmon 2" class="CPmon-avatar">
+            <p class="CPmon-name">CPmon 2</p>
+        </div>
+        <div class="CPmon-card">
+            <img src="../res/images/Neen.jpg" alt="CPmon 3" class="CPmon-avatar">
+            <p class="CPmon-name">CPmon 3</p>
+        </div>
+        <div class="CPmon-card">
+            <img src="../res/images/Neen.jpg" alt="CPmon 4" class="CPmon-avatar">
+            <p class="CPmon-name">CPmon 4</p>
+        </div>
+    </div>
+    
+    <div class="game-strip">
+        <div class="player player-2">Nadeem</div>
+        <div class="ready-button"><span>Ready</span></div>
+        <div class="player player-1">Neen</div>
+    </div>
+    
 </body>
 </html>

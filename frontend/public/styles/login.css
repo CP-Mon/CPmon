@@ -29,6 +29,7 @@
 body {
     background-color: var(--chestnut);
     color: var(--sunset);
+    font-family: 'QuickSand';
     /* overflow: hidden; */
 }
 
@@ -104,13 +105,13 @@ body {
 #toHome,
 #userLogoutButton {
     display: block;
-    width: 5.5vw; /* Adjust width and height as needed */
+    width: 7vw;
     height: 5.5vw;
     background-color: var(--jet);
     color: var(--sunset);
     font-size: 1.5vw;
     text-decoration: none;
-    border-radius: 50%; /* Make it a circle */
+    border-radius: 50%; 
     text-align: center; /* Center text horizontally */
     line-height: 5.5vw; /* Center text vertically */
     margin-bottom: 0.75vw; /* Add margin between the buttons */
