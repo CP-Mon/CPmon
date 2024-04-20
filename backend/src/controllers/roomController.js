@@ -191,4 +191,9 @@ export const action = async (req, res) => {
 
     res.status(200).json({ message: `[ROOM ID: ${room.roomId}] ${username}'s action completed.`, room });
     console.log(`[ROOM ID: ${room.roomId}] ${username}'s action completed.`);
+
+    if(room.gameOver) {
+        room.resetRoom();
+        console.log(`[ROOM ID: ${room.roomId}] resetting...`);
+    }
 };

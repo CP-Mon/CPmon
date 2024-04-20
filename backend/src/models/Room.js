@@ -134,4 +134,11 @@ export default class Room {
         // This is just a placeholder
         player.guard();
     }
+
+    resetRoom() {
+        this.turnPlayer = null;
+        this.gameStart = false;
+        this.gameOver = false;
+        this.winner = null;
+    }
 }
