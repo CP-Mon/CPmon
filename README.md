@@ -41,26 +41,33 @@ BRNNBM : CSS master!!!!!!
 # Update 20-4-67 night
 New Backend endpoint
 
-/room
-    **GET**
-    /getRooms
-        - get all rooms(instance of the game)
-    /getRoom/{id} **GET**
-        - get room with specified id
-        - see more of room things in backend/src/data/rooms.js
-        - *IMPORTANT* 
-    **POST**
-    example body for POST method body
-    ```javascript
-    {
-        "username": beam,
-    }
-    ```
-    
-    /joinRoom/{id}
-        - 
-    /addPokemon/{id} 
-        -
-    /removePlayer/{id}
-        -
-    /ready/{id}
+- /room
+    - **GET**
+        - /getRooms
+            - get all rooms(instance of the game)
+        - /getRoom/{id} **GET**
+            - get room with specified id
+            - see more of room things in backend/src/data/rooms.js
+            - *IMPORTANT* all of the instance of room is in here
+    - **POST**
+        - /joinRoom/{id}
+            - add player with "username" to the room {id}
+            - already handle
+                - same username exist in the same room
+                - when the room is full
+            - require "username":String in the request body
+        - /addPokemon/{id} 
+            - add pokemon in pokemonList in player with "username" in the room {id}
+            - require "username":String in the request body
+            - require "pokemonName":String in the request body
+        - /removePlayer/{id}
+            - remove player from a room {id}
+            - require "username":String in the request body
+        - /ready/{id}
+            - require "username":String in the request body
+            - if both player is ready, gameStart in room will be true
+        - /action/{id}
+            - require "username":String in the request body
+            - require "action":String in the request body
+                - 3 cases: 'attack', 'guard', 'magic'
+            - P.S. debug this one for an hour
