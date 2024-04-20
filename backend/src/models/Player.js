@@ -1,4 +1,4 @@
-import CPmon from "./cpmonModel.js";
+import CPmon from "./CPmonModel.js";
 export default class Player {
 
     /**
@@ -21,7 +21,7 @@ export default class Player {
         this.pokemonList = this.pokemonList.filter(pokemon => pokemon === removedPokemon);
     }
     clearPokemon() {
-        this.pokemonList = this.pokemonList.filter(pokemon => pokemon.health > 0);
+        this.pokemonList = this.pokemonList.filter(pokemon => pokemon.status.hp > 0);
     }
     /** @returns {CPmon} */
     getMainPokemon() {
@@ -46,8 +46,8 @@ export default class Player {
     }
     /** @param {Player} player  */
     attack(player) {
-        const attackingPokemon = this.pokemonList[0];
-        attackingPokemon.attack(player.pokemonList[0]);
+        const attackingPokemon = this.getMainPokemon();
+        attackingPokemon.attack(player.getMainPokemon());
     }
     guard() {
         this.getMainPokemon().guard();

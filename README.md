@@ -37,3 +37,30 @@ NADEEM : Route & Logic
 TOKYO : implement game to frontend 
 NEENNERA : user Update & user Data
 BRNNBM : CSS master!!!!!!
+
+# Update 20-4-67 night
+New Backend endpoint
+
+/room
+    **GET**
+    /getRooms
+        - get all rooms(instance of the game)
+    /getRoom/{id} **GET**
+        - get room with specified id
+        - see more of room things in backend/src/data/rooms.js
+        - *IMPORTANT* 
+    **POST**
+    example body for POST method body
+    ```javascript
+    {
+        "username": beam,
+    }
+    ```
+    
+    /joinRoom/{id}
+        - 
+    /addPokemon/{id} 
+        -
+    /removePlayer/{id}
+        -
+    /ready/{id}

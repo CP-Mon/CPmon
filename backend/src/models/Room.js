@@ -21,10 +21,10 @@ export default class Room {
     /** @param {Player} player */
     addPlayer(player) {
         if(this.players.length >= this.maxPlayers) {
-            throw new Error(`${this.roomId}: ${this.roomName} is full.`)
+            throw new Error(`${this.roomName} is full.`)
         }
         if(this.players.find(p => p.name === player.name)) {
-            throw new Error(`Player ${player.name} is already in the room.`);
+            throw new Error(`${player.name} is already in the room.`);
         }
         this.players.push(player);
         return true; // Player added successfully
@@ -41,19 +41,19 @@ export default class Room {
     }
 
     startGame() {
-        if (!this.allReady()) return false;
+        if (!this.isAllReady()) return false;
         this.gameStart = true;
         this.turnPlayer = this.players[0];
         return true;
     }
 
-    allReady() {
+    isAllReady() {
         if (this.players.length != this.maxPlayers) return false;
-        this.players.forEach(player => {
+        for(const player of this.players) {
             if(!player.isReady) {
                 return false;
             }
-        });
+        }
         return true;
     }
 
@@ -63,20 +63,20 @@ export default class Room {
         if(this.players.length !== 2) {
             throw new Error("There must be exactly 2 players.");
         }
-        return this.players.find(p => p.name !== player.name);
+        const otherPlayer = this.players.find(p => p.name != player.name);
+        if (!otherPlayer) {
+            throw new Error(`Not possible Error: can not find other player`);
+        }
+        return otherPlayer;
     }
 
     /**
      * @param {String} playerName 
      * @param {String} action 
      */
-    playerAction(playerName, action) {
+    playerAction(player, action) {
         if(!this.gameStart) {
             throw new Error("Game has not started yet.");
-        }
-        const player = this.players.find(player => player.name === playerName);
-        if(!player) {
-            throw new Error("Player not found.");
         }
         if(player !== this.turnPlayer) {
             throw new Error("Not this player turn.");
@@ -91,7 +91,7 @@ export default class Room {
             default:
                 throw new Error("Invalid action.");
         }
-        this.turnPlayer = this.getOtherPlayer();
+        this.turnPlayer = this.getOtherPlayer(player);
     }
 
     /** @param {Player} player  */

@@ -11,5 +11,6 @@ router.post("/joinRoom/:id", roomController.joinRoom);
 router.post("/addPokemon/:id", roomController.addPokemon);
 router.post("/removePlayer/:id", roomController.removePlayer);
 router.post("/ready/:id", roomController.ready);
+router.post("/action/:id", roomController.action);
 
 export default router;

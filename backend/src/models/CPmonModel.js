@@ -20,7 +20,7 @@ export default class CPmon {
      * @returns {number} - return the damage dealt
      */
     attack(enemy) {
-        let enemyDef = enemy.def;
+        let enemyDef = enemy.status.def;
         if(enemy.isGuard) {
             enemyDef *= 2;
             enemy.isGuard = false;
@@ -59,5 +59,9 @@ export default class CPmon {
             remainingHp
         );
         return true;
+    }
+
+    clone() {
+        return new CPmon(this.name, this.status.clone());
     }
 }
