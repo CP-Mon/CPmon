@@ -1,11 +1,11 @@
-import CPmon from "../models/CPmonModel.js";
-import Status from "../models/StatusModel.js";
+import CPmon from "../models/CPmon.js";
+import Status from "../models/Status.js";
 
 const CPmons = [
-    new CPmon("Neen", Status.BALACNCE()),
-    new CPmon("Beam", Status.TANK()),
+    new CPmon("Neen", Status.BALANCE()),
+    new CPmon("Beam", Status.MAGE()),
     new CPmon("Nadeem", Status.CARRY()),
-    new CPmon("Tokyo", Status.BALACNCE()),
+    new CPmon("Tokyo", Status.TANK()),
     new CPmon("JOMNOIZ", Status.JOMNOIZ())
 ]; 
 

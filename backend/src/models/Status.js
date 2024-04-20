@@ -17,12 +17,16 @@ export default class Status {
     static CARRY() {
         return new Status(15, 4, 1, 3);
     }
-    static BALACNCE() {
-        return new Status(20,   3, 2, 5);
+    static MAGE() {
+        return new Status(12, 3, 1, 8);
+    }
+    static BALANCE() {
+        return new Status(20, 3, 2, 5);
     }
     static TANK() {
         return new Status(30, 2, 3, 4);
     }
+    // only for developping 
     static JOMNOIZ() {
         return new Status(999, 999, 999, 999);
     }

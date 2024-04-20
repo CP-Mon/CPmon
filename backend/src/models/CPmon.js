@@ -1,4 +1,4 @@
-import Status from "./StatusModel.js"
+import Status from "./Status.js"
 
 export default class CPmon {
 

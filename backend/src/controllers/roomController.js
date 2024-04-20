@@ -2,7 +2,7 @@ import express from "express";
 import rooms from "../data/rooms.js";
 import Player from "../models/Player.js";
 import Room from "../models/Room.js";
-import CPmon from "../models/CPmonModel.js";
+import CPmon from "../models/CPmon.js";
 import CPmons from "../data/CPmons.js";
 
 /** @type {express.RequestHandler} */
@@ -190,5 +190,5 @@ export const action = async (req, res) => {
     }
 
     res.status(200).json({ message: `[ROOM ID: ${room.roomId}] ${username}'s action completed.`, room });
-    console.log(`[ROOM ID: ${room.roomId}] ${username} is ready.`);
+    console.log(`[ROOM ID: ${room.roomId}] ${username}'s action completed.`);
 };
