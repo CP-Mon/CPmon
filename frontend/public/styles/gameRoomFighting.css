@@ -31,16 +31,15 @@ body {
     font-style: normal;
   }
 
-#room-name {
+#room-log {
     text-align: center;
-    color: white;
+    color: white;   
 }
 
 .player-info {
     position: fixed;
     width: 250px; /* Adjust width */
     border-radius: 10px; /* Adjust border radius */
-    background-color: rgba(255, 255, 255, 0.8); /* Adjust background color and opacity */
     padding: 10px; /* Adjust padding */
     display: flex;
     align-items: center;
@@ -80,20 +79,18 @@ body {
     text-align: right; /* Align info to the left for player on the right side */
 }
 
-/* Your existing CSS styles */
-/* ... */
-
-/* Fixed bottom strip */
 .action-strip {
     position: fixed;
     bottom: 0;
     left: 0;
+    height: 90px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--cinnabar);
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for visual depth */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); 
+    align-items: center;
 }
 
 /* Button styles */
@@ -106,16 +103,14 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease; /* Smooth transition on hover */
+    /* height: 50%; */
 }
 
 .action-button:hover {
     background-color: var(--fern-green); /* Darker color on hover */
 }
 
-
-/* CPmon card styles */
 .CPmon-card {
-    background-color: white;
     border-radius: 10px;
     padding: 0.5vw;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -125,13 +120,13 @@ body {
     display: inline-block;
     margin: auto;
 }
-/* CPmon card styles */
+
 .CPmon-card.left {
     position: absolute;
-    top: 50%;
-    left: calc(50% - 15vw); /* Adjust the spacing here */
-    transform: translate(-50%, -50%);
-    background-color: white;
+    top: 120px;
+    left: calc(50% - 24vw); 
+    transform: 0;
+    background-color: var(--cinnabar);
     border-radius: 10px;
     padding: 0.5vw;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -143,10 +138,10 @@ body {
 
 .CPmon-card.right {
     position: absolute;
-    top: 50%;
-    left: calc(50% + 15vw); /* Adjust the spacing here */
-    transform: translate(-50%, -50%);
-    background-color: white;
+    top: 120px;
+    left: calc(50% + 10vw); 
+    transform: 0;
+    background-color: var(--keppel);
     border-radius: 10px;
     padding: 0.5vw;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -168,4 +163,86 @@ body {
     text-align: center;
     margin-top: 1vw;
     margin-bottom: 0.5vw;
+    color: white;
+} 
+
+@keyframes rigged-animation {
+    0% {
+        transform: rotate(-5deg); /* Start by rotating counterclockwise */
+    }
+    10% {
+        transform: rotate(5deg); /* Rotate clockwise */
+    }
+    20% {
+        transform: rotate(-5deg); /* Rotate counterclockwise */
+    }
+    30% {
+        transform: rotate(5deg); /* Rotate clockwise */
+    }
+    40% {
+        transform: rotate(-5deg); /* Rotate counterclockwise */
+    }
+    50% {
+        transform: rotate(5deg); /* Rotate clockwise */
+    }
+    60% {
+        transform: rotate(-5deg); /* Rotate counterclockwise */
+    }
+    70% {
+        transform: rotate(5deg); /* Rotate clockwise */
+    }
+    80% {
+        transform: rotate(-5deg); /* Rotate counterclockwise */
+    }
+    90% {
+        transform: rotate(5deg); /* Rotate clockwise */
+    }
+    100% {
+        transform: rotate(-5deg); /* Rotate counterclockwise */
+    }
+}
+
+
+/* Defense animation */
+@keyframes bigger-animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Magic animation */
+@keyframes spin-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.attack-sequence {
+    animation-name: rigged-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    /* animation-fill-mode: forwards; */
+}
+
+.guard-sequence {
+    animation-name: bigger-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    /* animation-fill-mode: forwards; */
+}
+
+.magic-sequence {
+    animation-name: spin-animation;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    /* animation-fill-mode: forwards; */
 }

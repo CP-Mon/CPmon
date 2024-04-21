@@ -3,27 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/gameRoomFighting.css">
+    <script type="module" src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/roomWaiting.js"></script>
+    <link rel="stylesheet" href="../styles/gameRoom.css">
     <title>CPmon</title>
 </head>
 <body>
-    <h1 id="room-name">@ LarnIntania</h1>
-    <div class="background-image-container"></div>
-    <div class="player-info left">
-        <div class="info">
-            <p class="player-name">Player 1</p>
-            <p class="cpmon-name">CPmon 1</p>
-            <p class="cpmon-hp">HP: 100</p>
+    <h1 id="room-name">LarnGear</h1>
+    <a id="toHome" class="player-picture"><img src="../res/images/icon/back.png" alt="Player Picture"></a>
+    <div id="CPmon-selection">
+        <div class="CPmon-card" id="CPmon-1">
+            <img src="../res/images/Neen.jpg" alt="CPmon 1" class="CPmon-avatar">
+            <p class="CPmon-name">Neen</p>
         </div>
-        <img src="../res/images/Neen.jpg" alt="CPmon 1">
-    </div>
-    <div class="player-info right">
-        <img src="../res/images/Neen.jpg" alt="CPmon 2">
-        <div class="info">
-            <p class="player-name">Player 2</p>
-            <p class="cpmon-name">CPmon 2</p>
-            <p class="cpmon-hp">HP: 100</p>
+        <div class="CPmon-card" id="CPmon-2">
+            <img src="../res/images/Neen.jpg" alt="CPmon 2" class="CPmon-avatar">
+            <p class="CPmon-name">Beam</p>
+        </div>
+        <div class="CPmon-card" id="CPmon-3">
+            <img src="../res/images/Neen.jpg" alt="CPmon 3" class="CPmon-avatar">
+            <p class="CPmon-name">Nadeem</p>
+        </div>
+        <div class="CPmon-card" id="CPmon-4">
+            <img src="../res/images/Neen.jpg" alt="CPmon 4" class="CPmon-avatar">
+            <p class="CPmon-name">Tokyo</p>
         </div>
     </div>
+    
+    <div class="game-strip">
+        <div class="player player-2" id = "player-name-2">Player 1</div>
+        <div class="ready-button" id="readyButton"><span>Ready</span></div>
+        <div class="player player-1" id = "player-name-1">Player 2</div>
+    </div>
+    
+    <div id="log-container">
+        <div class="log-message">Nadeem has joined the room.</div>
+        <div class="log-message">Nadeem is ready.</div>
+    </div>
+
+    <div id="CPmon-info">
+    <img src="../res/images/test.jpg" alt="CPmon Image" id="CPmon-image">
+    <div id="CPmon-name">Choose Your CP mon</div><br>
+    <div id="CPmon-HP" class="CPmon-stat">
+        <div class="stat-label">Attack</div>
+        <div class="stat-bar">
+            <div class="CPmon-stat-value" style="width: 50%;"></div>
+        </div>
+    </div>
+    <div id="CPmon-attack" class="CPmon-stat">
+        <div class="stat-label">Attack</div>
+        <div class="stat-bar">
+            <div class="CPmon-stat-value" style="width: 50%;"></div>
+        </div>
+    </div>
+    <div id="CPmon-defense" class="CPmon-stat">
+        <div class="stat-label">Defense</div>
+        <div class="stat-bar">
+            <div class="CPmon-stat-value" style="width: 40%;"></div>
+        </div>
+    </div>
+    </div>
+
+    
 </body>
 </html>

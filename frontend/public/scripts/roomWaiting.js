@@ -30,7 +30,7 @@ readyButton.addEventListener("click", async () => {
         return;
     }
     if(isReady == true){
-        alert("you already clickk ready button")
+        alert("you already clicked ready button")
         return;
     }
     isReady = true
