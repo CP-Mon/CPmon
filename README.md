@@ -86,7 +86,7 @@ Bug Report (to Nadeem)
 - bug : can't use roomInfo.room.startGame() and other method
 - bug : user can join multiple room 
 
-Bug Report (to Bean)
+Bug Report (to Beam)
 - bug : HP not show 
 - bug : green background should follow choosen pokemon (May be handle in drawCPmonStatus()?)
 - improve : status bar in waiting room, what is highest value?
