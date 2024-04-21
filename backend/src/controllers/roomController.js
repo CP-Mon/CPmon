@@ -38,16 +38,25 @@ export const joinRoom = async (req, res) => {
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
-
+    
     if (!room) {
         res.status(200).json({ status: "fail", message: "Room not found" });
         return;
     }
 
+    for (const _room of rooms) {
+        for (const _player of _room.players) {
+            if (player.name === _player.name) {
+                res.status(200).json({ status: "fail", message: `This player already exist in ${_room.roomName}` });
+                return;
+            }
+        }
+    }
+
     try {
         room.addPlayer(player);
     } catch (error) {
-        res.status(200).json({ status: "fail", message: `Error: ${error.message}`});
+        res.status(200).json({ status: "fail", message: `Error: ${error.message}` });
         return;
     }
 
