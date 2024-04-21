@@ -69,9 +69,9 @@ export async function drawCPmonStatus() {
     document.getElementById("CPmon-info").style.visibility = "visible";
 
     let CPmon = await api.getCPmonStatus({CPmonName : CPmonName[CPmonChosenIndex]})
-    document.getElementById("CPmon-name").innerText = CPmonName[CPmonChosenIndex]
-
-    document.getElementById("CPmon-HP").children[1].children[0].style.width = (CPmon.status.hp * 100/ 30).toString() + "%";
+    document.getElementById("CPmon-name").innerText = CPmonName[CPmonChosenIndex];
+    
+    document.getElementById("CPmon-hp").children[1].children[0].style.width = (CPmon.status.hp * 100/ 30).toString() + "%";
     document.getElementById("CPmon-attack").children[1].children[0].style.width = (CPmon.status.atk * 100/ 5).toString() + "%";
     document.getElementById("CPmon-defense").children[1].children[0].style.width = (CPmon.status.def * 100/ 5).toString() + "%";
 }
