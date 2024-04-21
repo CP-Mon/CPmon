@@ -1,0 +1,79 @@
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
+
+body {
+    font-family: 'Quicksand';
+    background-color: var(--sunset);
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'QuickSand';
+    src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
+         url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'InfoStory';
+    src: url('../res/fonts/info_story-webfont.woff2') format('woff2'), /* Modern Browsers */
+         url('../res/fonts/info_story-webfont.woff') format('woff'); /* Legacy Browsers */
+    /* Add more src lines for additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+  }
+
+#room-name {
+    text-align: center;
+    color: white;
+}
+
+.player-info {
+    position: fixed;
+    width: 250px; /* Adjust width */
+    border-radius: 10px; /* Adjust border radius */
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust background color and opacity */
+    padding: 10px; /* Adjust padding */
+    display: flex;
+    align-items: center;
+}
+
+.player-info.left {
+    left: 20px;
+}
+
+.player-info.right {
+    right: 20px;
+}
+
+.player-info.left img{
+    left: 20%;
+}
+
+.player-info img {
+    width: 100px; /* Adjust image width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Make it circular */
+    margin-right: 10px; /* Adjust margin between image and info */
+}
+
+.info {
+    flex-grow: 1; /* Allow the info div to grow to fill remaining space */
+    text-align: left; /* Align info to the left */
+}
+
+.player-info.left .info {
+    text-align: left; /* Align info to the right for player on the left side */
+}
+
+.player-info.right .info {
+    text-align: right; /* Align info to the left for player on the right side */
+}
