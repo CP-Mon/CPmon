@@ -51,6 +51,18 @@ export async function SignUpNewUser(obj) {
     }).then((r) => r.json());
 }
 
+export async function getCPmonStatus(obj) {
+    const userData =  await fetch(`${BACKEND_URL}/CPmon/getCPmonStatus`,{
+        method:"POST",
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    }).then((r) => r.json());
+    return userData
+}
+
 export async function getRooms() {
     const rooms = fetch(`${BACKEND_URL}/room/getRooms`, {
         method: "GET"

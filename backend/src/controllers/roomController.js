@@ -67,7 +67,7 @@ export const addPokemon = async (req, res) => {
         res.status(400).json({ message: `pokemonName not found in request body.` });
         return;
     }
-    const roomId = req.body.roomNumber;
+    const roomId = parseInt(req.params.id, 10);
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
@@ -105,7 +105,7 @@ export const removePlayer = async (req, res) => {
         return;
     }
 
-    const roomId = req.body.roomID
+    const roomId = parseInt(req.params.id, 10)
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
@@ -132,7 +132,7 @@ export const ready = async (req, res) => {
         res.status(400).json({ message: `username not found in request body.` });
         return;
     }
-    const roomId = req.body.roomNumber;
+    const roomId = parseInt(req.params.id, 10);
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import UserRoute from "./routes/userRoute.js"
 import RoomRoute from "./routes/roomRoute.js"
+import CPmonRoute from "./routes/CPmonRoute.js"
 import { FRONTEND_URL, BACKEND_URL, GOTO_URL } from "../../frontend/public/scripts/config.js";
 const app = express();
 
@@ -36,6 +37,7 @@ app.use(session({
 // use Route
 app.use("/user", UserRoute);
 app.use("/room", RoomRoute);
+app.use("/CPmon", CPmonRoute);
 
 
 // set session

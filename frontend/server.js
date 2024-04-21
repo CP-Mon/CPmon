@@ -33,6 +33,11 @@ app.get('/room/:roomID', (req,res) =>{
   res.sendFile(`${publicPath}/gameRoomWaiting.html`)
 });
 
+
+app.get('/game/:roomID', (req,res) =>{
+  res.sendFile(`${publicPath}/gameRoomFighting.html`)
+});
+
 app.get('*', async (req,res) =>{
   res.sendFile(`${publicPath}/brokenlink.html`)
 });

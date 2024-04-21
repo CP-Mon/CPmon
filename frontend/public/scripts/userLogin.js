@@ -144,7 +144,6 @@ export async function drawLoginSection() {
 
 export async function  drawUserSection() {
     const UserData = await getCurrentUser();
-    console.log(UserData);
     const userLoginSection = document.getElementById("userLoginSection");
 
     userLoginSection.innerHTML = `
