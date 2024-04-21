@@ -1,10 +1,11 @@
+// import User from "../../../backend/src/models/userModel.js";
 import {loginUserData, checkSignUpNewUser, SignUpNewUser, getCurrentUser, logoutCurrentUser} from "./api.js"
 
 const currentUser = await getCurrentUser();
 if(currentUser==null){
     drawLoginSection();
 }else{
-    drawuserLoginSection();
+    drawUserSection();
 }
 
 
@@ -21,7 +22,7 @@ export async function handleLoginUser() {
         const loginStatus = document.getElementById("loginStatus");
         loginStatus.innerHTML = "WRONG password, please try again";
     }else if(userData.mes == "Success"){
-        drawuserLoginSection(await getCurrentUser())
+        drawUserSection(await getCurrentUser())
     }
 }
 
@@ -141,8 +142,9 @@ export async function drawLoginSection() {
     });
 }
 
-export async function drawuserLoginSection() {
+export async function  drawUserSection() {
     const UserData = await getCurrentUser();
+    console.log(UserData);
     const userLoginSection = document.getElementById("userLoginSection");
 
     userLoginSection.innerHTML = `

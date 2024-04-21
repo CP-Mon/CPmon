@@ -40,16 +40,24 @@ app.use("/room", RoomRoute);
 
 // set session
 app.get('/api/getUserData', async (req,res) =>{
-    console.log("Authenticated:", req.session.id);
-    console.log("name:", req.session.userData);
     req.session.visited = true;
 
+    
     if(req.session.authenticated == undefined){
       res.status(200).json(null);
     }else if(req.session.authenticated == false){
       res.status(200).json(null);
     }else{
-    res.status(200).json(req.session.userData)
+      const obj = {username: req.session.username}
+      const userData =  await fetch(`${BACKEND_URL}/user/getUserData`,{
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+        credentials: 'include'
+      }).then((r) => r.json());
+      res.status(200).json(userData)
     }
 });
 

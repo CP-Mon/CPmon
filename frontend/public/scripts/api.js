@@ -1,4 +1,4 @@
-import { BACKEND_URL , FRONTEND_URL} from "./config.js";
+import { BACKEND_URL } from "./config.js";
 
 
 export async function getCurrentUser() {

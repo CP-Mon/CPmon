@@ -30,28 +30,28 @@ export const joinRoom = async (req, res) => {
 
     const { username } = req.body;
     if(!username) {
-        res.status(400).json({ message: `username not found in request body.` });
+        res.status(200).json({ status: "fail", message: `username not found in request body.` });
         return;
     }
     const player = new Player(username);
-    const roomId = parseInt(req.params.id, 10);
+    const roomId = parseInt(req.body.roomNumber);
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
 
     if (!room) {
-        res.status(400).json({ message: "Room not found" });
+        res.status(200).json({ status: "fail", message: "Room not found" });
         return;
     }
 
     try {
         room.addPlayer(player);
     } catch (error) {
-        res.status(400).json({ message: `Error: ${error.message}`});
+        res.status(200).json({ status: "fail", message: `Error: ${error.message}`});
         return;
     }
 
-    res.status(200).json({ message: `[ROOM ID: ${room.roomId}] ${player.name} is joined.`, room });
+    res.status(200).json({ status: "success", message: `[ROOM ID: ${room.roomId}] ${player.name} is joined.`, room });
     console.log(`[ROOM ID: ${room.roomId}] ${player.name} is joined.`);
 };
 
@@ -67,7 +67,7 @@ export const addPokemon = async (req, res) => {
         res.status(400).json({ message: `pokemonName not found in request body.` });
         return;
     }
-    const roomId = parseInt(req.params.id, 10);
+    const roomId = req.body.roomNumber;
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
@@ -104,7 +104,8 @@ export const removePlayer = async (req, res) => {
         res.status(400).json({ message: `username not found in request body.` });
         return;
     }
-    const roomId = parseInt(req.params.id, 10);
+
+    const roomId = req.body.roomID
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
@@ -131,7 +132,7 @@ export const ready = async (req, res) => {
         res.status(400).json({ message: `username not found in request body.` });
         return;
     }
-    const roomId = parseInt(req.params.id, 10);
+    const roomId = req.body.roomNumber;
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
@@ -171,7 +172,7 @@ export const action = async (req, res) => {
         res.status(400).json({ message: `action not found in request body.` });
         return;
     }
-    const roomId = parseInt(req.params.id, 10);
+    const roomId = req.body.roomNumber;
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);

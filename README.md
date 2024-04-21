@@ -76,3 +76,9 @@ New Backend endpoint
                 - 'guard': the next damage this unit recieve will calculate by 2xdef
                 - 'magic': ignore def but your def-1
             - P.S. debug this one for an hour
+
+
+
+change status 400 -> 200 with status "fail"
+change const roomId = parseInt(req.params.id, 10) ->  const roomId = req.body.roomID
+- bug : user join multiple room

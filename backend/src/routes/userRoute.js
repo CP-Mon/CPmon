@@ -5,6 +5,7 @@ import * as userController from "../controllers/userController.js";
 const router = express.Router();
 
 
+router.post("/getUserData", userController.getUserData);
 router.post("/login", userController.loginUser);
 router.post("/logout", userController.logoutUser);
 router.post("/signup/check", userController.checkSignUpNewUser);

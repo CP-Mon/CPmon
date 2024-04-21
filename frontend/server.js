@@ -1,7 +1,6 @@
 
 import express from "express";
 import path from 'path';
-import {getCurrentUser} from "./public/scripts/api.js"
 import cors from "cors";
 import { FRONTEND_URL, BACKEND_URL, GOTO_URL } from "./public/scripts/config.js";
 
@@ -31,7 +30,7 @@ app.get('/user', async (req,res) =>{
 });
 
 app.get('/room/:roomID', (req,res) =>{
-  res.sendFile(`${publicPath}/gameRoom.html`)
+  res.sendFile(`${publicPath}/gameRoomWaiting.html`)
 });
 
 app.get('*', async (req,res) =>{
