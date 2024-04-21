@@ -44,6 +44,7 @@ body {
     padding: 10px; /* Adjust padding */
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .player-info.left {
@@ -54,16 +55,17 @@ body {
     right: 20px;
 }
 
-.player-info.left img{
-    left: 20%;
-}
-
 .player-info img {
     width: 100px; /* Adjust image width */
     height: auto; /* Maintain aspect ratio */
     border-radius: 50%; /* Make it circular */
-    margin-right: 10px; /* Adjust margin between image and info */
+    margin-right: auto; /* Adjust margin between image and info */
 }
+
+.player-info.left img {
+    margin-right: 0;  /* Move image to the left for left side */
+    margin-left: 10px; /* Add margin for spacing */
+  }
 
 .info {
     flex-grow: 1; /* Allow the info div to grow to fill remaining space */
@@ -76,4 +78,94 @@ body {
 
 .player-info.right .info {
     text-align: right; /* Align info to the left for player on the right side */
+}
+
+/* Your existing CSS styles */
+/* ... */
+
+/* Fixed bottom strip */
+.action-strip {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for visual depth */
+}
+
+/* Button styles */
+.action-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--keppel); /* Adjust button color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.action-button:hover {
+    background-color: var(--fern-green); /* Darker color on hover */
+}
+
+
+/* CPmon card styles */
+.CPmon-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 0.5vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2vw;
+    width: 15vw;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
+}
+/* CPmon card styles */
+.CPmon-card.left {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 15vw); /* Adjust the spacing here */
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 0.5vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2vw;
+    width: 15vw;
+    text-align: center;
+    display: inline-block;
+}
+
+.CPmon-card.right {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 15vw); /* Adjust the spacing here */
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 0.5vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2vw;
+    width: 15vw;
+    text-align: center;
+    display: inline-block;
+}
+
+.CPmon-avatar {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 1vw;
+}
+
+.CPmon-name {
+    text-align: center;
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
 }
