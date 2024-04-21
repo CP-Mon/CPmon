@@ -1,4 +1,3 @@
-/* Custom CSS Variables for Colors */
 :root {
     --sunset: #f6c487ff;
     --chestnut: #a34d3cff;
@@ -12,7 +11,6 @@
     font-family: 'QuickSand';
     src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
         url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
-    /* Add more src lines for additional font formats if needed */
     font-weight: normal;
     font-style: normal;
 }
@@ -21,7 +19,6 @@
     font-family: 'InfoStory';
     src: url('../res/fonts/info_story-webfont.woff2') format('woff2'), /* Modern Browsers */
         url('../res/fonts/info_story-webfont.woff') format('woff'); /* Legacy Browsers */
-    /* Add more src lines for additional font formats if needed */
     font-weight: normal;
     font-style: normal;
 }
@@ -30,25 +27,32 @@ body {
     background-color: var(--chestnut);
     color: var(--sunset);
     font-family: 'QuickSand';
-    /* overflow: hidden; */
 }
 
 #userLoginSection {
-    padding: 1%;
-    font-size: 125%;
+    font-size: 20px;
+    padding: 1.25vw;
     display: flex;
     flex-direction: column;
     align-items: center; /* Horizontally center all content */
 }
 
+#userLoginSection .header {
+    text-align: center;
+    font-size: 40px;
+    color: wheat;
+    font-family: 'QuickSand';
+}
+
 #userLoginSection input[type="text"],
 #userLoginSection input[type="password"],
 #userLoginSection button {
-    margin-bottom: 1.5%;
-    padding: 1%;
+    margin-bottom: 15px;
+    padding: 12.5px;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.75vw;
 }
+
 #userLoginSection input[type="text"],
 #userLoginSection input[type="password"] {
     border: none; /* Remove default border */
@@ -61,20 +65,11 @@ body {
     font-size: 100%;
     font-family: 'QuickSand';
     border-radius: 0; /* Ensure no border radius */
-    width : 35%;
+    width : 300px;
 }
-
-@media screen and (max-width: 768px) {
-    
-}
-
-@media screen and (max-width: 480px) {
-    
-}
-
 
 #userLoginSection button {
-    width: 25%;
+    width: 200px;
     background-color: var(--cinnabar);
     color: wheat;
     font-size: 80%;
@@ -85,22 +80,62 @@ body {
     background-color: var(--keppel);
 }
 
-#SignUpStatus {
-    margin-top: 10%;
-    color: white;
-}
-
-/* Adjust background color for .header within #userLoginSection */
-#userLoginSection .header {
-    text-align: center;
-    font-size: 200%;
-    color: wheat;
-    font-family: 'QuickSand';
-}
-
 #loginStatus ,#SignUpStatus {
     color: wheat;
+    margin-top: 2vw;
 }
+
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px; /* Increase base font size */
+    }
+
+    #userLoginSection {
+        font-size: 16px; /* Adjust login section font size */
+    }
+
+    #userLoginSection input[type="text"],
+    #userLoginSection input[type="password"] {
+        width: 200px; /* Adjust input width */
+        font-size: 16px; /* Adjust input font size */
+    }
+
+    #userLoginSection button {
+        width: 200px; /* Adjust button width */
+        font-size: 14px; /* Adjust button font size */
+    }
+
+    .CPMonItem {
+        width: 100%; /* Adjust CPMonItem width */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px; /* Further increase base font size */
+    }
+
+    #userLoginSection {
+        font-size: 14px; /* Further adjust login section font size */
+    }
+
+    #userLoginSection input[type="text"],
+    #userLoginSection input[type="password"] {
+        width: 200px; /* Further adjust input width */
+        font-size: 14px; /* Further adjust input font size */
+    }
+
+    #userLoginSection button {
+        width: 100px; /* Further adjust button width */
+        font-size: 12px; /* Further adjust button font size */
+    }
+
+    .CPMonItem {
+        width: 100%; /* Further adjust CPMonItem width */
+    }
+}
+
 
 #toHome,
 #userLogoutButton {
