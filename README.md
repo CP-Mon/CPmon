@@ -84,7 +84,7 @@ change some status 400 -> 200 with status "fail" so user wont see error
 
 Bug Report (to Nadeem)
 - bug : can't use roomInfo.room.startGame() and other method
-- bug : user join multiple room 
+- bug : user can join multiple room 
 
 Bug Report (to Bean)
 - bug : HP not show 
