@@ -50,6 +50,15 @@ function animateMagic() {
     }, { once: true }); // Make sure the event listener only runs once
 }
 
+// function updateHPBars(player1CurrentHP, player1MaxHP, player2CurrentHP, player2MaxHP) {
+//     const player1HPBar = document.getElementById('player1-hp-bar');
+//     const player2HPBar = document.getElementById('player2-hp-bar');
 
+//     const player1Percentage = (player1CurrentHP / player1MaxHP) * 100;
+//     const player2Percentage = (player2CurrentHP / player2MaxHP) * 100;
 
-
+//     player1HPBar.style.width = player1Percentage + '%';
+//     player1HPBar.innerText = player1CurrentHP + '/' + player1MaxHP; // Update HP text
+//     player2HPBar.style.width = player2Percentage + '%';
+//     player2HPBar.innerText = player2CurrentHP + '/' + player2MaxHP; // Update HP text
+// }

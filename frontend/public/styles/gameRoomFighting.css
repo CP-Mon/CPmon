@@ -31,10 +31,35 @@ body {
     font-style: normal;
   }
 
-#room-log {
-    text-align: center;
-    color: white;   
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
+
+.border-container-left-right {
+    height: 100vh;
+    border-left: 1vw solid var(--cinnabar); /* Example color and width for left border */
+    border-right: 1vw solid var(--keppel); /* Example color and style for right border */
+    padding: 20px; /* Add padding to give space between the border and content */
+    z-index: 0;
+}
+
+
+#room-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;   
+    /* background-color: sandybrown; */
+    background: linear-gradient(to right, var(--cinnabar), var(--keppel));
+    width: 100%;
+    height: 20vh;
+    position: fixed;
+    top: -3vw;
+    left: 0vw;
+}
+
 
 .player-info {
     position: fixed;
@@ -44,31 +69,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    top: 200px;
 }
 
 .player-info.left {
     left: 20px;
+    color: brown;
 }
 
 .player-info.right {
     right: 20px;
+    color: rgb(51, 124, 134);
 }
-
-.player-info img {
-    width: 100px; /* Adjust image width */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 50%; /* Make it circular */
-    margin-right: auto; /* Adjust margin between image and info */
-}
-
-.player-info.left img {
-    margin-right: 0;  /* Move image to the left for left side */
-    margin-left: 10px; /* Add margin for spacing */
-  }
 
 .info {
-    flex-grow: 1; /* Allow the info div to grow to fill remaining space */
-    text-align: left; /* Align info to the left */
+    flex-grow: 1;
 }
 
 .player-info.left .info {
@@ -79,35 +94,110 @@ body {
     text-align: right; /* Align info to the left for player on the right side */
 }
 
+.hp-bar {
+    width: 100px; /* Adjust the width of the HP bar */
+    height: 20px; /* Adjust the height of the HP bar */
+    background-color: #ccc; /* Background color of the HP bar */
+    border-radius: 5px; /* Add rounded corners to the HP bar */
+    margin-bottom: 10px; /* Add some space below the HP bar */
+    position: relative; /* Set position to relative for the HP text */
+}
+
+.hp-fill {
+    height: 100%;
+    background-color: green; /* Color of the filled portion of the HP bar */
+    border-radius: 5px; /* Add rounded corners to the filled portion */
+    position: absolute; /* Set position to absolute for the filled portion */
+    left: 0; /* Align filled portion to the left */
+    top: 0; /* Align filled portion to the top */
+}
+
+.hp-text {
+    position: absolute; /* Set position to absolute for the HP text */
+    top: 50%; /* Align text vertically in the middle */
+    left: 50%; /* Align text horizontally in the middle */
+    transform: translate(-50%, -50%); /* Center text */
+    color: #000; /* Text color */
+}
+
+.hp-reversed {
+    direction: rtl; /* Reverse the direction of text for Player 2 */
+}
+
+#player1-hp-fill {
+    background-color: var(--cinnabar);
+}
+
+#player2-hp-fill {
+    background-color: var(--keppel);
+}
+
 .action-strip {
     position: fixed;
     bottom: 0;
     left: 0;
     height: 90px;
     width: 100%;
-    background-color: var(--cinnabar);
+    /* background-color: sandybrown; */
+    background: linear-gradient(to right, var(--cinnabar), var(--keppel));
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding: 10px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); 
+    /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);  */
     align-items: center;
 }
 
 /* Button styles */
 .action-button {
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--keppel); /* Adjust button color */
+    border-radius: 50%;
     color: white;
+    font-family: 'QuickSand';
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-    /* height: 50%; */
+    transition: background-color 0.3s ease;
+    background-color: rgb(114, 114, 114);
+    margin: 6vw; 
+    width: 10vw;
+    height: 60px;
+    border: 1.5px solid white;
+    position: relative;
 }
 
-.action-button:hover {
-    background-color: var(--fern-green); /* Darker color on hover */
+.action-button img {
+    position: absolute;
+    top: -7px;
+    left: -8.5px;
+    width: 35px; /* Adjust the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Adjust spacing if needed */
+    z-index: 1;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg);
+
+}
+
+#attackable-button {
+    background-color: rgb(212, 60, 60);
+}
+
+#guardable-button {
+    background-color: rgb(102, 117, 183);
+}
+
+#magicable-button {
+    background-color: rgb(185, 92, 163);
+}
+
+#attackable-button:hover {
+    background-color: rgb(79, 27, 27);
+}
+
+#guardable-button:hover {
+    background-color: rgb(47, 60, 120);
+}
+
+#magicable-button:hover {
+    background-color: rgb(105, 38, 90);
 }
 
 .CPmon-card {
@@ -119,11 +209,11 @@ body {
     text-align: center;
     display: inline-block;
     margin: auto;
+    top: 150px;
 }
 
 .CPmon-card.left {
     position: absolute;
-    top: 120px;
     left: calc(50% - 24vw); 
     transform: 0;
     background-color: var(--cinnabar);
@@ -138,7 +228,6 @@ body {
 
 .CPmon-card.right {
     position: absolute;
-    top: 120px;
     left: calc(50% + 10vw); 
     transform: 0;
     background-color: var(--keppel);
@@ -246,3 +335,50 @@ body {
     animation-timing-function: linear;
     /* animation-fill-mode: forwards; */
 }
+.timer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+  
+.timer-svg {
+    transform: rotate(-90deg);
+}
+  
+.timer-circle {
+    fill: none;
+    stroke: white;
+    stroke-width: 3;
+}
+  
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: white;
+}
+
+.cpmon-hp {
+    position: relative;
+}
+
+.player-info.left .cpmon-hp span {
+    background-color: var(--cinnabar); /* Adjust the color of the HP bar for player 1 */
+}
+
+.player-info.right .cpmon-hp span {
+    background-color: var(--keppel); /* Adjust the color of the HP bar for player 2 */
+}
+
+.cpmon-hp span {
+    display: block;
+    width: 100px; /* Adjust the width of the HP bar */
+    height: 20px; /* Adjust the height of the HP bar */
+    position: absolute;
+    top: 0;
+    left: 60px; /* Adjust the position of the HP bar relative to the text */
+    border-radius: 5px; /* Add rounded corners to the HP bar */
+}
+

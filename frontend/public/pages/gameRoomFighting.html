@@ -8,41 +8,62 @@
     <title>CPmon</title>
 </head>
 <body>
-    <h1 id="room-log">Neen's turn</h1>
-    <div class="background-image-container"></div>
-    <div class="player-info left">
-        <div class="info">
-            <p class="player-name">Player 1</p>
-            <p class="cpmon-name">CPmon 1</p>
-            <p class="cpmon-hp">HP: 100</p>
+    <div class="border-container-left-right">
+        <h1 id="room-log">Neen's turn</h1>
+        <!-- The command like "CPmon1 attacked CPmon2!!" will appear here -->
+
+        <div class="timer">
+            <svg class="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle class="timer-circle" cx="50" cy="50" r="45"/>
+            </svg>
+            <div class="timer-text">10</div>
+          </div>
+          
+        <!-- Player 1 HP bar -->
+        <div class="player-info left">
+            <div class="info">
+                <p class="player-name">Player 1</p>
+                <p class="cpmon-name">CPmon 1</p>
+                <div class="hp-bar">
+                    <div class="hp-fill" id="player1-hp-fill" style="width: 75%;"></div> <!-- Initial HP value is set to 50% -->
+                    <div class="hp-text">HP</div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="player-info right">
-        <div class="info">
-            <p class="player-name">Player 2</p>
-            <p class="cpmon-name">CPmon 2</p>
-            <p class="cpmon-hp">HP: 100</p>
+        
+        <!-- Player 2 HP bar -->
+        <div class="player-info right">
+            <div class="info hp-reversed"> <!-- Add class "hp-reversed" to reverse text direction for Player 2 -->
+                <p class="player-name">Player 2</p>
+                <p class="cpmon-name">CPmon 2</p>
+                <div class="hp-bar">
+                    <div class="hp-fill" id="player2-hp-fill" style="width: 60%;"></div> <!-- Initial HP value is set to 50% -->
+                    <div class="hp-text">HP</div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- CPmon cards -->
-    <div class="CPmon-card left" id="player1-card">
-        <img class="CPmon-avatar" src="../res/images/Neen.jpg" alt="CPmon 1">
-        <div class="CPmon-name">CPmon 1</div>
-        <!-- Add other CPmon details -->
-    </div>
+        <!-- CPmon cards -->
+        <div class="CPmon-card left" id="player1-card">
+            <img class="CPmon-avatar" src="../res/images/Neen.jpg" alt="CPmon 1">
+            <div class="CPmon-name">CPmon 1</div>
+        </div>
 
-    <div class="CPmon-card right" id="player2-card">
-        <img class="CPmon-avatar" src="../res/images/Neen.jpg" alt="CPmon 2">
-        <div class="CPmon-name">CPmon 2</div>
-        <!-- Add other CPmon details -->
-    </div>
+        <div class="CPmon-card right" id="player2-card">
+            <img class="CPmon-avatar" src="../res/images/Neen.jpg" alt="CPmon 2">
+            <div class="CPmon-name">CPmon 2</div>
+        </div>
 
-    <div class="action-strip">
-        <button class="action-button" onclick="animateAttack()">Attack</button>
-        <button class="action-button" onclick="animateGuard()">Guard</button>
-        <button class="action-button" onclick="animateMagic()">Magic</button>
+        <div class="action-strip">
+            <button class="action-button" id="attackable-button" onclick="animateAttack()">
+                <img src="../res/images/icon/sword.png">Attack
+            </button>
+            <button class="action-button" id="guardable-button" onclick="animateGuard()">
+                <img src="../res/images/icon/shield.png">Guard</button>
+            <button class="action-button" id="magicable-button" onclick="animateMagic()">
+                <img src="../res/images/icon/magic-wand.png">Magic</button>
+            <!-- remove #attackable-button when it's not player turn -->
+        </div>
     </div>
 </body>
 </html>
