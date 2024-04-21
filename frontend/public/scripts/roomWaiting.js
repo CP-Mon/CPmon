@@ -26,11 +26,10 @@ for(let i=1;i<=4;i++){
 const readyButton = document.getElementById("readyButton");
 readyButton.addEventListener("click", async () => {
     if(CPmonChosenIndex == null){
-        alert("please choose your CPmon")
+        logMessage("Please choose your CPmon first");
         return;
     }
     if(isReady == true){
-        alert("you already clickk ready button")
         return;
     }
     readyButton.style.backgroundColor = "#467f4cff";
@@ -47,7 +46,6 @@ for (const CPmonSelectionChild of CPmonSelection.children) {
             CPmonSelectionChild.style.backgroundColor = "white";
         }
         CPmonSelectionChild.style.backgroundColor = "#467f4cff";
-        logMessage("You have selected " + CPmonSelectionChild.innerText);
     });
 }
 
@@ -62,6 +60,8 @@ function logMessage(message, timeout = 5000) {
 }
 
 export async function drawCPmonStatus() {
+    document.getElementById("CPmon-info").style.visibility = "visible";
+
     let CPmon = await api.getCPmonStatus({CPmonName : CPmonName[CPmonChosenIndex]})
     document.getElementById("CPmon-name").innerText = CPmonName[CPmonChosenIndex]
 
@@ -70,10 +70,48 @@ export async function drawCPmonStatus() {
     document.getElementById("CPmon-defense").children[1].children[0].style.width = (CPmon.status.def * 100/ 5).toString() + "%";
 }
 
+var player1Ready = false;
+var player2Ready = false;
+
 export async function drawUsername() {
+
     let roomInfo = await api.getRoom({id:roomNumber})
-    document.getElementById("player-name-1").innerText = (roomInfo.room.players[0] == undefined) ? "Wating..." : roomInfo.room.players[0].name
-    document.getElementById("player-name-2").innerText = (roomInfo.room.players[1] == undefined) ? "Wating..." : roomInfo.room.players[1].name
+
+    let oldPlayer1 = document.getElementById("player-name-1").innerText;
+    let oldPlayer2 = document.getElementById("player-name-2").innerText;
+
+    document.getElementById("player-name-1").innerText = (roomInfo.room.players[0] == undefined) ? "Waiting..." : roomInfo.room.players[0].name;
+    document.getElementById("player-name-2").innerText = (roomInfo.room.players[1] == undefined) ? "Waiting..." : roomInfo.room.players[1].name;
+
+    let newPlayer1 = document.getElementById("player-name-1").innerText;
+    let newPlayer2 = document.getElementById("player-name-2").innerText;
+
+    if (oldPlayer1 !== newPlayer1) {
+        if (newPlayer1 !== "Waiting...") {
+            logMessage(`${newPlayer1} has joined the room.`);
+        } else if (oldPlayer1 !== "Waiting...") {
+            logMessage(`${oldPlayer1} has left the room.`);
+            player1Ready = false;
+        }
+    }
+    if (oldPlayer2 !== newPlayer2) {
+        if (newPlayer2 !== "Waiting...") {
+            logMessage(`${newPlayer2} has joined the room.`);
+        } else if (oldPlayer2 !== "Waiting...") {
+            logMessage(`${oldPlayer2} has left the room.`);
+            player2Ready = false;
+        }
+    }
+
+    // Check if other player is ready
+    if(roomInfo.room.players[0] != undefined && roomInfo.room.players[0].isReady == true && !player1Ready){
+        logMessage(`${roomInfo.room.players[0].name} is ready.`);
+        player1Ready = true;
+    }
+    if(roomInfo.room.players[1] != undefined && roomInfo.room.players[1].isReady == true && !player2Ready){
+        logMessage(`${roomInfo.room.players[1].name} is ready.`);
+        player2Ready = true;
+    }
 
     // improve later
     if(roomInfo.room.players[0] != undefined && roomInfo.room.players[1] != undefined){
