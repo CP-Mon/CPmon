@@ -42,6 +42,9 @@ readyButton.addEventListener("click", async () => {
 const CPmonSelection = document.getElementById("CPmon-selection");
 for (const CPmonSelectionChild of CPmonSelection.children) {
     CPmonSelectionChild.addEventListener("click", async () => {
+        if (isReady) {
+            return;
+        }
         for (const CPmonSelectionChild of CPmonSelection.children) {
             CPmonSelectionChild.style.backgroundColor = "white";
         }
@@ -60,6 +63,9 @@ function logMessage(message, timeout = 5000) {
 }
 
 export async function drawCPmonStatus() {
+    if (isReady) {
+        return;
+    }
     document.getElementById("CPmon-info").style.visibility = "visible";
 
     let CPmon = await api.getCPmonStatus({CPmonName : CPmonName[CPmonChosenIndex]})
