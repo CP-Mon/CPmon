@@ -2,6 +2,12 @@ import User from "../models/userModel.js"
 import {BACKEND_URL, FRONTEND_URL} from "../../../frontend/public/scripts/config.js"
 
 /** @type {import("express").RequestHandler} */
+export const getUserData = async (req, res) => {
+  const userData = await User.findOne({username:req.body.username});
+  res.status(200).json(userData);
+};
+
+/** @type {import("express").RequestHandler} */
 export const loginUser = async (req, res) => {
   const loginUserData = await User.findOne({username:req.body.username});
 
@@ -18,8 +24,7 @@ export const loginUser = async (req, res) => {
       });
     }else{
       req.session.authenticated = true;
-      req.session.userData = loginUserData;
-      console.log(req.session);
+      req.session.username = loginUserData.username;
       res.status(200).json({
         mes: "Success",
         loginUserData: loginUserData
@@ -31,7 +36,7 @@ export const loginUser = async (req, res) => {
 /** @type {import("express").RequestHandler} */
 export const logoutUser = async (req, res) => {
   req.session.authenticated = false;
-  req.session.userData = null;
+  req.session.username = null;
   res.status(200).json({mes: "Success"});
 };
 

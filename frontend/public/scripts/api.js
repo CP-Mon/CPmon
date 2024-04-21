@@ -1,4 +1,4 @@
-import { BACKEND_URL , FRONTEND_URL} from "./config.js";
+import { BACKEND_URL } from "./config.js";
 
 
 export async function getCurrentUser() {
@@ -49,6 +49,18 @@ export async function SignUpNewUser(obj) {
         body: JSON.stringify(obj),
         credentials: 'include'
     }).then((r) => r.json());
+}
+
+export async function getCPmonStatus(obj) {
+    const userData =  await fetch(`${BACKEND_URL}/CPmon/getCPmonStatus`,{
+        method:"POST",
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    }).then((r) => r.json());
+    return userData
 }
 
 export async function getRooms() {

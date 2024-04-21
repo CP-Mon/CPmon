@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import UserRoute from "./routes/userRoute.js"
 import RoomRoute from "./routes/roomRoute.js"
+import CPmonRoute from "./routes/CPmonRoute.js"
 import { FRONTEND_URL, BACKEND_URL, GOTO_URL } from "../../frontend/public/scripts/config.js";
 const app = express();
 
@@ -36,20 +37,29 @@ app.use(session({
 // use Route
 app.use("/user", UserRoute);
 app.use("/room", RoomRoute);
+app.use("/CPmon", CPmonRoute);
 
 
 // set session
 app.get('/api/getUserData', async (req,res) =>{
-    console.log("Authenticated:", req.session.id);
-    console.log("name:", req.session.userData);
     req.session.visited = true;
 
+    
     if(req.session.authenticated == undefined){
       res.status(200).json(null);
     }else if(req.session.authenticated == false){
       res.status(200).json(null);
     }else{
-    res.status(200).json(req.session.userData)
+      const obj = {username: req.session.username}
+      const userData =  await fetch(`${BACKEND_URL}/user/getUserData`,{
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+        credentials: 'include'
+      }).then((r) => r.json());
+      res.status(200).json(userData)
     }
 });
 

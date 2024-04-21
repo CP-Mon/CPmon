@@ -76,3 +76,18 @@ New Backend endpoint
                 - 'guard': the next damage this unit recieve will calculate by 2xdef
                 - 'magic': ignore def but your def-1
             - P.S. debug this one for an hour
+
+
+
+# Updata 21-4-67 Neen
+change some status 400 -> 200 with status "fail" so user wont see error
+
+Bug Report (to Nadeem)
+- bug : can't use roomInfo.room.startGame() and other method
+- bug : user join multiple room 
+
+Bug Report (to Bean)
+- bug : HP not show 
+- bug : green background should follow choosen pokemon (May be handle in drawCPmonStatus()?)
+- improve : status bar in waiting room, what is highest value?
+- improve : may be delete log-container? We didn't store room log
