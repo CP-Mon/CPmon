@@ -175,10 +175,6 @@ body {
     align-self: flex-end;
 }
 
-#CPmon-1 {
-    background-color: var(--fern-green);
-    /* I set this to preview the feature of choosing CPmon */
-}
 /* General styles for CPmon info */
 #CPmon-info {
     position: fixed;

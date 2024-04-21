@@ -33,11 +33,33 @@ readyButton.addEventListener("click", async () => {
         alert("you already clickk ready button")
         return;
     }
+    readyButton.style.backgroundColor = "#467f4cff";
+    readyButton.style.pointerEvents = "none";
     isReady = true
     await api.addPokemon({username : userData.username, pokemonName: CPmonName[CPmonChosenIndex], id:roomNumber})
     await api.ready({username : userData.username, id:roomNumber})
 });
 
+const CPmonSelection = document.getElementById("CPmon-selection");
+for (const CPmonSelectionChild of CPmonSelection.children) {
+    CPmonSelectionChild.addEventListener("click", async () => {
+        for (const CPmonSelectionChild of CPmonSelection.children) {
+            CPmonSelectionChild.style.backgroundColor = "white";
+        }
+        CPmonSelectionChild.style.backgroundColor = "#467f4cff";
+        logMessage("You have selected " + CPmonSelectionChild.innerText);
+    });
+}
+
+function logMessage(message, timeout = 5000) {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("log-message");
+    messageElement.innerText = message;
+    document.getElementById("log-container").appendChild(messageElement);
+    setTimeout(() => {
+        messageElement.remove();
+    }, timeout);
+}
 
 export async function drawCPmonStatus() {
     let CPmon = await api.getCPmonStatus({CPmonName : CPmonName[CPmonChosenIndex]})
