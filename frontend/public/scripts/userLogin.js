@@ -89,7 +89,7 @@ export async function handleSignUpUser() {
 export async function drawSignUpSection() {
     const userLoginSection = document.getElementById("userLoginSection");
     userLoginSection.innerHTML = `
-        <p class="header"><b>Sign Up</b></p>
+        <p class="header"><b>Sign up</b></p>
         <p>Username</p>
         <input type="text" id="username-input">
         <p>Email</p>
@@ -98,8 +98,8 @@ export async function drawSignUpSection() {
         <input type="password" id="password-input">
         <p>Confirm Password</p>
         <input type="password" id="password-repeat-input">
-        <br><button id="userSignUpButton" class="">SignUp</button>
-        <button id="userLoginButton">Already has account? Back to Login</button>
+        <br><button id="userSignUpButton" class="">Sign up</button>
+        <button id="userLoginButton">Already have account? Back to Login</button>
         
         <p id="SignUpStatus"></p>
     `;
@@ -120,13 +120,13 @@ export async function drawSignUpSection() {
 export async function drawLoginSection() {
     const userLoginSection = document.getElementById("userLoginSection");
     userLoginSection.innerHTML = `
-        <p class="header"><b>Log In</b></p>
+        <p class="header"><b>Log in</b></p>
         <p>Username</p>
         <input type="text" id="username-input">
         <p>Password</p>
         <input type="password" id="password-input">
-        <br><button id="userLoginButton" class="">Login</button>
-        <button id="userSignUpButton" class="">Create New Account</button>
+        <br><button id="userLoginButton" class="">Log in</button>
+        <button id="userSignUpButton" class="">Create new account</button>
         <p id="loginStatus"></p>
         <p>Note for Dev : You could try "Neen" "Password"</p>
     `;
