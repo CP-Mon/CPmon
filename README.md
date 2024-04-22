@@ -111,10 +111,11 @@ Bug Report (to Beam)
 - in room resetting, I add this.players = []; and it make it reset after frontend send clearRoom()
 - add room.gameOverCount to make sure room will reset if two of player already left room
 - add room.TurnCountdown. If it reach 0, game will stop and clearRoom
+- add room.lastAction to make opponent see what other player do in last turn
 
+(to Neen)
+- check if in game in [/room, /game, /loser,winner,timeout] , if not get out to main?
 
-- check if in game, if not get out?
-
-(to beam)
+(to Beam)
 - exp bar should show only number
 - CP card in home should show 4 in one line if open on normal website

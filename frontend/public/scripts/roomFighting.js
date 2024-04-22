@@ -28,11 +28,8 @@ async function drawRoomElement(){
 }
 
 async function game(){
-
     const roomInfo = await api.getRoom({id:roomNumber})
     document.getElementsByClassName('timer-text')[0].innerText = roomInfo.room.TurnCountdown
-    console.log(document.getElementsByClassName('timer-text'));
-
     
     if(roomInfo.room.gameOver == true || roomInfo.room.players == []){
         if(roomInfo.room.winner.name == "error-timeout"){
@@ -57,37 +54,58 @@ async function game(){
 async function chengeTurnPlayer(){
     const roomInfo = await api.getRoom({id:roomNumber})
     turnPlayer = roomInfo.room.turnPlayer.name
+
+    // do animation if change back to this user turn
+    if(turnPlayer == userData.username){
+        
+        if(roomInfo.room.lastAction == 'attack'){
+            handleAttack(playerYouCard)
+        }else if(roomInfo.room.lastAction == 'guard'){
+            handleGuard(playerYouCard)
+        }else if(roomInfo.room.lastAction == 'magic'){
+            handleMagic(playerYouCard)
+        }
+    }
+
+    // update player's name on turn
+    turnPlayer = roomInfo.room.turnPlayer.name
     document.getElementById('room-log').innerText = `${turnPlayer}'s turn`
 
+    // update CPmon HP
     let CPmon1 = roomInfo.room.players[0].pokemonList[0]
     let CPmon2 = roomInfo.room.players[1].pokemonList[0]
-
     document.getElementById("player1-hp-fill").style.width = (CPmon1.status.hp * 100/ CPmon1.status.maxHp).toString() + "%";
     document.getElementById("player2-hp-fill").style.width = (CPmon2.status.hp * 100/ CPmon2.status.maxHp).toString() + "%";
 
+    // switch button
     const actionButton = document.getElementsByClassName("action-button")
     if(turnPlayer == userData.username){
         actionButton[0].id = "attackable-button"
-        actionButton[0].addEventListener("click", handleAttack)
+        actionButton[0].addEventListener("click", () => {handleAttack(playerMeCard)})
         actionButton[1].id = "guardable-button"
-        actionButton[1].addEventListener("click", handleGuard)
+        actionButton[1].addEventListener("click", () => {handleGuard(playerMeCard)})
         actionButton[2].id = "magicable-button"
-        actionButton[2].addEventListener("click", handleMagic)
+        actionButton[2].addEventListener("click", () => {handleMagic(playerMeCard)})
     }else{
         actionButton[0].id = "disable-button"
-        actionButton[0].removeEventListener("click", handleAttack)
+        actionButton[0].removeEventListener("click", () => {handleAttack(playerMeCard)})
         actionButton[1].id = "disable-button"
-        actionButton[1].removeEventListener("click", handleGuard)
+        actionButton[1].removeEventListener("click", () => {handleGuard(playerMeCard)})
         actionButton[2].id = "disable-button"
-        actionButton[2].removeEventListener("click", handleMagic)
+        actionButton[2].removeEventListener("click", () => {handleMagic(playerMeCard)})
     }
+
+
 }
 
-async function handleAttack() {
-    await api.action({username: userData.username, id:roomNumber, action:'attack'});
+async function handleAttack(playerCard) {
+    if(playerCard == playerMeCard){
+        await api.action({username: userData.username, id:roomNumber, action:'attack'});
+    }
+    
 
 
-    const card = document.getElementById(playerMeCard);
+    const card = document.getElementById(playerCard);
 
     // Remove inline animation style
     card.style.animation = '';
@@ -102,9 +120,11 @@ async function handleAttack() {
     }, { once: true }); // Make sure the event listener only runs once
 }
 
-async function handleGuard() {
-    await api.action({username: userData.username, id:roomNumber, action:'guard'});
-    const card = document.getElementById(playerMeCard);
+async function handleGuard(playerCard) {
+    if(playerCard == playerMeCard){
+        await api.action({username: userData.username, id:roomNumber, action:'guard'});
+    }
+    const card = document.getElementById(playerCard);
 
     // Remove inline animation style
     card.style.animation = '';
@@ -120,10 +140,12 @@ async function handleGuard() {
 }
 
 
-async function handleMagic() {
-    await api.action({username: userData.username, id:roomNumber, action:'magic'});
+async function handleMagic(playerCard) {
+    if(playerCard == playerMeCard){
+        await api.action({username: userData.username, id:roomNumber, action:'magic'});
+    }
 
-    const card = document.getElementById(playerMeCard);
+    const card = document.getElementById(playerCard);
     console.log(card);
 
     // Remove inline animation style
