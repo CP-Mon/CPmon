@@ -44,7 +44,6 @@ app.use("/CPmon", CPmonRoute);
 app.get('/api/getUserData', async (req,res) =>{
     req.session.visited = true;
 
-    
     if(req.session.authenticated == undefined){
       res.status(200).json(null);
     }else if(req.session.authenticated == false){
@@ -63,6 +62,16 @@ app.get('/api/getUserData', async (req,res) =>{
     }
 });
 
+async function countDownTurnCountdown() {
+  await fetch(`${BACKEND_URL}/room/countdown/0`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/1`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/2`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/3`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/4`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/5`,{method:"POST"}).then((r) => r.json());
+}
+
+const intervalId = setInterval(countDownTurnCountdown, 1000);
 
 
 export default app;

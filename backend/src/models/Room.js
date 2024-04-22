@@ -16,6 +16,9 @@ export default class Room {
         this.turnPlayer = null;
         this.gameStart = false;
         this.gameOver = false;
+        this.gameOverCount = 0;
+        this.TurnCountdown = 20;
+        this.lastAction = null;
         this.winner = null;
     }
 
@@ -45,12 +48,15 @@ export default class Room {
         if (!this.isAllReady()) return;
         this.gameStart = true;
         this.turnPlayer = this.players[0];
+        this.TurnCountdown = 20;
+        this.lastAction = null;
     }
 
     endGame() {
         if(!this.isGameEnd()) return;
         this.gameStart = false;
         this.gameOver = true;
+        this.lastAction = null;
         const winner = this.players.find(player => !player.isPokemonEmpty());
         if(!winner) {
             throw new Error("This is not possible??????");
@@ -107,12 +113,15 @@ export default class Room {
         switch(action) {
             case 'attack':
                 this.handleAttack(player);
+                this.lastAction = 'attack'
                 break;
             case 'guard':
                 this.handleGuard(player);
+                this.lastAction = 'guard'
                 break;
             case 'magic':
                 this.handleMagic(player);
+                this.lastAction = 'magic'
                 break;
             default:
                 throw new Error("Invalid action.");
@@ -121,6 +130,7 @@ export default class Room {
             this.endGame();
         }
         this.turnPlayer = this.getOtherPlayer(player);
+        this.TurnCountdown = 20;
     }
 
     /** @param {Player} player  */
@@ -147,5 +157,22 @@ export default class Room {
         this.gameStart = false;
         this.gameOver = false;
         this.winner = null;
+        this.players = [];
+        this.TurnCountdown = 20;
+        this.gameOverCount = 0;
+        this.lastAction = null;
+    }
+
+    countDown() {
+        if(this.gameStart == true){
+            this.TurnCountdown = Math.max(0, this.TurnCountdown - 1)
+            if(this.TurnCountdown == 0){
+                this.gameOver = true
+                this.winner = {
+                    name : "error-timeout"
+                }
+            }
+        }
+        
     }
 }

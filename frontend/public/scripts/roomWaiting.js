@@ -128,7 +128,7 @@ export async function drawUsername() {
 
     // check if game is start
     if(roomInfo.room.gameStart){
-        window.location.href = `${FRONTEND_URL}/game/${roomNumber}`;
+        window.location.href = `${FRONTEND_URL}/game/${roomNumber+1}`;
     }
 }
 

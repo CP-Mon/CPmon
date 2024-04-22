@@ -45,6 +45,7 @@ export const checkSignUpNewUser = async (req, res) => {
   const sameUsername = await User.findOne({username:req.body.username});
   const sameEmail = await User.findOne({email:req.body.email});
 
+
   // check if username & email is not duplicate
   if(sameUsername==null & sameEmail==null){
     res.status(200).json({
@@ -52,7 +53,7 @@ export const checkSignUpNewUser = async (req, res) => {
     });
   }else{
     // check if username is duplicate
-    if(sameUsername != null){
+    if(sameUsername != null || req.body.username == "error-timeout"){
       res.status(200).json({
         mes:"DuplicateUsername",
       });
@@ -80,5 +81,27 @@ export const SignUpNewUser = async (req, res) => {
     } else {
       res.status(500).json({ error: "Internal server error." });
     }
+  }
+};
+
+/** @type {import("express").RequestHandler} */
+export const rewardUser = async (req, res) => {
+  const userData = await User.findOne({username:req.body.username});
+
+  // check if username is valid
+  if(userData==null){
+    res.status(200).json({
+      mes:"NoUsername"
+    });
+  }else{
+    const exp = parseInt(req.body.exp)
+    const money = parseInt(req.body.money)
+
+    userData.exp += exp
+    userData.money += money
+    await userData.save()
+    res.status(200).json({
+      mes:"success"
+    });
   }
 };

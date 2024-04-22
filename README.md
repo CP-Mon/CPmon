@@ -103,3 +103,19 @@ Bug Report (to Beam)
 - you can add the same animation for player2 maybe by changing the id in function
 - feel free to adjust the code in the js file
 - i think it would be nice if we lock the time to wait for animation to end first before starting next action?
+
+
+# Update 22-4-67 by Neen
+- change animation*** in fighting room to handle***.js, so it will fetch API too
+- in animation use "playerMeCard-card" and other is "playerYouCard-card"
+- in room resetting, I add this.players = []; and it make it reset after frontend send clearRoom()
+- add room.gameOverCount to make sure room will reset if two of player already left room
+- add room.TurnCountdown. If it reach 0, game will stop and clearRoom
+- add room.lastAction to make opponent see what other player do in last turn
+
+(to Neen)
+- check if in game in [/room, /game, /loser,winner,timeout] , if not get out to main?
+
+(to Beam)
+- exp bar should show only number
+- CP card in home should show 4 in one line if open on normal website

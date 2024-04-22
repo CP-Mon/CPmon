@@ -39,6 +39,18 @@ app.get('/game/:roomID', (req,res) =>{
   res.sendFile(`${publicPath}/gameRoomFighting.html`)
 });
 
+app.get('/winner', (req,res) =>{
+  res.sendFile(`${publicPath}/gameend-winner.html`)
+});
+
+app.get('/loser', (req,res) =>{
+  res.sendFile(`${publicPath}/gameend-loser.html`)
+});
+
+app.get('/timeout', (req,res) =>{
+  res.sendFile(`${publicPath}/gameend-timeout.html`)
+});
+
 app.get('*', async (req,res) =>{
   res.sendFile(`${publicPath}/brokenlink.html`)
 });
