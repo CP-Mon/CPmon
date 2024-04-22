@@ -46,5 +46,5 @@ app.get('*', async (req,res) =>{
 
 const PORT = 3221;
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Frontend Server ready at http://${FRONTEND_URL}:${PORT}`);
+  console.log(`Frontend Server ready at ${FRONTEND_URL}`);
 });
