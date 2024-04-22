@@ -228,3 +228,22 @@ export const Countdown = async (req, res) => {
     res.status(200).json({message : `[ROOM ID: ${roomId}] countdown`})
 
 }
+
+/** @type {express.RequestHandler} */
+export const removePlayerFromAllRooms = async (req, res) => {
+
+    const { username } = req.body;
+    if(!username) {
+        res.status(400).json({ message: `username not found in request body.` });
+        return;
+    }
+
+    for (const room of rooms) {
+        if (room.removePlayer(username)) {
+            console.log(`[ROOM ID: ${room.roomId}] ${username} is removed.`);
+        }
+    }
+
+    res.status(200).json({ message: `${username} is removed from all romms.` });
+    console.log(`${username} is removed from all romms.`);
+};

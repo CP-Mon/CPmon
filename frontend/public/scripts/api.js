@@ -149,3 +149,13 @@ export async function clearRoom(obj) {
         method: "POST"
     }).then(r => r.json())
 }
+
+export async function removePlayerFromAllRooms(obj) {
+    await fetch(`${BACKEND_URL}/room/removePlayers`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+    })
+}

@@ -14,5 +14,6 @@ router.post("/addPokemon/:id", roomController.addPokemon);
 router.post("/removePlayer/:id", roomController.removePlayer);
 router.post("/ready/:id", roomController.ready);
 router.post("/action/:id", roomController.action);
+router.post("/removePlayers", roomController.removePlayerFromAllRooms);
 
 export default router;
