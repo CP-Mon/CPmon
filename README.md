@@ -114,3 +114,7 @@ Bug Report (to Beam)
 
 
 - check if in game, if not get out?
+
+(to beam)
+- exp bar should show only number
+- CP card in home should show 4 in one line if open on normal website
