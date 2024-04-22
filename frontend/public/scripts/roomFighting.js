@@ -103,7 +103,10 @@ async function handleAttack(playerCard) {
         await api.action({username: userData.username, id:roomNumber, action:'attack'});
     }
     
-
+    // play sound
+    const audio = new Audio();
+    audio.src = "../res/audio/attack.mp3";
+    audio.play();
 
     const card = document.getElementById(playerCard);
 
@@ -124,6 +127,12 @@ async function handleGuard(playerCard) {
     if(playerCard == playerMeCard){
         await api.action({username: userData.username, id:roomNumber, action:'guard'});
     }
+
+    // play sound
+    const audio = new Audio();
+    audio.src = "../res/audio/guard.mp3";
+    audio.play();
+
     const card = document.getElementById(playerCard);
 
     // Remove inline animation style
@@ -144,6 +153,11 @@ async function handleMagic(playerCard) {
     if(playerCard == playerMeCard){
         await api.action({username: userData.username, id:roomNumber, action:'magic'});
     }
+
+    // play sound
+    const audio = new Audio();
+    audio.src = "../res/audio/magic.mp3";
+    audio.play();
 
     const card = document.getElementById(playerCard);
     console.log(card);
