@@ -7,7 +7,6 @@
     --jet: #2a2b2aff;
 }
 
-
 @font-face {
     font-family: 'QuickSand';
     src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
@@ -15,7 +14,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
 
 body {
     font-family: 'QuickSand';
@@ -26,6 +24,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100vw;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 h1 {
@@ -56,15 +55,14 @@ h1 {
     border-radius: 50%; /* Make it circular */
     border: 2px solid var(--jet); /* Add border around the image */
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg);
-
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);     
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(200px, auto);
-    gap: 3vw; 
-    padding: 0 12vw; 
+    gap: 3vw;
+    padding: 0 12vw;
     justify-content: center;
     align-items: center;
     width: 75%;
@@ -85,7 +83,6 @@ h1 {
     z-index: 0;
 }
 
-
 .grid-item a {
     display: flex;
     flex-direction: column;
@@ -103,7 +100,7 @@ h1 {
     max-height: 100%; /* Adjust the height of the image section */
     width: auto;
     height: auto;
-    border-radius: 2vw 2vw 2vw 2vw; /* Rounded corners only on top */
+    border-radius: 2vw; /* Rounded corners only on top */
     transition: transform 0.3s ease;
     z-index: 1;
     border-radius: 2vw;
@@ -146,8 +143,8 @@ h1 {
 
 /* Apply shake animation to the image on hover */
 .grid-item:hover {
-     background-color: var(--jet);
-     border-color: wheat;
+    background-color: var(--jet);
+    border-color: wheat;
 }
 
 .grid-item:hover p {
@@ -204,4 +201,206 @@ h1 {
 .grid-item:nth-child(odd) {
     animation-name: slideInRight;
 }
+:root {
+    --sunset: #f6c487ff;
+    --chestnut: #a34d3cff;
+    --cinnabar: #de6141ff;
+    --keppel: #65baa0ff;
+    --fern-green: #467f4cff;
+    --jet: #2a2b2aff;
+}
 
+@font-face {
+    font-family: 'QuickSand';
+    src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
+        url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'QuickSand';
+    margin: 0;
+    padding: 120px 2vw 2vw; /* Add padding to the top to create space for the heading */
+    background-color: var(--keppel);
+    color: var(--jet);
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Maximize the width to the screen */
+    text-align: center;
+    margin: 6vh;
+    font-size: 5vw;
+    animation: jump 1s infinite;
+    z-index: 9999;
+    color: white;
+}
+
+.user-circle {
+    position: fixed;
+    top: 20px;
+    left: 2vw;
+    z-index: 9999;
+    width: 5vw; /* Adjust width of the image as needed */
+    height: 5vw; /* Adjust height of the image as needed */
+}
+
+.user-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid var(--jet); /* Add border around the image */
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 3vw;
+    padding: 0 12vw;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin-top: 50px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: wheat;
+    border-radius: 2vw;
+    border-style: solid;
+    border-color: var(--jet);
+    border-width: 0.1vw;
+    z-index: 0;
+}
+
+.grid-item a {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start;  */
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 1vw;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-height: 100%; /* Adjust the height of the image section */
+    width: auto;
+    height: auto;
+    border-radius: 2vw; /* Rounded corners only on top */
+    transition: transform 0.3s ease;
+    z-index: 1;
+    border-radius: 2vw;
+    border-style: solid;
+    border-color: var(--jet);
+    border-width: 0.1vw;
+}
+
+.grid-item p {
+    margin: 0;
+    padding: 0.25vw;
+    padding-top: 2vw;
+    text-align: center;
+    color: var(--jet);
+    font-size: 125%;
+    /* border-radius: 5px 5px 5px 5px; Rounded corners only on bottom */
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    }
+    .strip {
+        height: 12vh;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr); /* One column for even smaller screens */
+    }
+    .grid-item p {
+        padding-top: 5vh;
+    }
+    .strip {
+        height: 10vh;
+    }
+}
+
+/* Apply shake animation to the image on hover */
+.grid-item:hover {
+    background-color: var(--jet);
+    border-color: wheat;
+}
+
+.grid-item:hover p {
+    color: wheat;
+}
+
+.grid-item:hover img {
+    border-color: wheat;
+}
+
+/* Apply slide-in animation to grid items based on row number */
+.grid-item {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Even rows slide in from the left */
+.grid-item:nth-child(even) {
+    animation-name: slideInLeft;
+}
+
+/* Odd rows slide in from the right */
+.grid-item:nth-child(odd) {
+    animation-name: slideInRight;
+}
