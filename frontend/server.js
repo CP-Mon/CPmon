@@ -2,7 +2,7 @@
 import express from "express";
 import path from 'path';
 import cors from "cors";
-import { FRONTEND_URL, BACKEND_URL, GOTO_URL } from "./public/scripts/config.js";
+import { FRONTEND_URL, BACKEND_URL} from "./public/scripts/config.js";
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url)
@@ -13,8 +13,9 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.json());
 
+// allow request from other origin (Frontend which is at different port)
 app.use(cors({
-  origin: [FRONTEND_URL, BACKEND_URL, GOTO_URL],
+  origin: [FRONTEND_URL, BACKEND_URL],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -45,5 +46,5 @@ app.get('*', async (req,res) =>{
 
 const PORT = 3221;
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Frontend Server ready at http://localhost:${PORT}`);
+  console.log(`Frontend Server ready at http://${FRONTEND_URL}:${PORT}`);
 });

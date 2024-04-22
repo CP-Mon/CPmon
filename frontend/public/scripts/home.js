@@ -3,6 +3,7 @@ import {FRONTEND_URL} from "./config.js"
 
 const userData = await getCurrentUser();
 
+// function : click roomDiv to join room
 function bindClickListener(roomNumber) {
     const roomDiv = document.getElementById("room" + roomNumber);
     roomDiv.addEventListener("click", async () => {

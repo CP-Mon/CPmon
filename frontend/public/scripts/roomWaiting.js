@@ -4,6 +4,7 @@ import { FRONTEND_URL } from "./config.js";
 var roomNumber = window.location.href[window.location.href.toString().length-1] - 1;
 const userData = await api.getCurrentUser();
 
+// function : click back to home button
 const toHome = document.getElementById("toHome");
 toHome.addEventListener("click", async () => {
     await api.removePlayer({username: userData.username, id:roomNumber});
@@ -15,6 +16,7 @@ let CPmonChosenIndex = null;
 const CPmonName = ["Neen", "Beam", "Nadeem", "Tokyo"]
 var isReady = false
 
+// function : click CPmon card to choose your CP mon
 for(let i=1;i<=4;i++){
     const CPmonCard = document.getElementById("CPmon-"+i.toString());
     CPmonCard.addEventListener("click", async () => {
@@ -23,6 +25,7 @@ for(let i=1;i<=4;i++){
     });
 }
 
+// function : handle ready request from user
 const readyButton = document.getElementById("readyButton");
 readyButton.addEventListener("click", async () => {
     if(CPmonChosenIndex == null){
@@ -39,6 +42,7 @@ readyButton.addEventListener("click", async () => {
     await api.ready({username : userData.username, id:roomNumber})
 });
 
+// function : handle select CPmon
 const CPmonSelection = document.getElementById("CPmon-selection");
 for (const CPmonSelectionChild of CPmonSelection.children) {
     CPmonSelectionChild.addEventListener("click", async () => {
@@ -52,6 +56,7 @@ for (const CPmonSelectionChild of CPmonSelection.children) {
     });
 }
 
+// log message
 function logMessage(message, timeout = 5000) {
     const messageElement = document.createElement("div");
     messageElement.classList.add("log-message");
@@ -62,6 +67,7 @@ function logMessage(message, timeout = 5000) {
     }, timeout);
 }
 
+// function : draw CPmon status
 export async function drawCPmonStatus() {
     if (isReady) {
         return;
@@ -79,6 +85,7 @@ export async function drawCPmonStatus() {
 var player1Ready = false;
 var player2Ready = false;
 
+// function : draw username in button of the page & check is game start
 export async function drawUsername() {
 
     let roomInfo = await api.getRoom({id:roomNumber})
@@ -119,11 +126,9 @@ export async function drawUsername() {
         player2Ready = true;
     }
 
-    // improve later
-    if(roomInfo.room.players[0] != undefined && roomInfo.room.players[1] != undefined){
-        if(roomInfo.room.players[0].isReady == true && roomInfo.room.players[1].isReady == true){
-            window.location.href = `${FRONTEND_URL}/game/${roomNumber}`;
-        }
+    // check if game is start
+    if(roomInfo.room.gameStart){
+        window.location.href = `${FRONTEND_URL}/game/${roomNumber}`;
     }
 }
 
