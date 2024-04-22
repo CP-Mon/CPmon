@@ -147,5 +147,6 @@ export default class Room {
         this.gameStart = false;
         this.gameOver = false;
         this.winner = null;
+        this.players = [];
     }
 }

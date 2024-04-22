@@ -181,7 +181,8 @@ export const action = async (req, res) => {
         res.status(400).json({ message: `action not found in request body.` });
         return;
     }
-    const roomId = req.body.roomNumber;
+    const roomId = parseInt(req.params.id, 10);
+
 
     /** @type {Room} */
     const room = rooms.find(room => room.roomId === roomId);
@@ -206,9 +207,15 @@ export const action = async (req, res) => {
 
     res.status(200).json({ message: `[ROOM ID: ${room.roomId}] ${username}'s action completed.`, room });
     console.log(`[ROOM ID: ${room.roomId}] ${username}'s action completed.`);
-
-    if(room.gameOver) {
-        room.resetRoom();
-        console.log(`[ROOM ID: ${room.roomId}] resetting...`);
-    }
 };
+
+/** @type {express.RequestHandler} */
+export const clearRoom = async (req, res) => {
+    const roomId = parseInt(req.params.id, 10);
+    const room = rooms.find(room => room.roomId === roomId);
+    room.gameOverCount += 1
+    if(room.gameOverCount == 2) {
+        room.resetRoom();
+    }
+    res.status(200).json({message : "[ROOM ID: ${room.roomId}] resetted"})
+}

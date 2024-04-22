@@ -132,3 +132,9 @@ export async function action(obj) {
     }).then(r => r.json());
     return room;
 }
+
+export async function clearRoom(obj) {
+    fetch(`${BACKEND_URL}/room/clearRoom/${obj.id}`, {
+        method: "POST"
+    }).then(r => r.json())
+}

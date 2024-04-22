@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     CPmonList:{
         type : Array,
         require: true,
-        default : []
+        default : ["Neen", "Beam", "Nadeem", "Tokyo"]
     },
     money:{
         type : Number,

@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/getRooms", roomController.getRooms);
 router.get("/getRoom/:id", roomController.getRoom);
 
+router.post("/clearRoom/:id", roomController.clearRoom);
 router.post("/joinRoom/:id", roomController.joinRoom);
 router.post("/addPokemon/:id", roomController.addPokemon);
 router.post("/removePlayer/:id", roomController.removePlayer);

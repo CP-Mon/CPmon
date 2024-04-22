@@ -103,3 +103,10 @@ Bug Report (to Beam)
 - you can add the same animation for player2 maybe by changing the id in function
 - feel free to adjust the code in the js file
 - i think it would be nice if we lock the time to wait for animation to end first before starting next action?
+
+
+# Update 22-4-67 by Neen
+- change animation*** in fighting room to handle***.js, so it will fetch API too
+- in animation use "playerMeCard-card" and other is "playerYouCard-card"
+- in room resetting, I add this.players = []; and it make it reset after frontend send clearRoom()
+- add room.gameOverCount to make sure room will reset if two of player already left room
