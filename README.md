@@ -91,3 +91,15 @@ Bug Report (to Beam)
 - bug : green background should follow choosen pokemon (May be handle in drawCPmonStatus()?)
 - improve : status bar in waiting room, what is highest value?
 - improve : may be delete log-container? We didn't store room log
+
+# Update 22-4-67 (morning) by Beam
+- i added gameRoomFighting with 70% of styling.
+- use room log to display player's turn , player's action etc by accessing id "room-log"
+- i also provided timer. you may access it via id "timer-text"
+- for player's hp access id="player1-hp-fill" and id="player2-hp-fill" to style the width
+- when it is the turn of the player, pls add id "attackable-button" "guardable-button" "magicable-button" to the specific button.
+- but also, if its not the turn of the player , pls remove those id.
+- i have already added the animation for each action, but its only for player1.
+- you can add the same animation for player2 maybe by changing the id in function
+- feel free to adjust the code in the js file
+- i think it would be nice if we lock the time to wait for animation to end first before starting next action?
