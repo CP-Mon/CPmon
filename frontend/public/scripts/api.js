@@ -28,6 +28,17 @@ export async function loginUserData(obj) {
     return userData;
 }
 
+export async function rewardUser(obj) {
+    await fetch(`${BACKEND_URL}/user/reward`,{
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+        credentials: 'include'
+    }).then((r) => r.json());
+}
+
 export async function checkSignUpNewUser(obj) {
     const checkSignUpResult = await fetch(`${BACKEND_URL}/user/signup/check`,{
         method:"POST",

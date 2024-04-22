@@ -30,12 +30,17 @@ async function drawRoomElement(){
 async function game(){
 
     const roomInfo = await api.getRoom({id:roomNumber})
+    document.getElementsByClassName('timer-text')[0].innerText = roomInfo.room.TurnCountdown
+    console.log(document.getElementsByClassName('timer-text'));
+
     
     if(roomInfo.room.gameOver == true || roomInfo.room.players == []){
-        if(roomInfo.room.winner.name == userData.username){
+        if(roomInfo.room.winner.name == "error-timeout"){
             await api.clearRoom({id:roomNumber})
-            window.location.href = `${FRONTEND_URL}/winner`
-            
+            window.location.href = `${FRONTEND_URL}/timeout`
+        }else if(roomInfo.room.winner.name == userData.username){
+            await api.clearRoom({id:roomNumber})
+            window.location.href = `${FRONTEND_URL}/winner`    
         }else{
             await api.clearRoom({id:roomNumber})
             window.location.href = `${FRONTEND_URL}/loser`

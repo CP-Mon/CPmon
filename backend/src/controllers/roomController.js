@@ -217,5 +217,14 @@ export const clearRoom = async (req, res) => {
     if(room.gameOverCount == 2) {
         room.resetRoom();
     }
-    res.status(200).json({message : "[ROOM ID: ${room.roomId}] resetted"})
+    res.status(200).json({message : `[ROOM ID: ${roomId}] resetted`})
+}
+
+/** @type {express.RequestHandler} */
+export const Countdown = async (req, res) => {
+    const roomId = parseInt(req.params.id, 10);
+    const room = rooms.find(room => room.roomId === roomId);
+    room.countDown()
+    res.status(200).json({message : `[ROOM ID: ${roomId}] countdown`})
+
 }

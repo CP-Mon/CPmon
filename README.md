@@ -110,3 +110,7 @@ Bug Report (to Beam)
 - in animation use "playerMeCard-card" and other is "playerYouCard-card"
 - in room resetting, I add this.players = []; and it make it reset after frontend send clearRoom()
 - add room.gameOverCount to make sure room will reset if two of player already left room
+- add room.TurnCountdown. If it reach 0, game will stop and clearRoom
+
+
+- check if in game, if not get out?

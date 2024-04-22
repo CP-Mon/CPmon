@@ -16,6 +16,8 @@ export default class Room {
         this.turnPlayer = null;
         this.gameStart = false;
         this.gameOver = false;
+        this.gameOverCount = 0;
+        this.TurnCountdown = 20;
         this.winner = null;
     }
 
@@ -45,6 +47,7 @@ export default class Room {
         if (!this.isAllReady()) return;
         this.gameStart = true;
         this.turnPlayer = this.players[0];
+        this.TurnCountdown = 20;
     }
 
     endGame() {
@@ -121,6 +124,7 @@ export default class Room {
             this.endGame();
         }
         this.turnPlayer = this.getOtherPlayer(player);
+        this.TurnCountdown = 20;
     }
 
     /** @param {Player} player  */
@@ -148,5 +152,20 @@ export default class Room {
         this.gameOver = false;
         this.winner = null;
         this.players = [];
+        this.TurnCountdown = 20;
+        this.gameOverCount = 0;
+    }
+
+    countDown() {
+        if(this.gameStart == true){
+            this.TurnCountdown = Math.max(0, this.TurnCountdown - 1)
+            if(this.TurnCountdown == 0){
+                this.gameOver = true
+                this.winner = {
+                    name : "error-timeout"
+                }
+            }
+        }
+        
     }
 }
