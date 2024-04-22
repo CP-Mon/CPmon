@@ -165,7 +165,7 @@ export async function  drawUserSection() {
         <div id="CPMonListContainer"></div>
         <div id="buttonContainer">
             <a id="userLogoutButton">Log out</a>
-            <a href="/" id="toHome">HOME</a>
+            <a href="/" id="toHome">Vidva</a>
         </div>
     `;
 
@@ -174,16 +174,36 @@ export async function  drawUserSection() {
     const expBar = document.getElementById("expBar");
     expBar.style.width = expPercentage + "%";
 
-    const CPMonListContainer = document.getElementById("CPMonListContainer");
-    UserData.CPmonList.forEach(monster => {
-        const CPMonItem = document.createElement("div");
-        CPMonItem.classList.add("CPMonItem");
-        CPMonItem.innerHTML = `
-            <img src="../res/images/Neen.jpg" alt="${monster}">
-            <p>${monster}</p>
-        `;
-        CPMonListContainer.appendChild(CPMonItem);
-    });
+    // const CPMonListContainer = document.getElementById("CPMonListContainer");
+    // UserData.CPmonList.forEach(monster => {
+    //     const CPMonItem = document.createElement("div");
+    //     CPMonItem.classList.add("CPMonItem");
+    //     CPMonItem.innerHTML = `
+    //         <img src="../res/images/Neen.jpg" alt="${monster}">
+    //         <p>${monster}</p>
+    //     `;
+    //     CPMonListContainer.appendChild(CPMonItem);
+    // });
+
+    const CPmonListContainer = document.getElementById("CPMonListContainer");
+    CPmonListContainer.innerHTML = `<div id="CPmon-selection">
+    <div class="CPmon-card" id="CPmon-1">
+        <img src="../res/images/Neen.jpg" alt="CPmon 1" class="CPmon-avatar">
+        <p class="CPmon-name">Neen</p>
+    </div>
+    <div class="CPmon-card" id="CPmon-2">
+        <img src="../res/images/Neen.jpg" alt="CPmon 2" class="CPmon-avatar">
+        <p class="CPmon-name">Beam</p>
+    </div>
+    <div class="CPmon-card" id="CPmon-3">
+        <img src="../res/images/Neen.jpg" alt="CPmon 3" class="CPmon-avatar">
+        <p class="CPmon-name">Nadeem</p>
+    </div>
+    <div class="CPmon-card" id="CPmon-4">
+        <img src="../res/images/Neen.jpg" alt="CPmon 4" class="CPmon-avatar">
+        <p class="CPmon-name">Tokyo</p>
+    </div>
+</div>`;
 
     // Add event listener for logout button
     const userLogoutButton = document.getElementById("userLogoutButton");
