@@ -13,17 +13,19 @@
     <audio autoplay loop>
         <source src="../res/audio/redCastle.mp3" type="audio/mpeg">
     </audio>
-    <div class="border-container-left-right">
-        <h1 id="room-log">Player1's turn</h1>
-        <!-- The command like "CPmon1 attacked CPmon2!!" will appear here -->
 
-         <div class="timer">
-            <svg class="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <circle class="timer-circle" cx="50" cy="50" r="45"/>
-            </svg>
-            <div class="timer-text">10</div>
-          </div>
-          
+    <h1 id="room-log">Player1's turn</h1>
+    <!-- The command like "CPmon1 attacked CPmon2!!" will appear here -->
+
+    <div class="timer">
+        <svg class="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle class="timer-circle" cx="50" cy="50" r="45"/>
+        </svg>
+        <div class="timer-text">10</div>
+      </div>
+
+    <div class="border-container-left-right">
+
         <!-- Player 1 HP bar -->
         <div class="player-info left">
             <div class="info">
@@ -58,17 +60,17 @@
             <img class="CPmon-avatar" id="CPmon2-pic" src="../res/images/CPmon/Neen.png" alt="CPmon 2">
             <div class="CPmon-name" id="CPmon2-card-name">CPmon 2</div>
         </div>
+    </div>
 
-        <div class="action-strip">
-            <button class="action-button" id="attackable-button">
-                <img src="../res/images/icon/sword.png">Attack
-            </button>
-            <button class="action-button" id="guardable-button">
-                <img src="../res/images/icon/shield.png">Guard</button>
-            <button class="action-button" id="magicable-button">
-                <img src="../res/images/icon/magic-wand.png">Magic</button>
-            <!-- remove #attackable-button when it's not player turn -->
-        </div>
+    <div class="action-strip">
+        <button class="action-button" id="attackable-button">
+            <img src="../res/images/icon/sword.png">Attack
+        </button>
+        <button class="action-button" id="guardable-button">
+            <img src="../res/images/icon/shield.png">Guard</button>
+        <button class="action-button" id="magicable-button">
+            <img src="../res/images/icon/magic-wand.png">Magic</button>
+        <!-- remove #attackable-button when it's not player turn -->
     </div>
 </body>
 </html>

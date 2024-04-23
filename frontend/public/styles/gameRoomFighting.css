@@ -43,6 +43,7 @@ body, html {
     border-right: 1vw solid var(--keppel); /* Example color and style for right border */
     padding: 20px; /* Add padding to give space between the border and content */
     z-index: 0;
+    justify-content: center;
 }
 
 
@@ -211,7 +212,8 @@ body, html {
     margin-bottom: 2vw;
     width: 15vw;
     text-align: center;
-    display: inline-block;
+    justify-self: center;
+    /* display: inline-block; */
     margin: auto;
     top: 150px;
 }
