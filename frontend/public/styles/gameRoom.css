@@ -249,3 +249,26 @@ body {
 #CPmon-defense .stat-bar .CPmon-stat-value {
     background-color: #87ceeb;
 }
+
+@media only screen and (orientation: portrait) {
+    html, body {
+        overflow: hidden; /* Hide the main content */
+    }
+    html::before {
+        content: "Please rotate your screen";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 9999;
+    }
+}
+
+
+
