@@ -42,7 +42,7 @@ export default class CPmon {
 
     magic(enemy) {
         const damage = this.status.mAtk;
-        this.status.def -= 1;
+        this.status.def -= 2;
         enemy.decreaseHp(damage);
         return damage;
     }

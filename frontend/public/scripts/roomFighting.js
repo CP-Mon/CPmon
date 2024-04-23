@@ -63,7 +63,7 @@ async function chengeTurnPlayer(){
 
     // do animation if change back to this user turn
     if(turnPlayer == userData.username){
-        
+        isAction = false
         if(roomInfo.room.lastAction == 'attack'){
             handleAttack(playerYouCard)
         }else if(roomInfo.room.lastAction == 'guard'){

@@ -15,16 +15,16 @@ export default class Status {
         this.mAtk = mAtk;
     }
     static CARRY() {
-        return new Status(15, 4, 1, 3);
+        return new Status(30, 14, 2, 10);
     }
     static MAGE() {
-        return new Status(12, 3, 1, 8);
+        return new Status(25, 10, 2, 15);
     }
     static BALANCE() {
-        return new Status(20, 3, 2, 5);
+        return new Status(35, 12, 3, 10);
     }
     static TANK() {
-        return new Status(30, 2, 3, 4);
+        return new Status(50, 8, 4, 6);
     }
     // only for developping 
     static JOMNOIZ() {
