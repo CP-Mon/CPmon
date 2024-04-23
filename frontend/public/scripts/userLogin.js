@@ -156,12 +156,15 @@ export async function  drawUserSection() {
     </div>
 
         <h3 id="greeting">Hi, ${UserData.username}</h3>
-        <p>Your CPMon:</p>
+        <p>Your default CPMon:</p>
+
         <div id="CPMonListContainer"></div>
         <div id="buttonContainer">
             <a id="userLogoutButton">Exit</a>
             <a href="/home" id="toHome">Vidva</a>
         </div>
+
+        <p style="font-size:3vh">play more game to unlock secret</p>
     `;
 
     // Calculate the width of the experience bar based on the user's experience points

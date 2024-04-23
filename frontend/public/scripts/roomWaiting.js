@@ -15,17 +15,21 @@ var audio = document.querySelector('audio');
 audio.volume = 0.5; // 50% volume
 
 let CPmonChosenIndex = null;
-const CPmonName = ["Neen", "Beam", "Nadeem", "Tokyo"]
+const CPmonName = ["Neen", "Beam", "Nadeem", "Tokyo", "JOMNOIZ"]
 var isReady = false
 
 // function : click CPmon card to choose your CP mon
-for(let i=1;i<=4;i++){
+for(let i=1;i<=5;i++){
     const CPmonCard = document.getElementById("CPmon-"+i.toString());
     CPmonCard.addEventListener("click", async () => {
+        if (i==5 && userData.exp < 1500) {
+            return;
+        }
         CPmonChosenIndex = i-1
         drawCPmonStatus()
     });
 }
+
 
 // function : handle ready request from user
 const readyButton = document.getElementById("readyButton");
@@ -52,9 +56,13 @@ readyButton.addEventListener("click", async () => {
 
 // function : handle select CPmon
 const CPmonSelection = document.getElementById("CPmon-selection");
-for (const CPmonSelectionChild of CPmonSelection.children) {
+for (let i =0; i<=4;i++) {
+    const CPmonSelectionChild = CPmonSelection.children[i]
     CPmonSelectionChild.addEventListener("click", async () => {
         if (isReady) {
+            return;
+        }
+        if (i==4 && userData.exp <1500) {
             return;
         }
         for (const CPmonSelectionChild of CPmonSelection.children) {
@@ -82,9 +90,11 @@ export async function drawCPmonStatus() {
     if (isReady) {
         return;
     }
-    document.getElementById("CPmon-info").style.visibility = "visible";
+    
 
     let CPmon = await api.getCPmonStatus({CPmonName : CPmonName[CPmonChosenIndex]})
+
+    document.getElementById("CPmon-info").style.visibility = "visible";
     document.getElementById("CPmon-name").innerText = CPmonName[CPmonChosenIndex];
     document.getElementById("CPmon-image").src =`../res/images/CPmon/${CPmonName[CPmonChosenIndex]}.png`
 
@@ -146,3 +156,10 @@ export async function drawUsername() {
 }
 
 const intervalId = setInterval(drawUsername, 1000);
+
+// lock JOMNOIZ
+if(userData.exp < 1500){
+    document.getElementById("JOMNOIZ").src = "../res/images/CPmon/JOMNOIZ_lock.png"
+}else{
+    document.getElementById("JOMNOIZ").src = "../res/images/CPmon/JOMNOIZ.png"
+}

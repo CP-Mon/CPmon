@@ -189,7 +189,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* visibility: hidden; */
+    visibility: hidden;
     overflow-y: auto;
     scrollbar-width: none;
 }
