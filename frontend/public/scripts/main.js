@@ -12,10 +12,16 @@ if(currentUser==null){
     // if user in gameroom without players name in room -> send to /home
     // if user not in gameroom but their are still name in game room -> remove player
     const location_now = window.location.href
-    var validRegex = /\/(room|game)\/\d+$/;
+    var validRegex = /(\/(room|game)\d+)|\/(room|game)\/\d+$/;
 
     if(location_now.match(validRegex)){
-        const roomNumber = window.location.href[window.location.href.toString().length-1] -1 ;
+        let roomNumber = null
+        if(window.location.href[window.location.href.toString().length-2] == "1"){
+            roomNumber = (window.location.href[window.location.href.toString().length-2]) + (window.location.href[window.location.href.toString().length-1]) -1 ;
+        }else{
+            roomNumber = window.location.href[window.location.href.toString().length-1] -1 ;
+        }
+        
         const roomInfo = await getRoom({id:roomNumber})
         if(roomInfo.room.players.length == 0){
             window.location.href = `${FRONTEND_URL}/home`;
