@@ -11,7 +11,8 @@ toHome.addEventListener("click", async () => {
     window.location.href = `${FRONTEND_URL}/home`;
 });
 
-
+var audio = document.querySelector('audio');
+audio.volume = 0.5; // 50% volume
 
 let CPmonChosenIndex = null;
 const CPmonName = ["Neen", "Beam", "Nadeem", "Tokyo"]
@@ -69,6 +70,8 @@ function logMessage(message, timeout = 5000) {
     messageElement.classList.add("log-message");
     messageElement.innerText = message;
     document.getElementById("log-container").appendChild(messageElement);
+
+
     setTimeout(() => {
         messageElement.remove();
     }, timeout);

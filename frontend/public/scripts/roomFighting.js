@@ -9,6 +9,9 @@ drawRoomElement()
 let turnPlayer = null
 let isAction = true;
 
+var audio = document.querySelector('audio');
+audio.volume = 0.5; // 50% volume
+
 async function drawRoomElement(){
     const roomInfo = await api.getRoom({id:roomNumber})
 
