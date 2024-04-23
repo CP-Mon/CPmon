@@ -1,10 +1,10 @@
 
 import express from "express";
-import path from 'path';
+import path from 'node:path';
 import cors from "cors";
 import { FRONTEND_URL, BACKEND_URL} from "./public/scripts/config.js";
 
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(path.dirname(__filename));
 
