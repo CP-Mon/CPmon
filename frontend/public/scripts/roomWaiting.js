@@ -87,10 +87,10 @@ export async function drawCPmonStatus() {
     let CPmon = await api.getCPmonStatus({CPmonName : CPmonName[CPmonChosenIndex]})
     document.getElementById("CPmon-name").innerText = CPmonName[CPmonChosenIndex];
     document.getElementById("CPmon-image").src =`../res/images/CPmon/${CPmonName[CPmonChosenIndex]}.png`
-    
+
     document.getElementById("CPmon-hp").children[1].children[0].style.width = (CPmon.status.hp * 100/ 30).toString() + "%";
     document.getElementById("CPmon-attack").children[1].children[0].style.width = (CPmon.status.atk * 100/ 5).toString() + "%";
-    document.getElementById("CPmon-defense").children[1].children[0].style.width = (CPmon.status.def * 100/ 5).toString() + "%";
+    document.getElementById("CPmon-magic").children[1].children[0].style.width = (CPmon.status.mAtk * 100/ 10).toString() + "%";
 }
 
 var player1Ready = false;
