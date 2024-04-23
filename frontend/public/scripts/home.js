@@ -18,6 +18,6 @@ function bindClickListener(roomNumber) {
 }
 ;
 
-for(var i = 1; i <= 6; i++){
+for(var i = 1; i <= 12; i++){
     bindClickListener(i.toString());
 }
