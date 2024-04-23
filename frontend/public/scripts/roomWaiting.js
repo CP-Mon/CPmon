@@ -36,6 +36,12 @@ readyButton.addEventListener("click", async () => {
     if(isReady == true){
         return;
     }
+
+    // play sound
+    const audio = new Audio();
+    audio.src = "../res/audio/ready.mp3";
+    audio.play();
+
     readyButton.style.backgroundColor = "#467f4cff";
     readyButton.style.pointerEvents = "none";
     isReady = true
