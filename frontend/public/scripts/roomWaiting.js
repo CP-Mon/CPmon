@@ -8,7 +8,7 @@ const userData = await api.getCurrentUser();
 const toHome = document.getElementById("toHome");
 toHome.addEventListener("click", async () => {
     await api.removePlayer({username: userData.username, id:roomNumber});
-    window.location.href = `${FRONTEND_URL}/`;
+    window.location.href = `${FRONTEND_URL}/home`;
 });
 
 
