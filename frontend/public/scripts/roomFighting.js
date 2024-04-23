@@ -15,6 +15,8 @@ async function drawRoomElement(){
     document.getElementById('CPmon2-name').innerText = roomInfo.room.players[1].pokemonList[0].name
     document.getElementById('CPmon1-card-name').innerText = roomInfo.room.players[0].pokemonList[0].name
     document.getElementById('CPmon2-card-name').innerText = roomInfo.room.players[1].pokemonList[0].name
+    document.getElementById('CPmon1-pic').src = `../res/images/CPmon/${roomInfo.room.players[0].pokemonList[0].name}.png`
+    document.getElementById('CPmon2-pic').src = `../res/images/CPmon/${roomInfo.room.players[1].pokemonList[0].name}.png`
     document.getElementById('player1-name').innerText = roomInfo.room.players[0].name
     document.getElementById('player2-name').innerText = roomInfo.room.players[1].name
 

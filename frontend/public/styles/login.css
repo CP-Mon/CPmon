@@ -30,7 +30,6 @@ body {
 }
 
 #userLoginSection {
-    font-size: 20px;
     padding: 1.25vw;
     display: flex;
     flex-direction: column;
@@ -140,8 +139,8 @@ body {
 #toHome,
 #userLogoutButton {
     display: block;
-    width: 7vw;
-    height: 5.5vw;
+    width: 10vw;
+    height: 6vw;
     background-color: var(--jet);
     color: var(--sunset);
     font-size: 1.5vw;
@@ -151,6 +150,54 @@ body {
     line-height: 5.5vw; /* Center text vertically */
     margin-bottom: 0.75vw; /* Add margin between the buttons */
     margin-right: 1.5vw;
+}
+
+/* Media queries for responsive design */
+@media screen{
+    #userLogoutButton {
+        font-size: 2.5vw;
+    }
+    #toHome {
+        font-size: 2.5vw;
+    }
+    p, #expText, #moneyLabel, #userMoney {
+        font-size: 2vw;
+    }
+    #greeting {
+        font-size: 10vw;
+    }
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 1000px) {
+    #userLogoutButton {
+        font-size: 3vw;
+    }
+    #toHome {
+        font-size: 3vw;
+    }
+    p, #expText, #moneyLabel, #userMoney {
+        font-size: 4vw;
+    }
+    #greeting {
+        font-size: 8vw;
+    }
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 500px) {
+    #userLogoutButton {
+        font-size: 3vw;
+    }
+    #toHome {
+        font-size: 2.5vw;
+    }
+    p, #expText, #moneyLabel, #userMoney {
+        font-size: 4vw;
+    }
+    #greeting {
+        font-size: 8vw;
+    }
 }
 
 #toHome:hover,
@@ -178,17 +225,8 @@ body {
 #expText {
     margin-right: 1vw; /* Adjust spacing as needed */
     color: var(--sunset); /* Adjust color as needed */
-    font-size: 2vw;
 }
 
-#expBarContainer {
-    position: relative;
-    width: 12vw; /* Adjust width as needed */
-    height: 20px; /* Adjust height as needed */
-    background-color: var(--keppel); /* Adjust color as needed */
-    border-radius: 10px; /* Adjust border radius as needed */
-    overflow: hidden; /* Ensure the exp bar text stays within its container */
-}
 
 #expBar {
     position: absolute;
@@ -226,7 +264,6 @@ body {
     top: 0;
     right: 0;
     padding: 10px;
-    font-size: 2vw;
     color: var(--sunset);
     display: flex;
     margin-right: 1vw;
@@ -267,6 +304,8 @@ body {
 }
 
 #CPmon-selection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     top: 7vw;
     left: 3.5vw;
     bottom: 7vw;
@@ -291,7 +330,7 @@ body {
     padding: 0.5vw;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 2vw;
-    width: 20%;
+    width: 80%;
     display: inline-block;
     margin: 1vw;
     text-align: center;
@@ -311,9 +350,6 @@ body {
     margin-bottom: 0.5vw;
 }
 
-p {
-    font-size: 2vw;
-}
 
 @keyframes slideInLeft {
     0% {
@@ -343,5 +379,21 @@ p {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+
+
+.strip {
+    height: 12vh;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 780px) {
+    #CPmon-selection {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .strip {
+        height: 10vh;
     }
 }

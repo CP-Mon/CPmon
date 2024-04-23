@@ -34,7 +34,7 @@ h1 {
     width: 100%; /* Maximize the width to the screen */
     text-align: center;
     margin: 6vh;
-    font-size: 5vw;
+    font-size: 10vh;
     animation: jump 1s infinite;
     z-index: 9999;
     color: white;
@@ -322,27 +322,6 @@ h1 {
     /* border-radius: 5px 5px 5px 5px; Rounded corners only on bottom */
 }
 
-/* Media queries for responsive design */
-@media screen and (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
-    }
-    .strip {
-        height: 12vh;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .grid-container {
-        grid-template-columns: repeat(1, 1fr); /* One column for even smaller screens */
-    }
-    .grid-item p {
-        padding-top: 5vh;
-    }
-    .strip {
-        height: 10vh;
-    }
-}
 
 /* Apply shake animation to the image on hover */
 .grid-item:hover {
@@ -403,4 +382,26 @@ h1 {
 /* Odd rows slide in from the right */
 .grid-item:nth-child(odd) {
     animation-name: slideInRight;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    }
+    .strip {
+        height: 12vh;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr); /* One column for even smaller screens */
+    }
+    .grid-item p {
+        padding-top: 5vh;
+    }
+    .strip {
+        height: 10vh;
+    }
 }

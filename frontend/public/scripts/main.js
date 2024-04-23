@@ -21,7 +21,7 @@ if(currentUser==null && window.location.href != `${FRONTEND_URL}/user`){
         }else if(roomInfo.room.players[0].name != currentUser.username && roomInfo.room.players.length == 1){
             window.location.href = `${FRONTEND_URL}/home`;
         }else if(roomInfo.room.players.length == 2){
-            if(roomInfo.room.players[0].name != currentUser.username || roomInfo.room.players[1].name != currentUser.username){
+            if(roomInfo.room.players[0].name != currentUser.username && roomInfo.room.players[1].name != currentUser.username){
                 window.location.href = `${FRONTEND_URL}/home`;
             }
         } 
