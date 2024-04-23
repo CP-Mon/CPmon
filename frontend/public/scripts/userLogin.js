@@ -128,7 +128,6 @@ export async function drawLoginSection() {
         <br><button id="userLoginButton" class="">Log in</button>
         <button id="userSignUpButton" class="">Create new account</button>
         <p id="loginStatus"></p>
-        <p>Note for Dev : You could try "Neen" "Password"</p>
     `;
 
     // add eventListener for login button
