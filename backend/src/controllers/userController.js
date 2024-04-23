@@ -22,9 +22,8 @@ export const loginUser = async (req, res) => {
       res.status(200).json({
         mes:"WrongPassword"
       });
-    }else{
-      req.session.authenticated = true;
-      req.session.username = loginUserData.username;
+    }else
+    {
       res.status(200).json({
         mes: "Success",
         loginUserData: loginUserData
