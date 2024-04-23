@@ -70,12 +70,13 @@ async function chengeTurnPlayer(){
     if(turnPlayer == userData.username){
         isAction = false
         if(roomInfo.room.lastAction == 'attack'){
-            handleAttack(playerYouCard)
+            await handleAttack(playerYouCard)
         }else if(roomInfo.room.lastAction == 'guard'){
-            handleGuard(playerYouCard)
+            await handleGuard(playerYouCard)
         }else if(roomInfo.room.lastAction == 'magic'){
-            handleMagic(playerYouCard)
+            await handleMagic(playerYouCard)
         }
+        isAction = true
     }
 
     // update player's name on turn

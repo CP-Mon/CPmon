@@ -96,14 +96,14 @@ export async function getCPmonStatus(obj) {
 }
 
 export async function getRooms() {
-    const rooms = fetch(`${BACKEND_URL}/room/getRooms`, {
+    const rooms = await fetch(`${BACKEND_URL}/room/getRooms`, {
         method: "GET"
     }).then(r => r.json())
     return rooms;
 }
 
 export async function getRoom(obj) {
-    const room = fetch(`${BACKEND_URL}/room/getRoom/${obj.id}`, {
+    const room = await fetch(`${BACKEND_URL}/room/getRoom/${obj.id}`, {
         method: "GET"
     }).then(r => r.json());
     return room;
@@ -111,7 +111,7 @@ export async function getRoom(obj) {
 
 
 export async function joinRoom(obj) {
-    const room = fetch(`${BACKEND_URL}/room/joinRoom/${obj.id}`, {
+    const room = await fetch(`${BACKEND_URL}/room/joinRoom/${obj.id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export async function joinRoom(obj) {
 }
 
 export async function addPokemon(obj) {
-    const room = fetch(`${BACKEND_URL}/room/addPokemon/${obj.id}`, {
+    const room = await fetch(`${BACKEND_URL}/room/addPokemon/${obj.id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -133,7 +133,7 @@ export async function addPokemon(obj) {
 }
 
 export async function removePlayer(obj) {
-    const room = fetch(`${BACKEND_URL}/room/removePlayer/${obj.id}`, {
+    const room = await fetch(`${BACKEND_URL}/room/removePlayer/${obj.id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -155,7 +155,7 @@ export async function ready(obj) {
 }
 
 export async function action(obj) {
-    const room = fetch(`${BACKEND_URL}/room/action/${obj.id}`, {
+    const room = await fetch(`${BACKEND_URL}/room/action/${obj.id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -166,7 +166,7 @@ export async function action(obj) {
 }
 
 export async function clearRoom(obj) {
-    fetch(`${BACKEND_URL}/room/clearRoom/${obj.id}`, {
+    await fetch(`${BACKEND_URL}/room/clearRoom/${obj.id}`, {
         method: "POST"
     }).then(r => r.json())
 }

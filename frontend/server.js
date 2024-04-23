@@ -57,7 +57,7 @@ app.get('/timeout', (req,res) =>{
 });
 
 app.get('*', async (req,res) =>{
-  res.sendFile(`${publicPath}/brokenlink.html`)
+  res.sendFile(`${publicPath}/brokenLink.html`)
 });
 
 

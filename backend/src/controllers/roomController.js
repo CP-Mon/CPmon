@@ -201,7 +201,7 @@ export const action = async (req, res) => {
     try {
         room.playerAction(player, action);
     } catch (error) {
-        res.status(400).json({ message: `Error: ${error.message}` });
+        res.status(200).json({ message: `Error: ${error.message}` });
         return;
     }
 

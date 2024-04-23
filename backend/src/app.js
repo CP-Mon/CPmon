@@ -36,6 +36,12 @@ async function countDownTurnCountdown() {
   await fetch(`${BACKEND_URL}/room/countdown/3`,{method:"POST"}).then((r) => r.json());
   await fetch(`${BACKEND_URL}/room/countdown/4`,{method:"POST"}).then((r) => r.json());
   await fetch(`${BACKEND_URL}/room/countdown/5`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/6`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/7`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/8`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/9`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/10`,{method:"POST"}).then((r) => r.json());
+  await fetch(`${BACKEND_URL}/room/countdown/11`,{method:"POST"}).then((r) => r.json());
 }
 
 const intervalId = setInterval(countDownTurnCountdown, 1000);
