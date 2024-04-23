@@ -1,7 +1,12 @@
 import * as api from "./api.js";
 import { FRONTEND_URL } from "./config.js";
 
-var roomNumber = window.location.href[window.location.href.toString().length-1] -1 ;
+let roomNumber = null
+if(window.location.href[window.location.href.toString().length-2] == "1"){
+    roomNumber = (window.location.href[window.location.href.toString().length-2]) + (window.location.href[window.location.href.toString().length-1]) -1 ;
+}else{
+    roomNumber = window.location.href[window.location.href.toString().length-1] -1 ;
+}
 const userData = await api.getCurrentUser();
 var playerMeCard, playerYouCard
 
