@@ -22,8 +22,12 @@ app.use(cors({
 }));
 
 
-app.get('/', async (req,res) =>{
+app.get('/home', async (req,res) =>{
   res.sendFile(`${publicPath}/index.html`)
+});
+
+app.get('/', async (req,res) =>{
+  res.sendFile(`${publicPath}/userData.html`)
 });
 
 app.get('/user', async (req,res) =>{
