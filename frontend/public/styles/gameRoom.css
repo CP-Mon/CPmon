@@ -27,7 +27,7 @@
 body {
     font-family: 'Quicksand';
     background-color: var(--sunset);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #room-name {
@@ -190,13 +190,15 @@ body {
     flex-direction: column;
     align-items: center;
     visibility: hidden;
+    overflow-y: auto;
 }
 
 #CPmon-image {
     width: 30vw;
-    height: 15vw;
+    height: 8vw;
     border-radius: 10px;
     margin-bottom: 20px;
+    object-fit: cover;
 }
 
 #CPmon-name {
