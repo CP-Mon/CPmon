@@ -250,12 +250,13 @@ body {
     background-color: #87ceeb;
 }
 
+/* Make phone force to rotage */
 @media only screen and (orientation: portrait) {
     html, body {
-        overflow: hidden; /* Hide the main content */
+        overflow: hidden;
     }
     html::before {
-        content: "Please rotate your screen";
+        content: "Please rotate";
         position: fixed;
         top: 50%;
         left: 50%;
@@ -263,8 +264,8 @@ body {
         font-size: 24px;
         font-weight: bold;
         color: white;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 10px 20px;
+        background-color: #f6c487ff;
+        padding: 100% 100%;
         border-radius: 5px;
         z-index: 9999;
     }

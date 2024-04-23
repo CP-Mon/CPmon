@@ -148,10 +148,6 @@ export async function  drawUserSection() {
     userLoginSection.innerHTML = `
     <div id="expContainer">
         <div id="expText">Exp :</div>
-        <div id="expBarContainer">
-            <div id="expBar" style="width: calc(${UserData.exp}%);"></div>
-            <div id="expAmount">${UserData.exp}</div>
-        </div>
     </div>
 
     <div id="moneyContainer">
@@ -163,43 +159,30 @@ export async function  drawUserSection() {
         <p>Your CPMon:</p>
         <div id="CPMonListContainer"></div>
         <div id="buttonContainer">
-            <a id="userLogoutButton">Log out</a>
+            <a id="userLogoutButton">Exit</a>
             <a href="/home" id="toHome">Vidva</a>
         </div>
     `;
 
     // Calculate the width of the experience bar based on the user's experience points
-    const expPercentage = (UserData.exp / 100) * 100;
-    const expBar = document.getElementById("expBar");
-    expBar.style.width = expPercentage + "%";
-
-    // const CPMonListContainer = document.getElementById("CPMonListContainer");
-    // UserData.CPmonList.forEach(monster => {
-    //     const CPMonItem = document.createElement("div");
-    //     CPMonItem.classList.add("CPMonItem");
-    //     CPMonItem.innerHTML = `
-    //         <img src="../res/images/Neen.jpg" alt="${monster}">
-    //         <p>${monster}</p>
-    //     `;
-    //     CPMonListContainer.appendChild(CPMonItem);
-    // });
+    document.getElementById("expText").innerText = `Exp : ${(UserData.exp / 100) * 100}`;
 
     const CPmonListContainer = document.getElementById("CPMonListContainer");
     CPmonListContainer.innerHTML = `<div id="CPmon-selection">
     <div class="CPmon-card" id="CPmon-1">
-        <img src="../res/images/Neen.jpg" alt="CPmon 1" class="CPmon-avatar">
+        <img src="../res/images/CPmon/Neen.png" alt="CPmon 1" class="CPmon-avatar">
         <p class="CPmon-name">Neen</p>
     </div>
     <div class="CPmon-card" id="CPmon-2">
-        <img src="../res/images/Neen.jpg" alt="CPmon 2" class="CPmon-avatar">
+        <img src="../res/images/CPmon/Beam.png" alt="CPmon 2" class="CPmon-avatar">
         <p class="CPmon-name">Beam</p>
     </div>
     <div class="CPmon-card" id="CPmon-3">
-        <img src="../res/images/Neen.jpg" alt="CPmon 3" class="CPmon-avatar">
+        <img src="../res/images/CPmon/Nadeem.png" alt="CPmon 3" class="CPmon-avatar">
         <p class="CPmon-name">Nadeem</p>
     </div>
     <div class="CPmon-card" id="CPmon-4">
-        <img src="../res/images/Neen.jpg" alt="CPmon 4" class="CPmon-avatar">
+        <img src="../res/images/CPmon/Tokyo.png" alt="CPmon 4" class="CPmon-avatar">
         <p class="CPmon-name">Tokyo</p>
     </div>
 </div>`;
