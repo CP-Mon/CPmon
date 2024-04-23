@@ -3,8 +3,10 @@ import {FRONTEND_URL} from "../scripts/config.js"
 
 // redirect user to login page if user is not login yet
 const currentUser = await getCurrentUser();
-if(currentUser==null && window.location.href != `${FRONTEND_URL}/user`){
-    window.location.href = `${FRONTEND_URL}/user`;
+if(currentUser==null){
+    if(window.location.href != `${FRONTEND_URL}/user`){
+        window.location.href = `${FRONTEND_URL}/user`;
+    }    
 }else{
     // check if in gameroom correctly
     // if user in gameroom without players name in room -> send to /home
@@ -12,7 +14,6 @@ if(currentUser==null && window.location.href != `${FRONTEND_URL}/user`){
     const location_now = window.location.href
     var validRegex = /\/(room|game)\/\d+$/;
 
-    console.log(location_now);
     if(location_now.match(validRegex)){
         const roomNumber = window.location.href[window.location.href.toString().length-1] -1 ;
         const roomInfo = await getRoom({id:roomNumber})

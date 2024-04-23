@@ -22,6 +22,7 @@ app.use(cors({
 }));
 
 
+// link
 app.get('/home', async (req,res) =>{
   res.sendFile(`${publicPath}/index.html`)
 });
