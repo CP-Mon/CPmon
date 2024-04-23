@@ -7,6 +7,7 @@ var playerMeCard, playerYouCard
 
 drawRoomElement()
 let turnPlayer = null
+let isAction = true;
 
 async function drawRoomElement(){
     const roomInfo = await api.getRoom({id:roomNumber})
@@ -82,6 +83,7 @@ async function chengeTurnPlayer(){
     // switch button
     const actionButton = document.getElementsByClassName("action-button")
     if(turnPlayer == userData.username){
+        isAction = false
         actionButton[0].id = "attackable-button"
         actionButton[0].addEventListener("click", () => {handleAttack(playerMeCard)})
         actionButton[1].id = "guardable-button"
@@ -89,6 +91,7 @@ async function chengeTurnPlayer(){
         actionButton[2].id = "magicable-button"
         actionButton[2].addEventListener("click", () => {handleMagic(playerMeCard)})
     }else{
+        isAction = true
         actionButton[0].id = "disable-button"
         actionButton[0].removeEventListener("click", () => {handleAttack(playerMeCard)})
         actionButton[1].id = "disable-button"
@@ -101,9 +104,13 @@ async function chengeTurnPlayer(){
 }
 
 async function handleAttack(playerCard) {
+    if(isAction == true){
+        return;
+    }
     if(playerCard == playerMeCard){
         await api.action({username: userData.username, id:roomNumber, action:'attack'});
     }
+
     
     // play sound
     const audio = new Audio();
@@ -126,6 +133,9 @@ async function handleAttack(playerCard) {
 }
 
 async function handleGuard(playerCard) {
+    if(isAction == true){
+        return;
+    }
     if(playerCard == playerMeCard){
         await api.action({username: userData.username, id:roomNumber, action:'guard'});
     }
@@ -152,6 +162,9 @@ async function handleGuard(playerCard) {
 
 
 async function handleMagic(playerCard) {
+    if(isAction == true){
+        return;
+    }
     if(playerCard == playerMeCard){
         await api.action({username: userData.username, id:roomNumber, action:'magic'});
     }

@@ -12,6 +12,7 @@ toHome.addEventListener("click", async () => {
 });
 
 
+
 let CPmonChosenIndex = null;
 const CPmonName = ["Neen", "Beam", "Nadeem", "Tokyo"]
 var isReady = false
@@ -90,6 +91,7 @@ var player2Ready = false;
 export async function drawUsername() {
 
     let roomInfo = await api.getRoom({id:roomNumber})
+    document.getElementById("room-name").innerHTML = roomInfo.room.roomName
 
     let oldPlayer1 = document.getElementById("player-name-1").innerText;
     let oldPlayer2 = document.getElementById("player-name-2").innerText;
