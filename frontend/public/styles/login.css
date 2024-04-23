@@ -15,14 +15,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'InfoStory';
-    src: url('../res/fonts/info_story-webfont.woff2') format('woff2'), /* Modern Browsers */
-        url('../res/fonts/info_story-webfont.woff') format('woff'); /* Legacy Browsers */
-    font-weight: normal;
-    font-style: normal;
-}
-
 body {
     background-color: var(--chestnut);
     color: var(--sunset);

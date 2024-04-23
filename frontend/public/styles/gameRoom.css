@@ -16,14 +16,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'InfoStory';
-    src: url('../res/fonts/info_story-webfont.woff2') format('woff2'),
-        url('../res/fonts/info_story-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body {
     font-family: 'Quicksand';
     background-color: var(--sunset);

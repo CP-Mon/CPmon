@@ -7,9 +7,16 @@
     --jet: #2a2b2aff;
 }
 
+@font-face {
+    font-family: 'QuickSand';
+    src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
+        url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'QuickSand';
     background-color: var(--jet);
     text-align: center;
 }

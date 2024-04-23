@@ -7,29 +7,20 @@
     --jet: #2a2b2aff;
 }
 
-body {
-    font-family: 'Quicksand';
-    background-color: var(--sunset);
-    overflow: hidden;
-}
-
 @font-face {
     font-family: 'QuickSand';
     src: url('../res/fonts/quicksand-regular-webfont.woff2') format('woff2'), /* Modern Browsers */
          url('../res/fonts/quicksand-regular-webfont.woff') format('woff'); /* Legacy Browsers */
     /* Add more src lines for additional font formats if needed */
     font-weight: normal;
-    font-style: normal;
-  }
+    font-style: normal;  
+}
   
-@font-face {
-    font-family: 'InfoStory';
-    src: url('../res/fonts/info_story-webfont.woff2') format('woff2'), /* Modern Browsers */
-         url('../res/fonts/info_story-webfont.woff') format('woff'); /* Legacy Browsers */
-    /* Add more src lines for additional font formats if needed */
-    font-weight: normal;
-    font-style: normal;
-  }
+body {
+    font-family: 'Quicksand';
+    background-color: var(--sunset);
+    overflow: hidden;
+}
 
 body, html {
     margin: 0;
