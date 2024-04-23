@@ -90,7 +90,7 @@ export async function drawCPmonStatus() {
 
     document.getElementById("CPmon-hp").children[1].children[0].style.width = (CPmon.status.hp * 100/ 60).toString() + "%";
     document.getElementById("CPmon-attack").children[1].children[0].style.width = (CPmon.status.atk * 100/ 15).toString() + "%";
-    document.getElementById("CPmon-defense").children[1].children[0].style.width = (CPmon.status.defense * 100/ 5).toString() + "%";
+    document.getElementById("CPmon-defense").children[1].children[0].style.width = (CPmon.status.def * 100/ 5).toString() + "%";
     document.getElementById("CPmon-magic").children[1].children[0].style.width = (CPmon.status.mAtk * 100/ 15).toString() + "%";
 }
 
